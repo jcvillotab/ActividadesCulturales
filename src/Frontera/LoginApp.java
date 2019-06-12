@@ -14,6 +14,8 @@ public class LoginApp extends javax.swing.JPanel {
     /**
      * Creates new form LoginApp
      */
+    public HomeApp ha;
+    
     public LoginApp() {
         initComponents();
     }
@@ -30,11 +32,11 @@ public class LoginApp extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         userTF = new javax.swing.JTextField();
-        passwordTF = new javax.swing.JTextField();
         loginB = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         singUpB = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        passwordTF = new javax.swing.JPasswordField();
 
         jLabel1.setText("Usuario");
 
@@ -42,13 +44,12 @@ public class LoginApp extends javax.swing.JPanel {
 
         userTF.setToolTipText("");
 
-        passwordTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordTFActionPerformed(evt);
+        loginB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        loginB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loginBMouseClicked(evt);
             }
         });
-
-        loginB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel3.setText("Ingresar");
 
@@ -77,6 +78,11 @@ public class LoginApp extends javax.swing.JPanel {
         });
 
         jLabel4.setText("Registro");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout singUpBLayout = new javax.swing.GroupLayout(singUpB);
         singUpB.setLayout(singUpBLayout);
@@ -108,12 +114,11 @@ public class LoginApp extends javax.swing.JPanel {
                             .addComponent(loginB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(78, 78, 78)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel1)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(passwordTF)
-                                .addComponent(jLabel2)
-                                .addComponent(userTF, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)))))
+                            .addComponent(jLabel2)
+                            .addComponent(userTF)
+                            .addComponent(passwordTF, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE))))
                 .addContainerGap(85, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -122,26 +127,34 @@ public class LoginApp extends javax.swing.JPanel {
                 .addGap(25, 25, 25)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(userTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(userTF, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(passwordTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addComponent(loginB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(singUpB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void passwordTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordTFActionPerformed
-
     private void singUpBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_singUpBMouseClicked
-               
+    
+        SignUpApp sup = new SignUpApp();
+        ha.setBasicP(sup);
     }//GEN-LAST:event_singUpBMouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void loginBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBMouseClicked
+
+        AdminApp app = new AdminApp();
+        ha.setBasicP(app);
+    }//GEN-LAST:event_loginBMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -150,7 +163,7 @@ public class LoginApp extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel loginB;
-    private javax.swing.JTextField passwordTF;
+    private javax.swing.JPasswordField passwordTF;
     private javax.swing.JPanel singUpB;
     private javax.swing.JTextField userTF;
     // End of variables declaration//GEN-END:variables
