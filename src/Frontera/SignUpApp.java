@@ -11,7 +11,7 @@ package Frontera;
  * @author Armageddon132
  */
 public class SignUpApp extends javax.swing.JPanel {
-
+    private HomeApp ha = new HomeApp();
     /** Creates new form SignUpApp */
     public SignUpApp() {
         initComponents();
@@ -31,11 +31,11 @@ public class SignUpApp extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         userTF = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        passwordTF = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        vPasswordTF = new javax.swing.JTextField();
         registerB = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        passwordTF = new javax.swing.JPasswordField();
+        vPasswordTF = new javax.swing.JPasswordField();
 
         jLabel1.setText("Nombre");
 
@@ -50,12 +50,6 @@ public class SignUpApp extends javax.swing.JPanel {
         jLabel3.setText("Contraseña");
 
         jLabel4.setText("Validar Contraseña");
-
-        vPasswordTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                vPasswordTFActionPerformed(evt);
-            }
-        });
 
         registerB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -81,17 +75,18 @@ public class SignUpApp extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(registerB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel1)
-                        .addComponent(jLabel2)
-                        .addComponent(jLabel3)
-                        .addComponent(jLabel4)
-                        .addComponent(passwordTF, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
-                        .addComponent(nameTF)
-                        .addComponent(userTF)
-                        .addComponent(vPasswordTF)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(registerB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(nameTF, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                            .addComponent(userTF)))
+                    .addComponent(passwordTF)
+                    .addComponent(vPasswordTF))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -119,12 +114,8 @@ public class SignUpApp extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void vPasswordTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vPasswordTFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_vPasswordTFActionPerformed
-
     private void nameTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTFActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_nameTFActionPerformed
 
 
@@ -135,10 +126,10 @@ public class SignUpApp extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField nameTF;
-    private javax.swing.JTextField passwordTF;
+    private javax.swing.JPasswordField passwordTF;
     private javax.swing.JPanel registerB;
     private javax.swing.JTextField userTF;
-    private javax.swing.JTextField vPasswordTF;
+    private javax.swing.JPasswordField vPasswordTF;
     // End of variables declaration//GEN-END:variables
 
 }
