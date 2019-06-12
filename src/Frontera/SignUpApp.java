@@ -11,7 +11,8 @@ package Frontera;
  * @author Armageddon132
  */
 public class SignUpApp extends javax.swing.JPanel {
-    private HomeApp ha = new HomeApp();
+    public HomeApp ha;
+    
     /** Creates new form SignUpApp */
     public SignUpApp() {
         initComponents();
