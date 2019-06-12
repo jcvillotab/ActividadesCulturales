@@ -5,6 +5,7 @@
  */
 package Frontera;
 
+
 /**
  *
  * @author Armageddon132
@@ -16,9 +17,14 @@ public class HomeApp extends javax.swing.JFrame {
      */
     
     private LoginApp login = new LoginApp();
+    private AdminApp admin = new AdminApp();
     
+
+
     public HomeApp() {
         initComponents();
+        login.ha = this;
+        admin.ha = this;
     }
 
     /**
@@ -102,11 +108,11 @@ public class HomeApp extends javax.swing.JFrame {
         homePLayout.setVerticalGroup(
             homePLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(homePLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
+                .addContainerGap(83, Short.MAX_VALUE)
                 .addComponent(clientB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
+                .addGap(79, 79, 79)
                 .addComponent(adminB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addGap(99, 99, 99))
         );
 
         basicP.add(homeP, java.awt.BorderLayout.CENTER);
