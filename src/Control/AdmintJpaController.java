@@ -20,6 +20,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -37,7 +38,20 @@ public class AdmintJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Admint admint) {
+    public String create(Admint admint, String vPass) {
+
+        if(admint.getNombreAdmin().length()<6 || admint.getNombreAdmin().length()>16){
+            return "Error en el tamaño del nombre de usuario";
+        }
+        
+        if(!String.valueOf(admint.getContraseniaAdmin()).equals(String.valueOf(vPass))){
+            return "Las contraseñas no coinciden";
+        }
+         
+        if(admint.getContraseniaAdmin().length()<8 || admint.getContraseniaAdmin().length()>16){
+            return "Error en el tamaño de la contraseña";
+        }
+        
         if (admint.getEventotCollection() == null) {
             admint.setEventotCollection(new ArrayList<Eventot>());
         }
@@ -51,6 +65,7 @@ public class AdmintJpaController implements Serializable {
                 attachedEventotCollection.add(eventotCollectionEventotToAttach);
             }
             admint.setEventotCollection(attachedEventotCollection);
+            
             em.persist(admint);
             for (Eventot eventotCollectionEventot : admint.getEventotCollection()) {
                 Admint oldFkIdAdminOfEventotCollectionEventot = eventotCollectionEventot.getFkIdAdmin();
@@ -62,11 +77,14 @@ public class AdmintJpaController implements Serializable {
                 }
             }
             em.getTransaction().commit();
+        }catch(Exception e){
+            return "Error al registrar :"+e;
         } finally {
             if (em != null) {
                 em.close();
             }
         }
+        return "registro exitoso";
     }
 
     public void edit(Admint admint) throws IllegalOrphanException, NonexistentEntityException, Exception {
@@ -189,6 +207,36 @@ public class AdmintJpaController implements Serializable {
             em.close();
         }
     }
+    
+    public String LoginAdmint (String user, String pass){
+        boolean ty = false;
+        EntityManager em = getEntityManager();
+        em.getTransaction().begin();
+        TypedQuery<Admint> query = em.createNamedQuery("Admint.findByNombreAdmin", Admint.class);
+        query.setParameter("nombreAdmin", user);
+        try {
+            
+            if(query.getResultList().isEmpty()){
+                return "El nombre de usuario no existe";
+            }else{
+                Admint usuario = query.getSingleResult();
+                if(usuario.getContraseniaAdmin().equals(pass)){
+                    ty = true;
+                }else{
+                    return "Contraseña incorrecta";
+                }
+            }
+        }catch(Exception e){
+            return "Error bd codigo : "+e;
+        }finally {
+            em.close();
+        }
+        if(ty == true){
+                return "Datos correctos";
+            }else{
+                return "Error innesperado";
+            }
+    } 
 
     public int getAdmintCount() {
         EntityManager em = getEntityManager();

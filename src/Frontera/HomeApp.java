@@ -52,7 +52,7 @@ public class HomeApp extends javax.swing.JFrame {
     private void initComponents() {
 
         basicP = new javax.swing.JPanel();
-        homeP = new ImagePanel("C:\\Users\\mscorreav\\Documents\\NetBeansProjects\\ActividadesCulturales\\resources\\fondo1.jpg");
+        homeP = new ImagePanel("C:\\Users\\JoanGomez\\Documents\\NetBeansProjects\\ActividadesCulturales\\resources\\fondo1.jpg");
         jPanel1 = new javax.swing.JPanel();
         clientB = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -60,8 +60,13 @@ public class HomeApp extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1360, 768));
+        setMinimumSize(new java.awt.Dimension(1359, 767));
+        setPreferredSize(new java.awt.Dimension(1360, 768));
 
         basicP.setLayout(new java.awt.BorderLayout());
+
+        homeP.setPreferredSize(new java.awt.Dimension(1360, 768));
 
         jPanel1.setBackground(new java.awt.Color(0, 69, 158));
 
@@ -92,6 +97,7 @@ public class HomeApp extends javax.swing.JFrame {
 
         adminB.setBackground(new java.awt.Color(78, 159, 233));
         adminB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        adminB.setToolTipText("");
         adminB.setPreferredSize(new java.awt.Dimension(190, 80));
         adminB.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -101,6 +107,7 @@ public class HomeApp extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel2.setText("Administrador");
+        jLabel2.setToolTipText("");
         jLabel2.setAlignmentY(0.0F);
 
         javax.swing.GroupLayout adminBLayout = new javax.swing.GroupLayout(adminB);
@@ -125,11 +132,11 @@ public class HomeApp extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(65, Short.MAX_VALUE)
+                .addContainerGap(258, Short.MAX_VALUE)
                 .addComponent(adminB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 271, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 464, Short.MAX_VALUE)
                 .addComponent(clientB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(258, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,7 +157,7 @@ public class HomeApp extends javax.swing.JFrame {
         homePLayout.setVerticalGroup(
             homePLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homePLayout.createSequentialGroup()
-                .addGap(0, 279, Short.MAX_VALUE)
+                .addGap(0, 666, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -172,7 +179,7 @@ public class HomeApp extends javax.swing.JFrame {
 
     private void adminBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminBMouseClicked
         basicP.setVisible(false);
-        basicP.removeAll();
+        basicP.remove(homeP);
         basicP.add(login);
         basicP.setVisible(true);
     }//GEN-LAST:event_adminBMouseClicked

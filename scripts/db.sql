@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `clienteT` (
   
 CREATE TABLE IF NOT EXISTS `adminT` (
     `id_admin` INT(8) NOT NULL AUTO_INCREMENT COMMENT 'Clave primaria',
-    `nombre_admin` VARCHAR(64) NOT NULL COMMENT 'nombre admin',
+    `nombre_admin` VARCHAR(64) NOT NULL UNIQUE COMMENT 'nombre admin',
     `contrasenia_admin` VARCHAR(64) NOT NULL COMMENT 'contrasenia admin',
     CONSTRAINT `pk_admin` PRIMARY KEY (`id_admin`)
 );
@@ -65,6 +65,8 @@ ALTER TABLE `eventoxartistaT` ADD CONSTRAINT `fk_eventoxartista` FOREIGN KEY (`i
 ALTER TABLE `eventoxartistaT` ADD CONSTRAINT `fk_artistaxevento` FOREIGN KEY (`id_fk_id_artista`) references `artistaT`(`id_artista`);
 ALTER TABLE `eventoxclienteT` ADD CONSTRAINT `fk_eventoxcliente` FOREIGN KEY (`id_fk_id_evento`) references `eventoT`(`id_evento`);
 ALTER TABLE `eventoxclienteT` ADD CONSTRAINT `fk_clientexevento` FOREIGN KEY (`id_fk_id_cliente`) references `clienteT`(`id_cliente`);
+
+ALTER TABLE actividadesculturalesdb.adminT ADD UNIQUE (`nombre_admin`);
 
 SELECT 
     *

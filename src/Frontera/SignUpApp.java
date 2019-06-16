@@ -35,8 +35,6 @@ public class SignUpApp extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        nameTF = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         userTF = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -45,14 +43,6 @@ public class SignUpApp extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         passwordTF = new javax.swing.JPasswordField();
         vPasswordTF = new javax.swing.JPasswordField();
-
-        jLabel1.setText("Nombre");
-
-        nameTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nameTFActionPerformed(evt);
-            }
-        });
 
         jLabel2.setText("Usuario");
 
@@ -92,13 +82,11 @@ public class SignUpApp extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(registerB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
-                            .addComponent(nameTF, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
-                            .addComponent(userTF)))
+                            .addComponent(userTF, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(passwordTF)
                     .addComponent(vPasswordTF))
                 .addContainerGap(33, Short.MAX_VALUE))
@@ -106,11 +94,7 @@ public class SignUpApp extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addContainerGap(36, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addComponent(userTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -122,42 +106,27 @@ public class SignUpApp extends javax.swing.JPanel {
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
                 .addComponent(vPasswordTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addComponent(registerB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nameTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTFActionPerformed
-        
-    }//GEN-LAST:event_nameTFActionPerformed
-
     private void registerBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerBMouseClicked
         Admint newAdmin = new Admint();
-        newAdmin.setNombreAdmin(nameTF.getText());
+        newAdmin.setNombreAdmin(userTF.getText());
         System.out.println(adminC.findAdmintEntities().size());
-        
-        
-        if(String.valueOf(passwordTF.getPassword()).equals(String.valueOf(vPasswordTF.getPassword()))){
-            newAdmin.setContraseniaAdmin(String.valueOf(passwordTF.getPassword()));
-            adminC.create(newAdmin);
-            JOptionPane.showMessageDialog(ha, "Registrado con exito");
-            
-        }else{
-            JOptionPane.showMessageDialog(ha, "Las contraseñas no coinciden");
-        }
-            
-    
+        newAdmin.setContraseniaAdmin(String.valueOf(passwordTF.getPassword()));
+        String res = adminC.create(newAdmin, vPasswordTF.getText());
+        JOptionPane.showMessageDialog(ha, res);
     }//GEN-LAST:event_registerBMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField nameTF;
     private javax.swing.JPasswordField passwordTF;
     private javax.swing.JPanel registerB;
     private javax.swing.JTextField userTF;
