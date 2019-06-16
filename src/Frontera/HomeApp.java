@@ -60,15 +60,19 @@ public class HomeApp extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1360, 768));
-        setMinimumSize(new java.awt.Dimension(1359, 767));
+        setMaximumSize(new java.awt.Dimension(32767, 32767));
+        setMinimumSize(new java.awt.Dimension(1360, 768));
         setPreferredSize(new java.awt.Dimension(1360, 768));
 
+        basicP.setMinimumSize(new java.awt.Dimension(1360, 720));
+        basicP.setPreferredSize(new java.awt.Dimension(1360, 720));
         basicP.setLayout(new java.awt.BorderLayout());
 
-        homeP.setPreferredSize(new java.awt.Dimension(1360, 768));
+        homeP.setMinimumSize(new java.awt.Dimension(1360, 720));
+        homeP.setPreferredSize(new java.awt.Dimension(1360, 720));
 
         jPanel1.setBackground(new java.awt.Color(0, 69, 158));
+        jPanel1.setMinimumSize(new java.awt.Dimension(1360, 102));
 
         clientB.setBackground(new java.awt.Color(78, 159, 233));
         clientB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
