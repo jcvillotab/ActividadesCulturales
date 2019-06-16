@@ -24,6 +24,7 @@ public class HomeApp extends javax.swing.JFrame {
     private AdminApp admin = new AdminApp();
     private Image bg = Toolkit.getDefaultToolkit().createImage("../../resources/fondo1.jpg");
     
+    
 
 
     public HomeApp() {

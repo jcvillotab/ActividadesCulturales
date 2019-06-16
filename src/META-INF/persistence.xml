@@ -8,6 +8,7 @@
     <class>Entidad.Admint</class>
     <class>Entidad.Lugart</class>
     <class>Entidad.Eventoxlugart</class>
+    <class>Entidad.Lugart_1</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/actividadesculturalesdb?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

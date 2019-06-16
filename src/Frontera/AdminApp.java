@@ -118,6 +118,10 @@ public class AdminApp extends javax.swing.JPanel {
         editPlaceB = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
 
+        jTabbedPane1.setBackground(new java.awt.Color(204, 255, 255));
+
+        jTabbedPane2.setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel12.setText("Nombre Evento");
 
         jLabel13.setText("Lugar");

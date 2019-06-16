@@ -86,6 +86,8 @@ public class Admint implements Serializable {
     public void setContraseniaAdmin(String contraseniaAdmin) {
         this.contraseniaAdmin = contraseniaAdmin;
     }
+    
+    
 
     @XmlTransient
     public Collection<Eventot> getEventotCollection() {
