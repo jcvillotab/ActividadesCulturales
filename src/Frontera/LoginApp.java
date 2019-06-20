@@ -240,6 +240,7 @@ public class LoginApp extends javax.swing.JPanel {
         String res = adminJpa.LoginAdmint(userTF.getText(),passwordTF.getText());
         if(res == "Datos correctos"){
             AdminApp app = new AdminApp();
+            app.adminS = adminJpa.getAdminS();
             ha.setBasicP(app);
         }else{
             JOptionPane.showMessageDialog(ha, res);

@@ -27,6 +27,7 @@ import javax.persistence.TypedQuery;
  * @author Armageddon132
  */
 public class AdmintJpaController implements Serializable {
+    private Admint adminS;
 
     public AdmintJpaController() {
         
@@ -210,6 +211,7 @@ public class AdmintJpaController implements Serializable {
     
     public String LoginAdmint (String user, String pass){
         boolean ty = false;
+        Admint usuario;
         EntityManager em = getEntityManager();
         em.getTransaction().begin();
         TypedQuery<Admint> query = em.createNamedQuery("Admint.findByNombreAdmin", Admint.class);
@@ -219,7 +221,7 @@ public class AdmintJpaController implements Serializable {
             if(query.getResultList().isEmpty()){
                 return "El nombre de usuario no existe";
             }else{
-                Admint usuario = query.getSingleResult();
+                usuario = query.getSingleResult();
                 if(usuario.getContraseniaAdmin().equals(pass)){
                     ty = true;
                 }else{
@@ -232,12 +234,23 @@ public class AdmintJpaController implements Serializable {
             em.close();
         }
         if(ty == true){
+                setAdminS(usuario);
                 return "Datos correctos";
             }else{
                 return "Error innesperado";
             }
     } 
 
+    public Admint getAdminS() {
+        return adminS;
+    }
+
+    public void setAdminS(Admint adminS) {
+        this.adminS = adminS;
+    }
+
+    
+    
     public int getAdmintCount() {
         EntityManager em = getEntityManager();
         try {

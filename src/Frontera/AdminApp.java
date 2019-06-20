@@ -8,6 +8,7 @@ package Frontera;
 import Control.ArtistatJpaController;
 import Control.EventotJpaController;
 import Control.LugartJpaController;
+import Entidad.Admint;
 import Entidad.Artistat;
 import Entidad.Eventot;
 import Entidad.Lugart;
@@ -31,6 +32,7 @@ public class AdminApp extends javax.swing.JPanel {
      */
     
     public HomeApp ha;
+    public Admint adminS;
     private ArtistatJpaController artistaC = new ArtistatJpaController();
     private EventotJpaController eventoC = new EventotJpaController();
     private LugartJpaController lugarC = new LugartJpaController();
@@ -1141,7 +1143,7 @@ public class AdminApp extends javax.swing.JPanel {
         
         ArrayList<Artistat> artists = artistaC.searchArtistCB(names);
         
-        eventoC.registerEvent(event, lugar, artists, Integer.parseInt(eventCapacityAddTF.getText()));
+        eventoC.registerEvent(event, lugar, artists, Integer.parseInt(eventCapacityAddTF.getText()),adminS);
         JOptionPane.showMessageDialog(ha, "Evento creado correctamente");
     }//GEN-LAST:event_addEventBMouseClicked
 

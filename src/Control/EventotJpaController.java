@@ -260,13 +260,13 @@ public class EventotJpaController implements Serializable {
         return names.toArray(new String[0]);
     }
 
-    public String registerEvent(Eventot event, Lugart place, ArrayList<Artistat> artist, int capacity) {
+    public String registerEvent(Eventot event, Lugart place, ArrayList<Artistat> artist, int capacity, Admint adminS) {
         EntityManager em = getEntityManager();
         Query aux;
         SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy"); 
         
         em.getTransaction().begin();
-        aux = em.createNativeQuery("INSERT INTO eventoT (nombre_evento, fecha_evento) VALUES ('" + event.getNombreEvento()+ "' ," + format1.format(event.getFechaEvento()) + " )");
+        aux = em.createNativeQuery("INSERT INTO eventoT (nombre_evento, fecha_evento) VALUES ('" + event.getNombreEvento()+ "' ," + format1.format(event.getFechaEvento()) + ","+adminS.getIdAdmin()+" )");
         aux.executeUpdate();
         
         for (Artistat artista : artist) {
