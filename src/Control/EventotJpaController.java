@@ -18,6 +18,7 @@ import java.util.Collection;
 import Entidad.Artistat;
 import Entidad.Eventot;
 import Entidad.Lugart;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -29,7 +30,8 @@ import javax.persistence.TypedQuery;
  * @author Armageddon132
  */
 public class EventotJpaController implements Serializable {
-
+    
+    
     public EventotJpaController() {
         this.emf = Persistence.createEntityManagerFactory("ActividadesCulturalesPU");
     }
@@ -261,9 +263,10 @@ public class EventotJpaController implements Serializable {
     public String registerEvent(Eventot event, Lugart place, ArrayList<Artistat> artist, int capacity) {
         EntityManager em = getEntityManager();
         Query aux;
+        SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy"); 
         
         em.getTransaction().begin();
-        aux = em.createNativeQuery("INSERT INTO eventoT (id_evento, nombre_evento, fecha_evento) VALUES (" + event.getIdEvento() + " ," + place.getIdLugar()+ " ," + capacity + " )");
+        aux = em.createNativeQuery("INSERT INTO eventoT (nombre_evento, fecha_evento) VALUES ('" + event.getNombreEvento()+ "' ," + format1.format(event.getFechaEvento()) + " )");
         aux.executeUpdate();
         
         for (Artistat artista : artist) {
