@@ -173,52 +173,64 @@ public class EventotJpaController implements Serializable {
         EntityManager em = getEntityManager();
         event.setFkIdAdmin(adminS);
         Query aux;
-        //SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy"); 
-        
         em.getTransaction().begin();
         em.persist(event);
-        
-        //aux = em.createNativeQuery("INSERT INTO eventoT (nombre_evento, fecha_evento) VALUES ('" + event.getNombreEvento()+ "' ," + format1.format(event.getFechaEvento()) + ","+adminS.getIdAdmin()+" )");
-        //aux.executeUpdate();
-        
         em.getTransaction().commit();
         em.close();
-        
-        /*em.getTransaction().begin();
         for (Artistat artista : artist) {
+
+            em = getEntityManager();
+            em.getTransaction().begin();
 
             TypedQuery<Artistat> qryArtist = em.createNamedQuery("Artistat.findByIdArtista", Artistat.class);
             qryArtist.setParameter("idArtista", artista.getIdArtista());
+
             try {
                 if (!qryArtist.getResultList().isEmpty()) {
-                    aux = em.createNativeQuery("INSERT INTO eventoxartistaT (id_fk_id_evento, id_fk_id_artista) VALUES (" + event.getIdEvento() + " ," + artista.getIdArtista() + " )");
+
+                    aux = em.createNativeQuery("INSERT INTO eventoxartistaT (id_fk_id_evento, id_fk_id_artista) VALUES (" + returnLastInsertedId() + " ," + artista.getIdArtista() + " )");
                     aux.executeUpdate();
+                    em.getTransaction().commit();
+
                 }
+                em.close();
 
             } catch (Exception e) {
-                return "Error:" + e;
-            } finally {
-                em.close();
+                e.printStackTrace();
             }
         }
 
+        em = getEntityManager();
         em.getTransaction().begin();
+
         TypedQuery<Lugart> qryPlace = em.createNamedQuery("Lugart.findByIdLugar", Lugart.class);
-        qryPlace.setParameter("idLugar", String.valueOf(place.getIdLugar()));
+        qryPlace.setParameter("idLugar", place.getIdLugar());
 
         try {
             if (!qryPlace.getResultList().isEmpty()) {
-                aux = em.createNativeQuery("INSERT INTO eventoxlugarT (id_fk_id_evento, id_fk_id_lugar, capacidad_ocupada_exl) VALUES (" + event.getIdEvento() + " ," + place.getIdLugar() + " ," + capacity + " )");
+
+                aux = em.createNativeQuery("INSERT INTO eventoxlugarT (id_fk_id_evento, id_fk_id_lugar, capacidad_ocupada_exl) VALUES (" + returnLastInsertedId() + " ," + place.getIdLugar() + " ," + capacity + " )");
                 aux.executeUpdate();
+                em.getTransaction().commit();
             }
 
         } catch (Exception e) {
-            return "Error:" + e;
-        } finally {
-            em.close();
+            e.printStackTrace();
+        }
 
-        }*/
+        em.close();
         return "Evento Registrado Correctamente";
+    }
+    
+    public int returnLastInsertedId(){
+        List<Eventot> list = findEventotEntities();
+        
+        if(list.isEmpty()){
+            return 0;
+        }else{
+            return list.get(list.size()-1).getIdEvento();
+        }
+        
     }
     
     public void editEvent(Eventot event, String name, String date, Lugart place, int capacity) {
