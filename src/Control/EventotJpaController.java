@@ -169,14 +169,29 @@ public class EventotJpaController implements Serializable {
         return names.toArray(new String[0]);
     }
 
+    public int returnLastInsertedId(){
+        List<Eventot> list = findEventotEntities();
+        
+        if(list.isEmpty()){
+            return 0;
+        }else{
+            return list.get(list.size()-1).getIdEvento();
+        }
+        
+    }
+
     public String registerEvent(Eventot event, Lugart place, ArrayList<Artistat> artist, int capacity, Admint adminS) {
         EntityManager em = getEntityManager();
-        event.setFkIdAdmin(adminS);
         Query aux;
+        SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+
         em.getTransaction().begin();
-        em.persist(event);
+        aux = em.createNativeQuery("INSERT INTO eventoT (nombre_evento, fecha_evento, fk_id_admin) VALUES ('" + event.getNombreEvento() + "' , '" + format1.format(event.getFechaEvento()) + "' ," + adminS.getIdAdmin() + " )");
+        aux.executeUpdate();
         em.getTransaction().commit();
         em.close();
+
+        System.out.println("Tamaño arraylist: " + artist.size());
         for (Artistat artista : artist) {
 
             em = getEntityManager();
@@ -222,16 +237,6 @@ public class EventotJpaController implements Serializable {
         return "Evento Registrado Correctamente";
     }
     
-    public int returnLastInsertedId(){
-        List<Eventot> list = findEventotEntities();
-        
-        if(list.isEmpty()){
-            return 0;
-        }else{
-            return list.get(list.size()-1).getIdEvento();
-        }
-        
-    }
     
     public void editEvent(Eventot event, String name, String date, Lugart place, int capacity) {
         EntityManager em = getEntityManager();
@@ -253,6 +258,7 @@ public class EventotJpaController implements Serializable {
                     update.executeUpdate();
                     update = em.createNativeQuery("UPDATE eventoxlugarT SET capacidad_ocupada_exl=" + String.valueOf(capacity) + "WHERE id_fk_id_evento=" + original.getIdEvento() + "AND id_fk_id_lugar=" + place.getIdLugar()+ " )");
                     update.executeUpdate();
+                    em.getTransaction().commit();
                 }
             }
         } catch (Exception e) {
