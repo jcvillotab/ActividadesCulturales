@@ -200,13 +200,13 @@
                                                   <Component id="eventCapacityAddTF" min="-2" pref="63" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="0" pref="260" max="32767" attributes="0"/>
+                                              <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="0" pref="254" max="32767" attributes="0"/>
+                                          </Group>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace pref="270" max="32767" attributes="0"/>
-                                      <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="264" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -447,11 +447,13 @@
                                           <Component id="eventEditPlaceTF" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="eventArtist1EditTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="eventArtist2EditTF" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="eventArtist3EditTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="eventArtist1EditTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="eventArtist3EditTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
@@ -1259,13 +1261,8 @@
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="placeDeckEditTF" alignment="0" min="-2" pref="328" max="-2" attributes="0"/>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="placeSectionEditTF" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
-                                                          <Component id="placeCapacityEditTF" alignment="0" min="-2" pref="65" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <EmptySpace min="-2" pref="158" max="-2" attributes="0"/>
-                                                  </Group>
+                                                  <Component id="placeSectionEditTF" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
+                                                  <Component id="placeCapacityEditTF" alignment="0" min="-2" pref="65" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
