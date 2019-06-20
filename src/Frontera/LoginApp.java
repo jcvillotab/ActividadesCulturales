@@ -34,7 +34,7 @@ public class LoginApp extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        Bg = new ImagePanel("C:\\Users\\JoanGomez\\Documents\\NetBeansProjects\\ActividadesCulturales\\resources\\fondo2.jpg");
+        Bg = new ImagePanel("C:\\Users\\Armageddon132\\Documents\\NetBeansProjects\\ActividadesCulturales\\resources\\fondo2.jpg");
         BgLogin = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         userTF = new javax.swing.JTextField();
