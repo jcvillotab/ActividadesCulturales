@@ -288,6 +288,11 @@ public class AdminApp extends javax.swing.JPanel {
         jLabel20.setText("Evento");
 
         eventSelectorE.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        eventSelectorE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eventSelectorEActionPerformed(evt);
+            }
+        });
 
         jLabel21.setText("Nombre Evento");
 
@@ -1082,7 +1087,6 @@ public class AdminApp extends javax.swing.JPanel {
             
         }
         
-        
     }//GEN-LAST:event_addArtistBMouseClicked
 
     private void editArtistBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editArtistBMouseClicked
@@ -1102,7 +1106,7 @@ public class AdminApp extends javax.swing.JPanel {
     private void addEventBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addEventBMouseClicked
         SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy"); 
         Eventot event = new Eventot();
-        Lugart lugar = lugarC.findLugart(eventPlaceAddTF.getSelectedIndex());
+        Lugart lugar = lugarC.findLugart(eventPlaceAddTF.getSelectedIndex()+1);
         
         event.setNombreEvento(eventNameAddTF.getText());
         try {
@@ -1134,6 +1138,21 @@ public class AdminApp extends javax.swing.JPanel {
     private void eventArtist3EditTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventArtist3EditTFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_eventArtist3EditTFActionPerformed
+
+    private void eventSelectorEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventSelectorEActionPerformed
+        SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy");
+        Eventot event = eventoC.findEventot(EventotJpaController.getIds().get(eventSelectorE.getSelectedIndex()));
+        
+        eventEditNameTF.setText(event.getNombreEvento());
+        eventDateEditTF.setText(format1.format(event.getFechaEvento()));
+        
+        eventEditPlaceTF.setModel(new DefaultComboBoxModel(LugartJpaController.listToArrayPlace(lugarC.findLugartEntities())));
+        eventArtist1EditTF.setModel(new DefaultComboBoxModel(ArtistatJpaController.listToArrayArtist(artistaC.findArtistatEntities())));
+        eventArtist2EditTF.setModel(new DefaultComboBoxModel(ArtistatJpaController.listToArrayArtist(artistaC.findArtistatEntities())));
+        eventArtist3EditTF.setModel(new DefaultComboBoxModel(ArtistatJpaController.listToArrayArtist(artistaC.findArtistatEntities())));
+        
+        
+    }//GEN-LAST:event_eventSelectorEActionPerformed
     
     
 
