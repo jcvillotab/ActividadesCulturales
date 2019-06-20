@@ -156,4 +156,18 @@ public class ArtistatJpaController implements Serializable {
         return names.toArray(new String[0]);
     }
     
+    public ArrayList<Artistat> searchArtistCB(ArrayList<String> names){
+        List total = findArtistatEntities();
+        ArrayList<Artistat> artistas = new ArrayList<>();
+        
+        for (String name : names) {
+            for (Artistat artista : artistas) {
+                if(artista.getNombreArtista().equals(name)){
+                    artistas.add(artista);
+                }
+            }
+        }
+        return artistas;
+    }
+    
 }
