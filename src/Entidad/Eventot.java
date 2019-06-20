@@ -36,6 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Eventot.findAll", query = "SELECT e FROM Eventot e")
     , @NamedQuery(name = "Eventot.findByIdEvento", query = "SELECT e FROM Eventot e WHERE e.idEvento = :idEvento")
     , @NamedQuery(name = "Eventot.findByNombreEvento", query = "SELECT e FROM Eventot e WHERE e.nombreEvento = :nombreEvento")
+    , @NamedQuery(name = "Eventot.findByNombreFecha Evento", query = "SELECT e FROM Eventot e WHERE e.nombreEvento = :nombreEvento AND e.fechaEvento = :fechaEvento")
     , @NamedQuery(name = "Eventot.findByFechaEvento", query = "SELECT e FROM Eventot e WHERE e.fechaEvento = :fechaEvento")})
 public class Eventot implements Serializable {
 
