@@ -6,10 +6,8 @@
 package Control;
 
 import Control.exceptions.NonexistentEntityException;
-import Entidad.Eventot;
 import Entidad.Lugart;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -36,7 +34,24 @@ public class LugartJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Lugart lugart) {
+    public String create(Lugart lugart) {
+        if(lugart.getNombreLugar().length()<6 || lugart.getNombreLugar().length()>32){
+            return "Error en el tamaño del nombre del lugar";
+        }
+         
+        if(lugart.getCapacidadLugar()>6000){
+            System.out.println(lugart.getCapacidadLugar());
+            return "Error en la capacidad definida";
+        }
+        
+        if (lugart.getCubiertaLugar() == null) {
+            return "Error, cubierta no definida" + lugart.getCubiertaLugar();
+        }
+        
+        if (lugart.getSeccionLugar() == null) {
+            return "Error, seccion no definida";
+        }
+        
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -48,6 +63,7 @@ public class LugartJpaController implements Serializable {
                 em.close();
             }
         }
+        return "Creacion de lugar exitosa";
     }
 
     public void edit(Lugart lugart) throws NonexistentEntityException, Exception {
@@ -140,13 +156,4 @@ public class LugartJpaController implements Serializable {
         }
     }
     
-    public static String[] listToArrayPlace(List<Lugart> list) {
-        List<String> names = new ArrayList<>();
-        for (Lugart lugar : list) {
-            names.add(lugar.getNombreLugar());
-        }
-        return names.toArray(new String[0]);
-    }
 }
-
-
