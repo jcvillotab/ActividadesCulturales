@@ -44,17 +44,7 @@ public class ClientetJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Collection<Eventot> attachedEventotCollection = new ArrayList<Eventot>();
-            for (Eventot eventotCollectionEventotToAttach : clientet.getEventotCollection()) {
-                eventotCollectionEventotToAttach = em.getReference(eventotCollectionEventotToAttach.getClass(), eventotCollectionEventotToAttach.getIdEvento());
-                attachedEventotCollection.add(eventotCollectionEventotToAttach);
-            }
-            clientet.setEventotCollection(attachedEventotCollection);
             em.persist(clientet);
-            for (Eventot eventotCollectionEventot : clientet.getEventotCollection()) {
-                eventotCollectionEventot.getClientetCollection().add(clientet);
-                eventotCollectionEventot = em.merge(eventotCollectionEventot);
-            }
             em.getTransaction().commit();
         } catch (Exception ex) {
             if (findClientet(clientet.getIdCliente()) != null) {
@@ -84,18 +74,6 @@ public class ClientetJpaController implements Serializable {
             eventotCollectionNew = attachedEventotCollectionNew;
             clientet.setEventotCollection(eventotCollectionNew);
             clientet = em.merge(clientet);
-            for (Eventot eventotCollectionOldEventot : eventotCollectionOld) {
-                if (!eventotCollectionNew.contains(eventotCollectionOldEventot)) {
-                    eventotCollectionOldEventot.getClientetCollection().remove(clientet);
-                    eventotCollectionOldEventot = em.merge(eventotCollectionOldEventot);
-                }
-            }
-            for (Eventot eventotCollectionNewEventot : eventotCollectionNew) {
-                if (!eventotCollectionOld.contains(eventotCollectionNewEventot)) {
-                    eventotCollectionNewEventot.getClientetCollection().add(clientet);
-                    eventotCollectionNewEventot = em.merge(eventotCollectionNewEventot);
-                }
-            }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
@@ -124,11 +102,6 @@ public class ClientetJpaController implements Serializable {
                 clientet.getIdCliente();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The clientet with id " + id + " no longer exists.", enfe);
-            }
-            Collection<Eventot> eventotCollection = clientet.getEventotCollection();
-            for (Eventot eventotCollectionEventot : eventotCollection) {
-                eventotCollectionEventot.getClientetCollection().remove(clientet);
-                eventotCollectionEventot = em.merge(eventotCollectionEventot);
             }
             em.remove(clientet);
             em.getTransaction().commit();

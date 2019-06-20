@@ -77,7 +77,7 @@ public class AdminApp extends javax.swing.JPanel {
     private void initComponents() {
 
         jSpinner1 = new javax.swing.JSpinner();
-        Bg = new ImagePanel("C:\\Users\\JoanGomez\\Documents\\NetBeansProjects\\ActividadesCulturales\\resources\\fondo2.jpg");
+        Bg = new ImagePanel("C:\\Users\\Joan\\Documents\\NetBeansProjects\\ActividadesCulturales\\resources\\fondo2.jpg");
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         eventP = new javax.swing.JPanel();
@@ -169,10 +169,10 @@ public class AdminApp extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(1360, 720));
-        setMinimumSize(new java.awt.Dimension(1360, 720));
+        setMinimumSize(new java.awt.Dimension(980, 689));
         setPreferredSize(new java.awt.Dimension(1360, 720));
 
-        Bg.setMinimumSize(new java.awt.Dimension(1360, 720));
+        Bg.setMinimumSize(new java.awt.Dimension(980, 689));
         Bg.setPreferredSize(new java.awt.Dimension(1360, 720));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Admin"));

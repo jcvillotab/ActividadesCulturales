@@ -53,10 +53,6 @@ public class Eventot implements Serializable {
     @Column(name = "fecha_evento")
     @Temporal(TemporalType.DATE)
     private Date fechaEvento;
-    @ManyToMany(mappedBy = "eventotCollection")
-    private Collection<Clientet> clientetCollection;
-    @ManyToMany(mappedBy = "eventotCollection")
-    private Collection<Artistat> artistatCollection;
     @JoinColumn(name = "fk_id_admin", referencedColumnName = "id_admin")
     @ManyToOne(optional = false)
     private Admint fkIdAdmin;
@@ -96,24 +92,6 @@ public class Eventot implements Serializable {
 
     public void setFechaEvento(Date fechaEvento) {
         this.fechaEvento = fechaEvento;
-    }
-
-    @XmlTransient
-    public Collection<Clientet> getClientetCollection() {
-        return clientetCollection;
-    }
-
-    public void setClientetCollection(Collection<Clientet> clientetCollection) {
-        this.clientetCollection = clientetCollection;
-    }
-
-    @XmlTransient
-    public Collection<Artistat> getArtistatCollection() {
-        return artistatCollection;
-    }
-
-    public void setArtistatCollection(Collection<Artistat> artistatCollection) {
-        this.artistatCollection = artistatCollection;
     }
 
 

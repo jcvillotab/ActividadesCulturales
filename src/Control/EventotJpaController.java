@@ -42,12 +42,6 @@ public class EventotJpaController implements Serializable {
     }
 
     public void create(Eventot eventot) {
-        if (eventot.getClientetCollection() == null) {
-            eventot.setClientetCollection(new ArrayList<Clientet>());
-        }
-        if (eventot.getArtistatCollection() == null) {
-            eventot.setArtistatCollection(new ArrayList<Artistat>());
-        }
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -56,31 +50,6 @@ public class EventotJpaController implements Serializable {
             if (fkIdAdmin != null) {
                 fkIdAdmin = em.getReference(fkIdAdmin.getClass(), fkIdAdmin.getIdAdmin());
                 eventot.setFkIdAdmin(fkIdAdmin);
-            }
-            Collection<Clientet> attachedClientetCollection = new ArrayList<Clientet>();
-            for (Clientet clientetCollectionClientetToAttach : eventot.getClientetCollection()) {
-                clientetCollectionClientetToAttach = em.getReference(clientetCollectionClientetToAttach.getClass(), clientetCollectionClientetToAttach.getIdCliente());
-                attachedClientetCollection.add(clientetCollectionClientetToAttach);
-            }
-            eventot.setClientetCollection(attachedClientetCollection);
-            Collection<Artistat> attachedArtistatCollection = new ArrayList<Artistat>();
-            for (Artistat artistatCollectionArtistatToAttach : eventot.getArtistatCollection()) {
-                artistatCollectionArtistatToAttach = em.getReference(artistatCollectionArtistatToAttach.getClass(), artistatCollectionArtistatToAttach.getIdArtista());
-                attachedArtistatCollection.add(artistatCollectionArtistatToAttach);
-            }
-            eventot.setArtistatCollection(attachedArtistatCollection);
-            em.persist(eventot);
-            if (fkIdAdmin != null) {
-                fkIdAdmin.getEventotCollection().add(eventot);
-                fkIdAdmin = em.merge(fkIdAdmin);
-            }
-            for (Clientet clientetCollectionClientet : eventot.getClientetCollection()) {
-                clientetCollectionClientet.getEventotCollection().add(eventot);
-                clientetCollectionClientet = em.merge(clientetCollectionClientet);
-            }
-            for (Artistat artistatCollectionArtistat : eventot.getArtistatCollection()) {
-                artistatCollectionArtistat.getEventotCollection().add(eventot);
-                artistatCollectionArtistat = em.merge(artistatCollectionArtistat);
             }
             em.getTransaction().commit();
         } finally {
@@ -98,61 +67,11 @@ public class EventotJpaController implements Serializable {
             Eventot persistentEventot = em.find(Eventot.class, eventot.getIdEvento());
             Admint fkIdAdminOld = persistentEventot.getFkIdAdmin();
             Admint fkIdAdminNew = eventot.getFkIdAdmin();
-            Collection<Clientet> clientetCollectionOld = persistentEventot.getClientetCollection();
-            Collection<Clientet> clientetCollectionNew = eventot.getClientetCollection();
-            Collection<Artistat> artistatCollectionOld = persistentEventot.getArtistatCollection();
-            Collection<Artistat> artistatCollectionNew = eventot.getArtistatCollection();
             if (fkIdAdminNew != null) {
                 fkIdAdminNew = em.getReference(fkIdAdminNew.getClass(), fkIdAdminNew.getIdAdmin());
                 eventot.setFkIdAdmin(fkIdAdminNew);
             }
-            Collection<Clientet> attachedClientetCollectionNew = new ArrayList<Clientet>();
-            for (Clientet clientetCollectionNewClientetToAttach : clientetCollectionNew) {
-                clientetCollectionNewClientetToAttach = em.getReference(clientetCollectionNewClientetToAttach.getClass(), clientetCollectionNewClientetToAttach.getIdCliente());
-                attachedClientetCollectionNew.add(clientetCollectionNewClientetToAttach);
-            }
-            clientetCollectionNew = attachedClientetCollectionNew;
-            eventot.setClientetCollection(clientetCollectionNew);
-            Collection<Artistat> attachedArtistatCollectionNew = new ArrayList<Artistat>();
-            for (Artistat artistatCollectionNewArtistatToAttach : artistatCollectionNew) {
-                artistatCollectionNewArtistatToAttach = em.getReference(artistatCollectionNewArtistatToAttach.getClass(), artistatCollectionNewArtistatToAttach.getIdArtista());
-                attachedArtistatCollectionNew.add(artistatCollectionNewArtistatToAttach);
-            }
-            artistatCollectionNew = attachedArtistatCollectionNew;
-            eventot.setArtistatCollection(artistatCollectionNew);
             eventot = em.merge(eventot);
-            if (fkIdAdminOld != null && !fkIdAdminOld.equals(fkIdAdminNew)) {
-                fkIdAdminOld.getEventotCollection().remove(eventot);
-                fkIdAdminOld = em.merge(fkIdAdminOld);
-            }
-            if (fkIdAdminNew != null && !fkIdAdminNew.equals(fkIdAdminOld)) {
-                fkIdAdminNew.getEventotCollection().add(eventot);
-                fkIdAdminNew = em.merge(fkIdAdminNew);
-            }
-            for (Clientet clientetCollectionOldClientet : clientetCollectionOld) {
-                if (!clientetCollectionNew.contains(clientetCollectionOldClientet)) {
-                    clientetCollectionOldClientet.getEventotCollection().remove(eventot);
-                    clientetCollectionOldClientet = em.merge(clientetCollectionOldClientet);
-                }
-            }
-            for (Clientet clientetCollectionNewClientet : clientetCollectionNew) {
-                if (!clientetCollectionOld.contains(clientetCollectionNewClientet)) {
-                    clientetCollectionNewClientet.getEventotCollection().add(eventot);
-                    clientetCollectionNewClientet = em.merge(clientetCollectionNewClientet);
-                }
-            }
-            for (Artistat artistatCollectionOldArtistat : artistatCollectionOld) {
-                if (!artistatCollectionNew.contains(artistatCollectionOldArtistat)) {
-                    artistatCollectionOldArtistat.getEventotCollection().remove(eventot);
-                    artistatCollectionOldArtistat = em.merge(artistatCollectionOldArtistat);
-                }
-            }
-            for (Artistat artistatCollectionNewArtistat : artistatCollectionNew) {
-                if (!artistatCollectionOld.contains(artistatCollectionNewArtistat)) {
-                    artistatCollectionNewArtistat.getEventotCollection().add(eventot);
-                    artistatCollectionNewArtistat = em.merge(artistatCollectionNewArtistat);
-                }
-            }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
@@ -186,16 +105,6 @@ public class EventotJpaController implements Serializable {
             if (fkIdAdmin != null) {
                 fkIdAdmin.getEventotCollection().remove(eventot);
                 fkIdAdmin = em.merge(fkIdAdmin);
-            }
-            Collection<Clientet> clientetCollection = eventot.getClientetCollection();
-            for (Clientet clientetCollectionClientet : clientetCollection) {
-                clientetCollectionClientet.getEventotCollection().remove(eventot);
-                clientetCollectionClientet = em.merge(clientetCollectionClientet);
-            }
-            Collection<Artistat> artistatCollection = eventot.getArtistatCollection();
-            for (Artistat artistatCollectionArtistat : artistatCollection) {
-                artistatCollectionArtistat.getEventotCollection().remove(eventot);
-                artistatCollectionArtistat = em.merge(artistatCollectionArtistat);
             }
             em.remove(eventot);
             em.getTransaction().commit();
@@ -262,16 +171,22 @@ public class EventotJpaController implements Serializable {
 
     public String registerEvent(Eventot event, Lugart place, ArrayList<Artistat> artist, int capacity, Admint adminS) {
         EntityManager em = getEntityManager();
+        event.setFkIdAdmin(adminS);
         Query aux;
-        SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy"); 
+        //SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy"); 
         
         em.getTransaction().begin();
-        aux = em.createNativeQuery("INSERT INTO eventoT (nombre_evento, fecha_evento) VALUES ('" + event.getNombreEvento()+ "' ," + format1.format(event.getFechaEvento()) + ","+adminS.getIdAdmin()+" )");
-        aux.executeUpdate();
+        em.persist(event);
         
+        //aux = em.createNativeQuery("INSERT INTO eventoT (nombre_evento, fecha_evento) VALUES ('" + event.getNombreEvento()+ "' ," + format1.format(event.getFechaEvento()) + ","+adminS.getIdAdmin()+" )");
+        //aux.executeUpdate();
+        
+        em.getTransaction().commit();
+        em.close();
+        
+        /*em.getTransaction().begin();
         for (Artistat artista : artist) {
 
-            em.getTransaction().begin();
             TypedQuery<Artistat> qryArtist = em.createNamedQuery("Artistat.findByIdArtista", Artistat.class);
             qryArtist.setParameter("idArtista", artista.getIdArtista());
             try {
@@ -302,7 +217,7 @@ public class EventotJpaController implements Serializable {
         } finally {
             em.close();
 
-        }
+        }*/
         return "Evento Registrado Correctamente";
     }
     

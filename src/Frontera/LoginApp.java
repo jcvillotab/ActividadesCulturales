@@ -34,7 +34,7 @@ public class LoginApp extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        Bg = new ImagePanel("C:\\Users\\Armageddon132\\Documents\\NetBeansProjects\\ActividadesCulturales\\resources\\fondo2.jpg");
+        Bg = new ImagePanel("C:\\Users\\Joan\\Documents\\NetBeansProjects\\ActividadesCulturales\\resources\\fondo2.jpg");
         BgLogin = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         userTF = new javax.swing.JTextField();
@@ -57,15 +57,15 @@ public class LoginApp extends javax.swing.JPanel {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        setMinimumSize(new java.awt.Dimension(1360, 720));
+        setMinimumSize(new java.awt.Dimension(980, 689));
         setPreferredSize(new java.awt.Dimension(1360, 720));
 
-        Bg.setMinimumSize(new java.awt.Dimension(1360, 720));
+        Bg.setMinimumSize(new java.awt.Dimension(980, 689));
         Bg.setPreferredSize(new java.awt.Dimension(1360, 720));
 
         BgLogin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         BgLogin.setMaximumSize(new java.awt.Dimension(530, 490));
-        BgLogin.setMinimumSize(new java.awt.Dimension(530, 490));
+        BgLogin.setMinimumSize(new java.awt.Dimension(275, 490));
         BgLogin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BgLoginMouseClicked(evt);
@@ -158,7 +158,7 @@ public class LoginApp extends javax.swing.JPanel {
                 .addComponent(jLabel3)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgLoginLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(117, Short.MAX_VALUE)
                 .addGroup(BgLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(jLabel1)
@@ -171,7 +171,7 @@ public class LoginApp extends javax.swing.JPanel {
                     .addGroup(BgLoginLayout.createSequentialGroup()
                         .addGap(74, 74, 74)
                         .addComponent(singUpB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
         BgLoginLayout.setVerticalGroup(
             BgLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,7 +199,7 @@ public class LoginApp extends javax.swing.JPanel {
             BgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgLayout.createSequentialGroup()
                 .addContainerGap(463, Short.MAX_VALUE)
-                .addComponent(BgLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BgLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(408, 408, 408))
         );
         BgLayout.setVerticalGroup(

@@ -44,6 +44,7 @@ public class ArtistatJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+            em.persist(artistat);
             em.getTransaction().commit();
         } catch (Exception ex) {
             if (findArtistat(artistat.getIdArtista()) != null) {

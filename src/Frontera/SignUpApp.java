@@ -35,7 +35,7 @@ public class SignUpApp extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Bg = new ImagePanel("C:\\Users\\JoanGomez\\Documents\\NetBeansProjects\\ActividadesCulturales\\resources\\fondo2.jpg");
+        Bg = new ImagePanel("C:\\Users\\Joan\\Documents\\NetBeansProjects\\ActividadesCulturales\\resources\\fondo2.jpg");
         BgSignUp = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         userTF = new javax.swing.JTextField();
@@ -46,10 +46,10 @@ public class SignUpApp extends javax.swing.JPanel {
         passwordTF = new javax.swing.JPasswordField();
         vPasswordTF = new javax.swing.JPasswordField();
 
-        setMinimumSize(new java.awt.Dimension(1360, 720));
+        setMinimumSize(new java.awt.Dimension(980, 689));
         setPreferredSize(new java.awt.Dimension(1360, 720));
 
-        Bg.setMinimumSize(new java.awt.Dimension(1360, 720));
+        Bg.setMinimumSize(new java.awt.Dimension(980, 689));
 
         jLabel2.setText("Usuario");
 
