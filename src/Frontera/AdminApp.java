@@ -37,32 +37,7 @@ public class AdminApp extends javax.swing.JPanel {
     
     public AdminApp() {
         initComponents();
-    }
-    
-    public String[] listToArrayEvent(List<Eventot> list){
-        List<String> names = new ArrayList<String>();
-        for (int i = 0; i < list.size(); i++) {
-            names.add(list.get(i).getNombreEvento());
-        }
-        return names.toArray(new String[0]);
-    }
-    
-    public String[] listToArrayArtist(List<Artistat> list){
-        List<String> names = new ArrayList<String>();
-        for (int i = 0; i < list.size(); i++) {
-            names.add(list.get(i).getNombreArtista());
-        }
-        return names.toArray(new String[0]);
-    }
-    
-    public String[] listToArrayPlace(List<Lugart> list){
-        List<String> names = new ArrayList<String>();
-        for (int i = 0; i < list.size(); i++) {
-            names.add(list.get(i).getNombreLugar());
-        }
-        return names.toArray(new String[0]);
-    }
-    
+    } 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -973,11 +948,11 @@ public class AdminApp extends javax.swing.JPanel {
         String[] names;
         if(jTabbedPane2.getSelectedIndex() == 1){
             list = eventoC.findEventotEntities();
-            names = listToArrayEvent(list);
+            names = EventotJpaController.listToArrayEvent(list);
             eventSelectorE.setModel(new DefaultComboBoxModel(names));
         }else if(jTabbedPane2.getSelectedIndex() == 2){
             list = eventoC.findEventotEntities();
-            names = listToArrayEvent(list);
+            names = EventotJpaController.listToArrayEvent(list);
             eventSelectorD.setModel(new DefaultComboBoxModel(names));
         }
     }//GEN-LAST:event_jTabbedPane2StateChanged
@@ -991,7 +966,7 @@ public class AdminApp extends javax.swing.JPanel {
         String[] names;
         if(jTabbedPane3.getSelectedIndex() == 1){
             list = artistaC.findArtistatEntities();
-            names = listToArrayArtist(list);
+            names = ArtistatJpaController.listToArrayArtist(list);
             artistList.setModel(new DefaultComboBoxModel(names));
         }
     }//GEN-LAST:event_jTabbedPane3StateChanged
@@ -1001,7 +976,7 @@ public class AdminApp extends javax.swing.JPanel {
         String[] names;
         if(jTabbedPane4.getSelectedIndex() == 1){
             list = lugarC.findLugartEntities();
-            names = listToArrayPlace(list);
+            names = LugartJpaController.listToArrayPlace(list);
             placeList.setModel(new DefaultComboBoxModel(names));
         }
     }//GEN-LAST:event_jTabbedPane4StateChanged
