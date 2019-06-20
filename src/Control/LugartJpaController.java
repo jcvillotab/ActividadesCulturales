@@ -6,8 +6,10 @@
 package Control;
 
 import Control.exceptions.NonexistentEntityException;
+import Entidad.Eventot;
 import Entidad.Lugart;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -138,4 +140,13 @@ public class LugartJpaController implements Serializable {
         }
     }
     
+    public static String[] listToArrayPlace(List<Lugart> list) {
+        List<String> names = new ArrayList<>();
+        for (Lugart lugar : list) {
+            names.add(lugar.getNombreLugar());
+        }
+        return names.toArray(new String[0]);
+    }
 }
+
+
