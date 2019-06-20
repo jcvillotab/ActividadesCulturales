@@ -263,7 +263,7 @@ public class EventotJpaController implements Serializable {
         Query aux;
         
         em.getTransaction().begin();
-        aux = em.createNativeQuery("INSERT INTO eventoT (id_evento, nombre_evento, fecha_evento) VALUES (" + event.getIdEvento() + "," + place.getIdLugar()+ "," + capacity + ")");
+        aux = em.createNativeQuery("INSERT INTO eventoT (id_evento, nombre_evento, fecha_evento) VALUES (" + event.getIdEvento() + " ," + place.getIdLugar()+ " ," + capacity + " )");
         aux.executeUpdate();
         
         for (Artistat artista : artist) {
@@ -273,7 +273,7 @@ public class EventotJpaController implements Serializable {
             qryArtist.setParameter("idArtista", artista.getIdArtista());
             try {
                 if (!qryArtist.getResultList().isEmpty()) {
-                    aux = em.createNativeQuery("INSERT INTO eventoxartistaT (id_fk_id_evento, id_fk_id_artista) VALUES (" + event.getIdEvento() + "," + artista.getIdArtista() + ")");
+                    aux = em.createNativeQuery("INSERT INTO eventoxartistaT (id_fk_id_evento, id_fk_id_artista) VALUES (" + event.getIdEvento() + " ," + artista.getIdArtista() + " )");
                     aux.executeUpdate();
                 }
 
@@ -290,7 +290,7 @@ public class EventotJpaController implements Serializable {
 
         try {
             if (!qryPlace.getResultList().isEmpty()) {
-                aux = em.createNativeQuery("INSERT INTO eventoxlugarT (id_fk_id_evento, id_fk_id_lugar, capacidad_ocupada_exl) VALUES (" + event.getIdEvento() + "," + place.getIdLugar() + "," + capacity + ")");
+                aux = em.createNativeQuery("INSERT INTO eventoxlugarT (id_fk_id_evento, id_fk_id_lugar, capacidad_ocupada_exl) VALUES (" + event.getIdEvento() + " ," + place.getIdLugar() + " ," + capacity + " )");
                 aux.executeUpdate();
             }
 
@@ -303,12 +303,34 @@ public class EventotJpaController implements Serializable {
         return "Evento Registrado Correctamente";
     }
     
-    public void editEvent(Eventot event, String name, String date, Lugart place){
+    public void editEvent(Eventot event, String name, String date, Lugart place, int capacity) {
         EntityManager em = getEntityManager();
         Query aux;
-        
+        Query update;
+        Eventot original;
+
         em.getTransaction().begin();
         TypedQuery<Eventot> qryEvent = em.createNamedQuery("Eventot.findByNombreFechaEvento", Eventot.class);
+        qryEvent.setParameter(1, name);
+        qryEvent.setParameter(2, date);
+
+        try {
+            if (!qryEvent.getResultList().isEmpty()) {
+                original = qryEvent.getSingleResult();
+                aux = em.createNativeQuery("SELECT * FROM eventoxlugarT WHERE id_fk_id_evento =" + original.getIdEvento() + " AND id_fk_id_lugar =" + place.getIdLugar() +" ");
+                if(!aux.getResultList().isEmpty()){
+                    update = em.createNativeQuery("UPDATE eventoT SET nombre_evento=" + event.getNombreEvento()+ " fecha_evento=" + event.getFechaEvento().toString() + " WHERE id_evento=" + String.valueOf(original.getIdEvento()) + ")");
+                    update.executeUpdate();
+                    update = em.createNativeQuery("UPDATE eventoxlugarT SET capacidad_ocupada_exl=" + String.valueOf(capacity) + "WHERE id_fk_id_evento=" + original.getIdEvento() + "AND id_fk_id_lugar=" + place.getIdLugar()+ " )");
+                    update.executeUpdate();
+                }
+            }
+        } catch (Exception e) {
+            
+        }finally{
+            em.close();
+        }
+
     }
 
 }
