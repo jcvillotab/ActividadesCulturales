@@ -30,7 +30,7 @@ public class HomeApp extends javax.swing.JFrame {
     
     private LoginApp login = new LoginApp();
     private AdminApp admin = new AdminApp();
-    private Image bg = Toolkit.getDefaultToolkit().createImage("../../resources/fondo1.jpg");
+
     
     
     
@@ -52,7 +52,7 @@ public class HomeApp extends javax.swing.JFrame {
     private void initComponents() {
 
         basicP = new javax.swing.JPanel();
-        homeP = new ImagePanel("C:\\Users\\JoanGomez\\Documents\\NetBeansProjects\\ActividadesCulturales\\resources\\fondo1.jpg");
+        homeP = new ImagePanel("C:\\Users\\Armageddon132\\Documents\\NetBeansProjects\\ActividadesCulturales\\resources\\fondo1.jpg");
         jPanel1 = new javax.swing.JPanel();
         clientB = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
