@@ -303,7 +303,7 @@ public class EventotJpaController implements Serializable {
         return "Evento Registrado Correctamente";
     }
     
-    public String editEvent(Eventot event, String name, String date, Lugart place){
+    public void editEvent(Eventot event, String name, String date, Lugart place){
         EntityManager em = getEntityManager();
         Query aux;
         

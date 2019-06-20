@@ -185,4 +185,12 @@ public class ArtistatJpaController implements Serializable {
         }
     }
     
+    public static String[] listToArrayArtist(List<Artistat> list){
+        List<String> names = new ArrayList<String>();
+        for (int i = 0; i < list.size(); i++) {
+            names.add(list.get(i).getNombreArtista());
+        }
+        return names.toArray(new String[0]);
+    }
+    
 }
