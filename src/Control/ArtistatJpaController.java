@@ -44,17 +44,6 @@ public class ArtistatJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Collection<Eventot> attachedEventotCollection = new ArrayList<Eventot>();
-            for (Eventot eventotCollectionEventotToAttach : artistat.getEventotCollection()) {
-                eventotCollectionEventotToAttach = em.getReference(eventotCollectionEventotToAttach.getClass(), eventotCollectionEventotToAttach.getIdEvento());
-                attachedEventotCollection.add(eventotCollectionEventotToAttach);
-            }
-            artistat.setEventotCollection(attachedEventotCollection);
-            em.persist(artistat);
-            for (Eventot eventotCollectionEventot : artistat.getEventotCollection()) {
-                eventotCollectionEventot.getArtistatCollection().add(artistat);
-                eventotCollectionEventot = em.merge(eventotCollectionEventot);
-            }
             em.getTransaction().commit();
         } catch (Exception ex) {
             if (findArtistat(artistat.getIdArtista()) != null) {
@@ -74,28 +63,7 @@ public class ArtistatJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Artistat persistentArtistat = em.find(Artistat.class, artistat.getIdArtista());
-            Collection<Eventot> eventotCollectionOld = persistentArtistat.getEventotCollection();
-            Collection<Eventot> eventotCollectionNew = artistat.getEventotCollection();
-            Collection<Eventot> attachedEventotCollectionNew = new ArrayList<Eventot>();
-            for (Eventot eventotCollectionNewEventotToAttach : eventotCollectionNew) {
-                eventotCollectionNewEventotToAttach = em.getReference(eventotCollectionNewEventotToAttach.getClass(), eventotCollectionNewEventotToAttach.getIdEvento());
-                attachedEventotCollectionNew.add(eventotCollectionNewEventotToAttach);
-            }
-            eventotCollectionNew = attachedEventotCollectionNew;
-            artistat.setEventotCollection(eventotCollectionNew);
             artistat = em.merge(artistat);
-            for (Eventot eventotCollectionOldEventot : eventotCollectionOld) {
-                if (!eventotCollectionNew.contains(eventotCollectionOldEventot)) {
-                    eventotCollectionOldEventot.getArtistatCollection().remove(artistat);
-                    eventotCollectionOldEventot = em.merge(eventotCollectionOldEventot);
-                }
-            }
-            for (Eventot eventotCollectionNewEventot : eventotCollectionNew) {
-                if (!eventotCollectionOld.contains(eventotCollectionNewEventot)) {
-                    eventotCollectionNewEventot.getArtistatCollection().add(artistat);
-                    eventotCollectionNewEventot = em.merge(eventotCollectionNewEventot);
-                }
-            }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
@@ -124,11 +92,6 @@ public class ArtistatJpaController implements Serializable {
                 artistat.getIdArtista();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The artistat with id " + id + " no longer exists.", enfe);
-            }
-            Collection<Eventot> eventotCollection = artistat.getEventotCollection();
-            for (Eventot eventotCollectionEventot : eventotCollection) {
-                eventotCollectionEventot.getArtistatCollection().remove(artistat);
-                eventotCollectionEventot = em.merge(eventotCollectionEventot);
             }
             em.remove(artistat);
             em.getTransaction().commit();
