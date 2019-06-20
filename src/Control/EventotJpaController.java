@@ -31,6 +31,7 @@ import javax.persistence.TypedQuery;
  */
 public class EventotJpaController implements Serializable {
     
+    private static ArrayList<Integer> ids;
     
     public EventotJpaController() {
         this.emf = Persistence.createEntityManagerFactory("ActividadesCulturalesPU");
@@ -41,6 +42,15 @@ public class EventotJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
+    public static ArrayList<Integer> getIds() {
+        return ids;
+    }
+
+    public static void setIds(ArrayList<Integer> ids) {
+        EventotJpaController.ids = ids;
+    }
+    
+    
     public void create(Eventot eventot) {
         EntityManager em = null;
         try {
@@ -163,8 +173,10 @@ public class EventotJpaController implements Serializable {
 
     public static String[] listToArrayEvent(List<Eventot> list) {
         List<String> names = new ArrayList<>();
+        ids = new ArrayList<>();
         for (Eventot list1 : list) {
             names.add(list1.getNombreEvento());
+            ids.add(list1.getIdEvento());
         }
         return names.toArray(new String[0]);
     }
@@ -191,7 +203,6 @@ public class EventotJpaController implements Serializable {
         em.getTransaction().commit();
         em.close();
 
-        System.out.println("Tamaño arraylist: " + artist.size());
         for (Artistat artista : artist) {
 
             em = getEntityManager();
