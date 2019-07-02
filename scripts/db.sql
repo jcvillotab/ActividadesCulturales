@@ -101,6 +101,13 @@ UPDATE actividadesculturalesdb.lugart SET  lugart.nombre_lugar = nombre_lugar, l
 CREATE PROCEDURE LIST_LUGARES()
 SELECT * FROM actividadesculturalesdb.lugart;
 
+DELIMITER //
+CREATE PROCEDURE RESERVE(IN id_cliente int(8), IN id_evento int(8))
+BEGIN
+INSERT INTO actividadesculturalesdb.eventoxclientet (eventoxclientet.id_fk_id_evento, eventoxclientetid_fk_id_cliente) VALUES (id_evento, id_cliente);
+UPDATE actividadesculturalesdb.eventoxlugart SET eventoxlugart.capacidad_ocupada_exl = eventoxlugart.capacidad_ocupada_ex - 1 WHERE eventoxlugart.id_fk_id_evento = id_evento;
+END
+//DELIMITER
 
 
 DELIMITER //
@@ -152,6 +159,8 @@ BEGIN
     INSERT INTO actividadesculturalesdb.eventoxlugart (eventoxlugart.id_fk_id_evento, eventoxlugart.id_fk_id_lugar, eventoxlugart.capacidad_ocupada_exl) VALUES(LAST_EVENT(),lugar,capacidad);
     END
 //DELIMITER 
+
+clientet
 
 CREATE FUNCTION RETURN_ID_LUGAR (id_evento int) RETURNS INT
 RETURN (SELECT id_fk_id_lugar FROM actividadesculturalesdb.eventoxlugart WHERE id_fk_id_evento = id_evento);
