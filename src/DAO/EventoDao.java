@@ -24,7 +24,7 @@ public class EventoDao {
 
     public EventoDao() {
         try {
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/actividadesculturalesdb?zeroDateTimeBehavior=convertToNull","root","btZ7op0gGo");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/actividadesculturalesdb?zeroDateTimeBehavior=convertToNull","root","juancamilovill9");
         } catch (Exception e) {
             System.out.println("error en la conexion"+e);
         }
@@ -45,6 +45,17 @@ public class EventoDao {
     
     public String editar_evento(){
         return "";
+    }
+    
+    public int buscarIdLugar(int idEvento){
+        try {
+            CallableStatement ms =  (CallableStatement) con.prepareCall("{call EDIT_LUGAR("+ idEvento +")}");
+            ms.execute();
+            return ms.getInt(idEvento);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
     
 }

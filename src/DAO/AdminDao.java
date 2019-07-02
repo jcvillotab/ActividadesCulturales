@@ -21,7 +21,7 @@ public class AdminDao {
 
     public AdminDao() {
         try {
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/actividadesculturalesdb?zeroDateTimeBehavior=convertToNull","root","btZ7op0gGo");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/actividadesculturalesdb?zeroDateTimeBehavior=convertToNull","root","juancamilovill9");
         } catch (Exception e) {
             System.out.println("error en la conexion"+e);
         }

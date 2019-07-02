@@ -94,8 +94,23 @@ public class AdminApp extends javax.swing.JPanel {
         eventSelectorD = new javax.swing.JComboBox();
         deleteEventB = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
+        eventView = new javax.swing.JPanel();
+        jLabel46 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox();
+        jLabel47 = new javax.swing.JLabel();
+        eventNameView = new javax.swing.JTextField();
+        jLabel48 = new javax.swing.JLabel();
+        eventPlaceView = new javax.swing.JTextField();
+        jLabel49 = new javax.swing.JLabel();
+        eventArtist1View = new javax.swing.JTextField();
+        eventArtist2View = new javax.swing.JTextField();
+        eventArtist3View = new javax.swing.JTextField();
+        jLabel50 = new javax.swing.JLabel();
+        eventCapacityView = new javax.swing.JTextField();
+        jLabel51 = new javax.swing.JLabel();
+        eventDateView = new javax.swing.JTextField();
         artistP = new javax.swing.JPanel();
-        jTabbedPane3 = new javax.swing.JTabbedPane();
+        jpanel4 = new javax.swing.JTabbedPane();
         artistCreate = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
@@ -116,6 +131,15 @@ public class AdminApp extends javax.swing.JPanel {
         artistNameEditTF = new javax.swing.JTextField();
         editArtistB = new javax.swing.JPanel();
         jLabel35 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel42 = new javax.swing.JLabel();
+        artistViewSelector = new javax.swing.JComboBox();
+        jLabel43 = new javax.swing.JLabel();
+        artistNameView = new javax.swing.JTextField();
+        jLabel44 = new javax.swing.JLabel();
+        artistOcupationView = new javax.swing.JTextField();
+        artistIdView = new javax.swing.JTextField();
+        jLabel45 = new javax.swing.JLabel();
         placeP = new javax.swing.JPanel();
         jTabbedPane4 = new javax.swing.JTabbedPane();
         placeAdd = new javax.swing.JPanel();
@@ -142,6 +166,19 @@ public class AdminApp extends javax.swing.JPanel {
         placeCapacityEditTF = new javax.swing.JTextField();
         editPlaceB = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
+        placeView = new javax.swing.JPanel();
+        placeSelectorView = new javax.swing.JComboBox();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        placeNameView = new javax.swing.JTextField();
+        jLabel38 = new javax.swing.JLabel();
+        placeDeckView = new javax.swing.JTextField();
+        jLabel39 = new javax.swing.JLabel();
+        placeSectionView = new javax.swing.JTextField();
+        jLabel40 = new javax.swing.JLabel();
+        placeCapacityView = new javax.swing.JTextField();
+        jLabel41 = new javax.swing.JLabel();
+        placeIdView = new javax.swing.JTextField();
 
         setMaximumSize(new java.awt.Dimension(1360, 720));
         setMinimumSize(new java.awt.Dimension(980, 689));
@@ -229,27 +266,28 @@ public class AdminApp extends javax.swing.JPanel {
                             .addComponent(jLabel13)
                             .addComponent(jLabel14))
                         .addGap(18, 18, 18)
-                        .addGroup(eventCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(eventNameAddTF)
-                            .addComponent(eventPlaceAddTF, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(eventCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(eventCreateLayout.createSequentialGroup()
                                 .addComponent(eventArtist1AddTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 58, Short.MAX_VALUE)
+                                .addGap(18, 82, Short.MAX_VALUE)
                                 .addComponent(eventArtist2AddTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 58, Short.MAX_VALUE)
-                                .addComponent(eventArtist3AddTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                                .addComponent(eventArtist3AddTF, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(eventCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(eventPlaceAddTF, javax.swing.GroupLayout.Alignment.LEADING, 0, 573, Short.MAX_VALUE)
+                                .addComponent(eventNameAddTF, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(eventCreateLayout.createSequentialGroup()
+                        .addGap(0, 523, Short.MAX_VALUE)
+                        .addComponent(addEventB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jLabel15)
                     .addGroup(eventCreateLayout.createSequentialGroup()
                         .addComponent(jLabel16)
                         .addGap(25, 25, 25)
                         .addGroup(eventCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(eventDateAddTF, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(eventCapacityAddTF, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(eventCreateLayout.createSequentialGroup()
-                        .addGap(0, 278, Short.MAX_VALUE)
-                        .addComponent(addEventB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 273, Short.MAX_VALUE)))
+                            .addComponent(eventCapacityAddTF, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         eventCreateLayout.setVerticalGroup(
@@ -371,9 +409,9 @@ public class AdminApp extends javax.swing.JPanel {
                     .addComponent(jLabel25)
                     .addComponent(jLabel20))
                 .addGap(18, 18, 18)
-                .addGroup(eventEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(eventEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(eventEditLayout.createSequentialGroup()
-                        .addGroup(eventEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(eventEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(eventEditLayout.createSequentialGroup()
                                 .addGroup(eventEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(eventDateEditTF, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -384,12 +422,12 @@ public class AdminApp extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                                 .addComponent(eventArtist2EditTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)))
-                        .addComponent(eventArtist3EditTF, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(57, 57, 57))
-                    .addComponent(eventSelectorE, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(eventEditNameTF)
-                    .addComponent(eventEditPlaceTF, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(eventArtist3EditTF, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(eventEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(eventEditNameTF, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(eventSelectorE, javax.swing.GroupLayout.Alignment.LEADING, 0, 576, Short.MAX_VALUE)
+                        .addComponent(eventEditPlaceTF, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(16, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eventEditLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(editEventB, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -478,7 +516,7 @@ public class AdminApp extends javax.swing.JPanel {
                     .addGroup(eventDeleteLayout.createSequentialGroup()
                         .addGap(281, 281, 281)
                         .addComponent(deleteEventB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(308, Short.MAX_VALUE))
+                .addContainerGap(271, Short.MAX_VALUE))
         );
         eventDeleteLayout.setVerticalGroup(
             eventDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -494,6 +532,115 @@ public class AdminApp extends javax.swing.JPanel {
 
         jTabbedPane2.addTab("Eliminar", eventDelete);
 
+        jLabel46.setText("Evento");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        jLabel47.setText("Nombre Evento");
+
+        eventNameView.setEditable(false);
+
+        jLabel48.setText("Lugar");
+
+        eventPlaceView.setEditable(false);
+
+        jLabel49.setText("Artistas");
+
+        eventArtist1View.setEditable(false);
+
+        eventArtist2View.setEditable(false);
+        eventArtist2View.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eventArtist2ViewActionPerformed(evt);
+            }
+        });
+
+        eventArtist3View.setEditable(false);
+
+        jLabel50.setText("Capacidad");
+
+        eventCapacityView.setEditable(false);
+
+        jLabel51.setText("Fecha");
+
+        eventDateView.setEditable(false);
+        eventDateView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eventDateViewActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout eventViewLayout = new javax.swing.GroupLayout(eventView);
+        eventView.setLayout(eventViewLayout);
+        eventViewLayout.setHorizontalGroup(
+            eventViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(eventViewLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(eventViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(eventViewLayout.createSequentialGroup()
+                        .addComponent(jLabel46)
+                        .addGap(58, 58, 58)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(eventViewLayout.createSequentialGroup()
+                        .addGroup(eventViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel47)
+                            .addComponent(jLabel48)
+                            .addComponent(jLabel49)
+                            .addComponent(jLabel50)
+                            .addComponent(jLabel51))
+                        .addGap(18, 18, 18)
+                        .addGroup(eventViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(eventViewLayout.createSequentialGroup()
+                                .addComponent(eventArtist1View, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(53, 53, 53)
+                                .addComponent(eventArtist2View, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(49, 49, 49)
+                                .addComponent(eventArtist3View, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE))
+                            .addComponent(eventNameView)
+                            .addComponent(eventPlaceView)
+                            .addComponent(eventCapacityView, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(eventDateView, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(170, Short.MAX_VALUE))
+        );
+        eventViewLayout.setVerticalGroup(
+            eventViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(eventViewLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(eventViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel46)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(eventViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel47)
+                    .addComponent(eventNameView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(eventViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel48)
+                    .addComponent(eventPlaceView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(eventViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel49)
+                    .addComponent(eventArtist1View, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(eventArtist2View, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(eventArtist3View, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(eventViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel50)
+                    .addComponent(eventCapacityView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(eventViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel51)
+                    .addComponent(eventDateView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(130, Short.MAX_VALUE))
+        );
+
+        jTabbedPane2.addTab("Ver", eventView);
+
         javax.swing.GroupLayout eventPLayout = new javax.swing.GroupLayout(eventP);
         eventP.setLayout(eventPLayout);
         eventPLayout.setHorizontalGroup(
@@ -507,9 +654,9 @@ public class AdminApp extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Evento", eventP);
 
-        jTabbedPane3.addChangeListener(new javax.swing.event.ChangeListener() {
+        jpanel4.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jTabbedPane3StateChanged(evt);
+                jpanel4StateChanged(evt);
             }
         });
 
@@ -597,7 +744,7 @@ public class AdminApp extends javax.swing.JPanel {
                 .addContainerGap(85, Short.MAX_VALUE))
         );
 
-        jTabbedPane3.addTab("Añadir", artistCreate);
+        jpanel4.addTab("Añadir", artistCreate);
 
         jLabel31.setText("Artista");
 
@@ -689,17 +836,81 @@ public class AdminApp extends javax.swing.JPanel {
                 .addGap(60, 60, 60))
         );
 
-        jTabbedPane3.addTab("Editar", artistEdit);
+        jpanel4.addTab("Editar", artistEdit);
+
+        jLabel42.setText("Artista");
+
+        artistViewSelector.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        artistViewSelector.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                artistViewSelectorActionPerformed(evt);
+            }
+        });
+
+        jLabel43.setText("Nombre");
+
+        artistNameView.setEditable(false);
+
+        jLabel44.setText("Ocupacion");
+
+        artistOcupationView.setEditable(false);
+
+        artistIdView.setEditable(false);
+
+        jLabel45.setText("Identificacion");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(173, 173, 173)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel42)
+                    .addComponent(jLabel43)
+                    .addComponent(jLabel44)
+                    .addComponent(jLabel45))
+                .addGap(32, 32, 32)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(artistIdView)
+                    .addComponent(artistViewSelector, 0, 247, Short.MAX_VALUE)
+                    .addComponent(artistNameView)
+                    .addComponent(artistOcupationView))
+                .addContainerGap(178, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel42)
+                    .addComponent(artistViewSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel43)
+                    .addComponent(artistNameView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel44)
+                    .addComponent(artistOcupationView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(artistIdView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel45))
+                .addContainerGap(181, Short.MAX_VALUE))
+        );
+
+        jpanel4.addTab("Ver", jPanel2);
 
         javax.swing.GroupLayout artistPLayout = new javax.swing.GroupLayout(artistP);
         artistP.setLayout(artistPLayout);
         artistPLayout.setHorizontalGroup(
             artistPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane3)
+            .addComponent(jpanel4)
         );
         artistPLayout.setVerticalGroup(
             artistPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane3)
+            .addComponent(jpanel4)
         );
 
         jTabbedPane1.addTab("Artistas", artistP);
@@ -905,6 +1116,100 @@ public class AdminApp extends javax.swing.JPanel {
 
         jTabbedPane4.addTab("Editar", placeEdit);
 
+        placeSelectorView.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        placeSelectorView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                placeSelectorViewActionPerformed(evt);
+            }
+        });
+
+        jLabel36.setText("Lugar");
+
+        jLabel37.setText("Nombre");
+
+        placeNameView.setEditable(false);
+        placeNameView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                placeNameViewActionPerformed(evt);
+            }
+        });
+
+        jLabel38.setText("Cubierta");
+
+        placeDeckView.setEditable(false);
+
+        jLabel39.setText("Seccion");
+
+        placeSectionView.setEditable(false);
+
+        jLabel40.setText("Capacidad");
+
+        placeCapacityView.setEditable(false);
+
+        jLabel41.setText("Id");
+
+        placeIdView.setEditable(false);
+        placeIdView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                placeIdViewActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout placeViewLayout = new javax.swing.GroupLayout(placeView);
+        placeView.setLayout(placeViewLayout);
+        placeViewLayout.setHorizontalGroup(
+            placeViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(placeViewLayout.createSequentialGroup()
+                .addGap(122, 122, 122)
+                .addGroup(placeViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel36)
+                    .addComponent(jLabel37)
+                    .addComponent(jLabel38)
+                    .addComponent(jLabel39)
+                    .addComponent(jLabel40)
+                    .addComponent(jLabel41))
+                .addGap(33, 33, 33)
+                .addGroup(placeViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(placeDeckView)
+                    .addComponent(placeNameView)
+                    .addComponent(placeSelectorView, 0, 310, Short.MAX_VALUE)
+                    .addComponent(placeSectionView)
+                    .addComponent(placeCapacityView)
+                    .addComponent(placeIdView))
+                .addContainerGap(179, Short.MAX_VALUE))
+        );
+        placeViewLayout.setVerticalGroup(
+            placeViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(placeViewLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(placeViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(placeSelectorView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel36))
+                .addGap(34, 34, 34)
+                .addGroup(placeViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel37)
+                    .addComponent(placeNameView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(placeViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel38)
+                    .addComponent(placeDeckView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(placeViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel39)
+                    .addComponent(placeSectionView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(placeViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel40)
+                    .addComponent(placeCapacityView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(placeViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel41)
+                    .addComponent(placeIdView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(96, Short.MAX_VALUE))
+        );
+
+        jTabbedPane4.addTab("Ver", placeView);
+
         javax.swing.GroupLayout placePLayout = new javax.swing.GroupLayout(placeP);
         placeP.setLayout(placePLayout);
         placePLayout.setHorizontalGroup(
@@ -974,29 +1279,28 @@ public class AdminApp extends javax.swing.JPanel {
     }//GEN-LAST:event_artistNameAddTFActionPerformed
 
     private void jTabbedPane2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane2StateChanged
-        generarListasP2();
+        //generarListasP2();
     }//GEN-LAST:event_jTabbedPane2StateChanged
 
     private void eventSelectorDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventSelectorDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_eventSelectorDActionPerformed
 
-    private void jTabbedPane3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane3StateChanged
+    private void jpanel4StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jpanel4StateChanged
         String[] names;
-        if (jTabbedPane3.getSelectedIndex() == 1) {
-            names = artistaCtrl.listar_nombres();
-            artistList.setModel(new DefaultComboBoxModel(names));
-        }
-    }//GEN-LAST:event_jTabbedPane3StateChanged
+        names = artistaCtrl.listar_nombres();
+        artistList.setModel(new DefaultComboBoxModel(names));
+        artistViewSelector.setModel(new DefaultComboBoxModel(names));
+    }//GEN-LAST:event_jpanel4StateChanged
 
     private void jTabbedPane4StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane4StateChanged
         List list;
         String[] names;
-        if (jTabbedPane4.getSelectedIndex() == 1) {
             list = lugarCtrl.findLugarList();
             names = LugartController.listToArrayPlace(list);
             placeList.setModel(new DefaultComboBoxModel(names));
-        }
+            placeSelectorView.setModel(new DefaultComboBoxModel(names));
+        
     }//GEN-LAST:event_jTabbedPane4StateChanged
 
     private void createPlaceBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createPlaceBMouseClicked
@@ -1027,12 +1331,13 @@ public class AdminApp extends javax.swing.JPanel {
     private void editPlaceBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editPlaceBMouseClicked
         
         Lugart lugar = lugarCtrl.findById(placeId);
+        
         lugar.setNombreLugar(placeNameEditTF.getText());
         lugar.setSeccionLugar(placeSectionEditTF.getText());
         lugar.setCubiertaLugar(placeDeckEditTF.getText());
         lugar.setCapacidadLugar(Integer.parseInt(placeCapacityEditTF.getText()));
         lugarCtrl.edit(lugar,lugar.getIdLugar());
-        JOptionPane.showMessageDialog(ha, "Lugar editado correctamente");
+        JOptionPane.showMessageDialog(ha, lugarCtrl.edit(lugar,lugar.getIdLugar()));
 
     }//GEN-LAST:event_editPlaceBMouseClicked
 
@@ -1182,7 +1487,69 @@ public class AdminApp extends javax.swing.JPanel {
 
     }//GEN-LAST:event_editEventBMouseClicked
 
-    private void generarListasP2() {
+    private void placeIdViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeIdViewActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_placeIdViewActionPerformed
+
+    private void placeNameViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeNameViewActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_placeNameViewActionPerformed
+
+    private void placeSelectorViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeSelectorViewActionPerformed
+        Lugart lugar = lugarCtrl.findById(placeList.getSelectedIndex() + 1);
+
+        placeNameView.setText(lugar.getNombreLugar());
+        placeSectionView.setText(lugar.getSeccionLugar());
+        placeDeckView.setText(lugar.getCubiertaLugar());
+        placeCapacityView.setText(String.valueOf(lugar.getCapacidadLugar()));
+        placeIdView.setText(String.valueOf(lugar.getIdLugar()));
+    }//GEN-LAST:event_placeSelectorViewActionPerformed
+
+    private void artistViewSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_artistViewSelectorActionPerformed
+        String name = artistList.getSelectedItem().toString();
+        List<Artistat> list = artistaCtrl.listar_artistas();
+        Artistat artista = null;
+
+        for (Artistat list1 : list) {
+            artista = list1;
+            if (artista.getNombreArtista().equals(name)) {
+                break;
+            }
+        }
+
+        artistNameEditTF.setText(artista.getNombreArtista());
+        artistJobEditTF.setText(artista.getOcupacionArtista());
+        artistIdEditTF.setText(Integer.toString(artista.getIdArtista()));
+
+        artistId = artista.getIdArtista();
+    }//GEN-LAST:event_artistViewSelectorActionPerformed
+
+    private void eventArtist2ViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventArtist2ViewActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eventArtist2ViewActionPerformed
+
+    private void eventDateViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventDateViewActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eventDateViewActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy");
+        Eventot event = eventoCtrl.findEventot(EventotController.getIds().get(eventSelectorE.getSelectedIndex()));
+        int idLugar = eventoCtrl.buscarIdLugar(EventotController.getIds().get(eventSelectorE.getSelectedIndex()));
+        Lugart lugar = lugarCtrl.findById(idLugar);
+        int capacidad = eventoCtrl.buscarCapacidad(EventotController.getIds().get(eventSelectorE.getSelectedIndex()));   
+        ArrayList<String> names = artistaCtrl.buscarByIds(eventoCtrl.buscar_ids_artistas(EventotController.getIds().get(eventSelectorE.getSelectedIndex())));
+
+        eventNameView.setText(event.getNombreEvento());
+        eventDateView.setText(format1.format(event.getFechaEvento()));
+        eventArtist1View.setText(names.get(1));
+        eventArtist2View.setText(names.get(2));
+        eventArtist3View.setText(names.get(3));
+        eventPlaceView.setText(lugar.getNombreLugar());
+        eventCapacityView.setText("" + capacidad);  
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    /*private void generarListasP2() {
         List list;
         String[] names;
         if (jTabbedPane2.getSelectedIndex() == 0) {
@@ -1202,7 +1569,7 @@ public class AdminApp extends javax.swing.JPanel {
             names = EventotController.listToArrayEvent(list);
             eventSelectorD.setModel(new DefaultComboBoxModel(names));
         }
-    }
+    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Bg;
@@ -1212,12 +1579,16 @@ public class AdminApp extends javax.swing.JPanel {
     private javax.swing.JPanel artistEdit;
     private javax.swing.JTextField artistIdAddTF;
     private javax.swing.JTextField artistIdEditTF;
+    private javax.swing.JTextField artistIdView;
     private javax.swing.JTextField artistJobAddTF;
     private javax.swing.JTextField artistJobEditTF;
     private javax.swing.JComboBox artistList;
     private javax.swing.JTextField artistNameAddTF;
     private javax.swing.JTextField artistNameEditTF;
+    private javax.swing.JTextField artistNameView;
+    private javax.swing.JTextField artistOcupationView;
     private javax.swing.JPanel artistP;
+    private javax.swing.JComboBox artistViewSelector;
     private javax.swing.JPanel createPlaceB;
     private javax.swing.JPanel deleteEventB;
     private javax.swing.JPanel editArtistB;
@@ -1225,24 +1596,33 @@ public class AdminApp extends javax.swing.JPanel {
     private javax.swing.JPanel editPlaceB;
     private javax.swing.JComboBox eventArtist1AddTF;
     private javax.swing.JComboBox eventArtist1EditTF;
+    private javax.swing.JTextField eventArtist1View;
     private javax.swing.JComboBox eventArtist2AddTF;
     private javax.swing.JComboBox eventArtist2EditTF;
+    private javax.swing.JTextField eventArtist2View;
     private javax.swing.JComboBox eventArtist3AddTF;
     private javax.swing.JComboBox eventArtist3EditTF;
+    private javax.swing.JTextField eventArtist3View;
     private javax.swing.JTextField eventCapacityAddTF;
     private javax.swing.JTextField eventCapacityEditTF;
+    private javax.swing.JTextField eventCapacityView;
     private javax.swing.JPanel eventCreate;
     private javax.swing.JTextField eventDateAddTF;
     private javax.swing.JFormattedTextField eventDateEditTF;
+    private javax.swing.JTextField eventDateView;
     private javax.swing.JPanel eventDelete;
     private javax.swing.JPanel eventEdit;
     private javax.swing.JTextField eventEditNameTF;
     private javax.swing.JComboBox eventEditPlaceTF;
     private javax.swing.JTextField eventNameAddTF;
+    private javax.swing.JTextField eventNameView;
     private javax.swing.JPanel eventP;
     private javax.swing.JComboBox eventPlaceAddTF;
+    private javax.swing.JTextField eventPlaceView;
     private javax.swing.JComboBox eventSelectorD;
     private javax.swing.JComboBox eventSelectorE;
+    private javax.swing.JPanel eventView;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1272,29 +1652,53 @@ public class AdminApp extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTabbedPane jTabbedPane4;
+    private javax.swing.JTabbedPane jpanel4;
     private javax.swing.JPanel placeAdd;
     private javax.swing.JTextField placeCapacityAddTF;
     private javax.swing.JTextField placeCapacityEditTF;
+    private javax.swing.JTextField placeCapacityView;
     private javax.swing.JTextField placeDeckAddTF;
     private javax.swing.JTextField placeDeckEditTF;
+    private javax.swing.JTextField placeDeckView;
     private javax.swing.JPanel placeEdit;
+    private javax.swing.JTextField placeIdView;
     private javax.swing.JComboBox placeList;
     private javax.swing.JTextField placeNameAddTF;
     private javax.swing.JTextField placeNameEditTF;
+    private javax.swing.JTextField placeNameView;
     private javax.swing.JPanel placeP;
     private javax.swing.JTextField placeSectionAddTF;
     private javax.swing.JTextField placeSectionEditTF;
+    private javax.swing.JTextField placeSectionView;
+    private javax.swing.JComboBox placeSelectorView;
+    private javax.swing.JPanel placeView;
     // End of variables declaration//GEN-END:variables
 }

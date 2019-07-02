@@ -185,5 +185,8 @@ public class EventotController implements Serializable {
             System.out.println("Error con procedimiento almacenado:"+e);
         }
     }
-
+    
+    public int buscarIdLugar(int idEvento){
+        return conDB.buscarIdLugar(idEvento);
+    }
 }

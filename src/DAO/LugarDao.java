@@ -23,7 +23,7 @@ public class LugarDao {
     
     public LugarDao() {
         try {
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/actividadesculturalesdb?zeroDateTimeBehavior=convertToNull","root","btZ7op0gGo");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/actividadesculturalesdb?zeroDateTimeBehavior=convertToNull","root","juancamilovill9");
         } catch (Exception e) {
             System.out.println("error en la conexion: "+e);
         }
@@ -31,7 +31,7 @@ public class LugarDao {
     
     public String create_lugar(Lugart lugarNew){
         try {
-            String sentencia_crear = "{call CREATE_LUGAR("+lugarNew.getNombreLugar()+",'"+lugarNew.getCubiertaLugar()+"','"+ lugarNew.getCapacidadLugar()+"','"+lugarNew.getSeccionLugar()+"')}";
+            String sentencia_crear = "{call CREATE_LUGAR('"+lugarNew.getNombreLugar()+"','"+lugarNew.getCubiertaLugar()+"',"+ lugarNew.getCapacidadLugar()+",'"+lugarNew.getSeccionLugar()+"')}";
             CallableStatement ms = (CallableStatement) con.prepareCall(sentencia_crear);
             ms.executeQuery();
             return "Registro exitoso";
@@ -43,7 +43,7 @@ public class LugarDao {
     
     public String edit_lugar(Lugart lugar, int idLugar ){
         try {
-            String sentencia_editar = "{call EDIT_LUGAR("+idLugar+",'"+lugar.getNombreLugar()+",'"+lugar.getCubiertaLugar()+"','"+ lugar.getCapacidadLugar()+"','"+lugar.getSeccionLugar()+"')}";
+            String sentencia_editar = "{call EDIT_LUGAR("+idLugar+",'"+lugar.getNombreLugar()+"','"+lugar.getCubiertaLugar()+"',"+ lugar.getCapacidadLugar()+",'"+lugar.getSeccionLugar()+"')}";
             CallableStatement ms = (CallableStatement) con.prepareCall(sentencia_editar);
             ms.executeQuery();
             return "Modificacion exitosa";

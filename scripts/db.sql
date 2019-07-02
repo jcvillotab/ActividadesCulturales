@@ -1,5 +1,6 @@
 CREATE DATABASE IF NOT EXISTS actividadesculturalesdb;
 USE actividadesculturalesdb;
+SET GLOBAL log_bin_trust_function_creators = 1;
 
 CREATE TABLE IF NOT EXISTS `lugarT` (
     `id_lugar` INT(8) NOT NULL AUTO_INCREMENT COMMENT 'Clave primaria',
@@ -94,7 +95,7 @@ CREATE PROCEDURE CREATE_LUGAR( IN nombre_lugar VARCHAR(64), IN cubierta_lugar VA
 INSERT INTO actividadesculturalesdb.lugart ( lugart.nombre_lugar, lugart.cubierta_lugar, lugart.capacidad_lugar, lugart.seccion_lugar) VALUES ( nombre_lugar, cubierta_lugar, capacidad_lugar, seccion_lugar);
 
 CREATE PROCEDURE EDIT_LUGAR(IN id_lugar int(8),IN nombre_lugar VARCHAR(64), IN cubierta_lugar VARCHAR(128), IN capacidad_lugar INT(8), IN seccion_lugar VARCHAR(64))
-UPDATE actividadesculturalesdb.lugart SET  lugart.nombre_lugar = nombre_lugar, lugart.cubierta_lugar = cubierta_lugar, lugart.capacidad_lugar = capacidad_lugar, lugart.seccion_lugar = seccion_lugar WHERE actividadesculturalesdb.lugart.id_lugar = id_lugar;
+UPDATE actividadesculturalesdb.lugart SET  lugart.nombre_lugar = nombre_lugar, lugart.cubierta_lugar = cubierta_lugar, lugart.capacidad_lugar = capacidad_lugar, lugart.seccion_lugar = seccion_lugar WHERE lugart.id_lugar = id_lugar;
 
 
 CREATE PROCEDURE LIST_LUGARES()
@@ -152,14 +153,8 @@ BEGIN
     END
 //DELIMITER 
 
-
-
-
-
-
-
-
-
+CREATE FUNCTION RETURN_ID_LUGAR (id_evento int) RETURNS INT
+RETURN (SELECT id_fk_id_lugar FROM actividadesculturalesdb.eventoxlugart WHERE id_fk_id_evento = id_evento);
 
 CREATE FUNCTION LAST_EVENT() RETURNS INT
 RETURN (SELECT MAX(eventot.id_evento) FROM actividadesculturalesdb.eventot);
