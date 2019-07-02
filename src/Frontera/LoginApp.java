@@ -5,7 +5,8 @@
  */
 package Frontera;
 
-import Control.AdmintJpaController;
+import Control.AdmintController;
+import Entidad.Admint;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,7 +19,7 @@ public class LoginApp extends javax.swing.JPanel {
      * Creates new form LoginApp
      */
     public HomeApp ha;
-    private AdmintJpaController adminJpa = new AdmintJpaController();
+    private AdmintController adminCtrl = new AdmintController();
     
     public LoginApp() {
         initComponents();
@@ -34,7 +35,7 @@ public class LoginApp extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        Bg = new ImagePanel("C:\\Users\\Joan\\Documents\\NetBeansProjects\\ActividadesCulturales\\resources\\fondo2.jpg");
+        Bg = new ImagePanel("C:\\Users\\JoanGomez\\Documents\\NetBeansProjects\\ActividadesCulturales\\resources\\fondo2.jpg");
         BgLogin = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         userTF = new javax.swing.JTextField();
@@ -238,10 +239,12 @@ public class LoginApp extends javax.swing.JPanel {
     }//GEN-LAST:event_BgLoginMouseClicked
 
     private void loginB1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginB1MouseClicked
-        String res = adminJpa.LoginAdmint(userTF.getText(),passwordTF.getText());
+        Admint admin = new Admint(userTF.getText(),passwordTF.getText());
+        
+        String res = adminCtrl.LoginAdmint(admin);
         if(res == "Datos correctos"){
             AdminApp app = new AdminApp();
-            app.adminS = adminJpa.getAdminS();
+            app.adminS = adminCtrl.getAdminS();
             ha.setBasicP(app);
         }else{
             JOptionPane.showMessageDialog(ha, res);

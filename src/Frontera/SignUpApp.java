@@ -6,7 +6,7 @@
 
 package Frontera;
 
-import Control.AdmintJpaController;
+import Control.AdmintController;
 import Entidad.Admint;
 import javax.swing.JOptionPane;
 
@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
 
 public class SignUpApp extends javax.swing.JPanel {
     public HomeApp ha;
-    private AdmintJpaController adminC = new AdmintJpaController();
+    private AdmintController adminC = new AdmintController();
     
     
     /** Creates new form SignUpApp */
@@ -35,7 +35,7 @@ public class SignUpApp extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Bg = new ImagePanel("C:\\Users\\Joan\\Documents\\NetBeansProjects\\ActividadesCulturales\\resources\\fondo2.jpg");
+        Bg = new ImagePanel("C:\\Users\\JoanGomez\\Documents\\NetBeansProjects\\ActividadesCulturales\\resources\\fondo2.jpg");
         BgSignUp = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         userTF = new javax.swing.JTextField();
@@ -164,7 +164,6 @@ public class SignUpApp extends javax.swing.JPanel {
     private void registerBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerBMouseClicked
         Admint newAdmin = new Admint();
         newAdmin.setNombreAdmin(userTF.getText());
-        System.out.println(adminC.findAdmintEntities().size());
         newAdmin.setContraseniaAdmin(String.valueOf(passwordTF.getPassword()));
         String res = adminC.create(newAdmin, vPasswordTF.getText());
         JOptionPane.showMessageDialog(ha, res);

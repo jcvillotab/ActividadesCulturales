@@ -5,9 +5,9 @@
  */
 package Frontera;
 
-import Control.ArtistatJpaController;
-import Control.EventotJpaController;
-import Control.LugartJpaController;
+import Control.ArtistatController;
+import Control.EventotController;
+import Control.LugartController;
 import Entidad.Admint;
 import Entidad.Artistat;
 import Entidad.Eventot;
@@ -32,9 +32,9 @@ public class AdminApp extends javax.swing.JPanel {
      */
     public HomeApp ha;
     public Admint adminS;
-    private ArtistatJpaController artistaC = new ArtistatJpaController();
-    private EventotJpaController eventoC = new EventotJpaController();
-    private LugartJpaController lugarC = new LugartJpaController();
+    private ArtistatController artistaCtrl = new ArtistatController();
+    private EventotController eventoCtrl = new EventotController();
+    private LugartController lugarCtrl = new LugartController();
     private int placeId;
     private int artistId;
 
@@ -52,7 +52,7 @@ public class AdminApp extends javax.swing.JPanel {
     private void initComponents() {
 
         jSpinner1 = new javax.swing.JSpinner();
-        Bg = new ImagePanel("C:\\Users\\Joan\\Documents\\NetBeansProjects\\ActividadesCulturales\\resources\\fondo2.jpg");
+        Bg = new ImagePanel("C:\\Users\\JoanGomez\\Documents\\NetBeansProjects\\ActividadesCulturales\\resources\\fondo2.jpg");
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         eventP = new javax.swing.JPanel();
@@ -411,11 +411,12 @@ public class AdminApp extends javax.swing.JPanel {
                     .addComponent(jLabel22)
                     .addComponent(eventEditPlaceTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(eventEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel23)
-                    .addComponent(eventArtist1EditTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(eventEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(eventArtist3EditTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(eventArtist2EditTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(eventEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel23)
+                        .addComponent(eventArtist1EditTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(eventArtist2EditTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(eventEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel24)
@@ -981,11 +982,9 @@ public class AdminApp extends javax.swing.JPanel {
     }//GEN-LAST:event_eventSelectorDActionPerformed
 
     private void jTabbedPane3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane3StateChanged
-        List list;
         String[] names;
         if (jTabbedPane3.getSelectedIndex() == 1) {
-            list = artistaC.findArtistatEntities();
-            names = ArtistatJpaController.listToArrayArtist(list);
+            names = artistaCtrl.listar_nombres();
             artistList.setModel(new DefaultComboBoxModel(names));
         }
     }//GEN-LAST:event_jTabbedPane3StateChanged
@@ -994,8 +993,8 @@ public class AdminApp extends javax.swing.JPanel {
         List list;
         String[] names;
         if (jTabbedPane4.getSelectedIndex() == 1) {
-            list = lugarC.findLugartEntities();
-            names = LugartJpaController.listToArrayPlace(list);
+            list = lugarCtrl.findLugarList();
+            names = LugartController.listToArrayPlace(list);
             placeList.setModel(new DefaultComboBoxModel(names));
         }
     }//GEN-LAST:event_jTabbedPane4StateChanged
@@ -1006,7 +1005,7 @@ public class AdminApp extends javax.swing.JPanel {
         lugar.setSeccionLugar(placeSectionAddTF.getText());
         lugar.setCubiertaLugar(placeDeckAddTF.getText());
         lugar.setCapacidadLugar(Integer.parseInt(placeCapacityAddTF.getText()));
-        String res = lugarC.create(lugar);
+        String res = lugarCtrl.create(lugar);
         JOptionPane.showMessageDialog(ha, res);
     }//GEN-LAST:event_createPlaceBMouseClicked
 
@@ -1016,7 +1015,7 @@ public class AdminApp extends javax.swing.JPanel {
 
     private void placeListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeListActionPerformed
 
-        Lugart lugar = lugarC.findLugart(placeList.getSelectedIndex() + 1);
+        Lugart lugar = lugarCtrl.findById(placeList.getSelectedIndex() + 1);
 
         placeNameEditTF.setText(lugar.getNombreLugar());
         placeSectionEditTF.setText(lugar.getSeccionLugar());
@@ -1026,24 +1025,20 @@ public class AdminApp extends javax.swing.JPanel {
     }//GEN-LAST:event_placeListActionPerformed
 
     private void editPlaceBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editPlaceBMouseClicked
-
-        Lugart lugar = lugarC.findLugart(placeId);
+        
+        Lugart lugar = lugarCtrl.findById(placeId);
         lugar.setNombreLugar(placeNameEditTF.getText());
         lugar.setSeccionLugar(placeSectionEditTF.getText());
         lugar.setCubiertaLugar(placeDeckEditTF.getText());
         lugar.setCapacidadLugar(Integer.parseInt(placeCapacityEditTF.getText()));
-        try {
-            lugarC.edit(lugar);
-            JOptionPane.showMessageDialog(ha, "Lugar editado correctamente");
-
-        } catch (Exception e) {
-        }
+        lugarCtrl.edit(lugar,lugar.getIdLugar());
+        JOptionPane.showMessageDialog(ha, "Lugar editado correctamente");
 
     }//GEN-LAST:event_editPlaceBMouseClicked
 
     private void artistListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_artistListActionPerformed
         String name = artistList.getSelectedItem().toString();
-        List<Artistat> list = artistaC.findArtistatEntities();
+        List<Artistat> list = artistaCtrl.listar_artistas();
         Artistat artista = null;
 
         for (Artistat list1 : list) {
@@ -1065,34 +1060,25 @@ public class AdminApp extends javax.swing.JPanel {
         artista.setNombreArtista(artistNameAddTF.getText());
         artista.setIdArtista(Integer.parseInt(artistIdAddTF.getText()));
         artista.setOcupacionArtista(artistJobAddTF.getText());
-        try {
-            artistaC.create(artista);
-            JOptionPane.showMessageDialog(ha, "Artista registrado correctamente");
-
-        } catch (Exception e) {
-
-        }
+        String res = artistaCtrl.create(artista);
+        JOptionPane.showMessageDialog(ha, res);
 
     }//GEN-LAST:event_addArtistBMouseClicked
 
     private void editArtistBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editArtistBMouseClicked
-        Artistat artista = artistaC.findArtistat(artistId);
+        Artistat artista = artistaCtrl.buscarById(artistId);
         artista.setNombreArtista(artistNameEditTF.getText());
         artista.setOcupacionArtista(artistJobEditTF.getText());
         artista.setIdArtista(Integer.parseInt(artistIdEditTF.getText()));
-        try {
-            artistaC.edit(artista);
-            JOptionPane.showMessageDialog(ha, "Artista editado correctamente");
-            artistId = artista.getIdArtista();
-        } catch (Exception ex) {
-            Logger.getLogger(AdminApp.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        String res = artistaCtrl.edit(artista);
+        JOptionPane.showMessageDialog(ha, res);
+        artistId = artista.getIdArtista();
     }//GEN-LAST:event_editArtistBMouseClicked
 
     private void addEventBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addEventBMouseClicked
         SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy");
         Eventot event = new Eventot();
-        Lugart lugar = lugarC.findLugart(eventPlaceAddTF.getSelectedIndex() + 1);
+        Lugart lugar = lugarCtrl.findById(eventPlaceAddTF.getSelectedIndex() + 1);
 
         event.setNombreEvento(eventNameAddTF.getText());
         try {
@@ -1106,18 +1092,16 @@ public class AdminApp extends javax.swing.JPanel {
         if (!"N/A".equals(eventArtist1AddTF.getSelectedItem().toString())) {
             names.add(eventArtist1AddTF.getSelectedItem().toString());
         }
-        if(!"N/A".equals(eventArtist2AddTF.getSelectedItem().toString())){
+        if (!"N/A".equals(eventArtist2AddTF.getSelectedItem().toString())) {
             names.add(eventArtist2AddTF.getSelectedItem().toString());
         }
-        if(!"N/A".equals(eventArtist3AddTF.getSelectedItem().toString())){
+        if (!"N/A".equals(eventArtist3AddTF.getSelectedItem().toString())) {
             names.add(eventArtist3AddTF.getSelectedItem().toString());
         }
-        
 
-        ArrayList<Artistat> artists = artistaC.searchArtistCB(names);
-
-        eventoC.registerEvent(event, lugar, artists, Integer.parseInt(eventCapacityAddTF.getText()), adminS);
-        JOptionPane.showMessageDialog(ha, "Evento creado correctamente");
+        ArrayList<Artistat> artists = artistaCtrl.buscarByNames(names);
+        String res = eventoCtrl.crear(event, lugar, artists, Integer.parseInt(eventCapacityAddTF.getText()), adminS);
+        JOptionPane.showMessageDialog(ha, res);
     }//GEN-LAST:event_addEventBMouseClicked
 
     private void eventArtist3AddTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventArtist3AddTFActionPerformed
@@ -1137,88 +1121,85 @@ public class AdminApp extends javax.swing.JPanel {
         SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy");
 
         //int[] ids = eventoC.returnIdsEvento(eventSelectorE.getSelectedIndex());
-        Eventot event = eventoC.findEventot(EventotJpaController.getIds().get(eventSelectorE.getSelectedIndex()));
-        
-        ArrayList<Integer> ids = eventoC.buscar_ids_artistas(EventotJpaController.getIds().get(eventSelectorE.getSelectedIndex()));
-        int capacidad = eventoC.buscarCapacidad(EventotJpaController.getIds().get(eventSelectorE.getSelectedIndex()));
-        ArrayList<String> names = artistaC.findArtistatsNames(ids);
-        String[] namesModel = ArtistatJpaController.listToArrayArtist(artistaC.findArtistatEntities());
-        int[] indexNames = {0,0,0};
-        
+        Eventot event = eventoCtrl.findEventot(EventotController.getIds().get(eventSelectorE.getSelectedIndex()));
+
+        ArrayList<Integer> ids = eventoCtrl.buscar_ids_artistas(EventotController.getIds().get(eventSelectorE.getSelectedIndex()));
+        int capacidad = eventoCtrl.buscarCapacidad(EventotController.getIds().get(eventSelectorE.getSelectedIndex()));
+        ArrayList<String> names = artistaCtrl.buscarByIds(ids);
+        String[] namesModel = artistaCtrl.listar_nombres();
+        int[] indexNames = {0, 0, 0};
 
         eventEditNameTF.setText(event.getNombreEvento());
         eventDateEditTF.setText(format1.format(event.getFechaEvento()));
         int count = 0;
         for (int i = 0; i < names.size(); i++) {
             for (int j = 0; j < namesModel.length; j++) {
-                if(names.get(i)==namesModel[j]){
-                    indexNames[count]=j;
+                if (names.get(i) == namesModel[j]) {
+                    indexNames[count] = j;
                     count++;
                 }
             }
         }
-        
-        eventEditPlaceTF.setModel(new DefaultComboBoxModel(LugartJpaController.listToArrayPlace(lugarC.findLugartEntities())));
+
+        eventEditPlaceTF.setModel(new DefaultComboBoxModel(LugartController.listToArrayPlace(lugarCtrl.findLugarList())));
         eventArtist1EditTF.setModel(new DefaultComboBoxModel(namesModel));
         eventArtist2EditTF.setModel(new DefaultComboBoxModel(namesModel));
         eventArtist3EditTF.setModel(new DefaultComboBoxModel(namesModel));
         eventArtist1EditTF.setSelectedIndex(indexNames[0]);
         eventArtist2EditTF.setSelectedIndex(indexNames[1]);
         eventArtist3EditTF.setSelectedIndex(indexNames[2]);
-        eventCapacityEditTF.setText(""+capacidad);
+        eventCapacityEditTF.setText("" + capacidad);
 
 
     }//GEN-LAST:event_eventSelectorEActionPerformed
 
     private void editEventBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editEventBMouseClicked
-        Eventot event = eventoC.findEventot(EventotJpaController.getIds().get(eventSelectorE.getSelectedIndex()));                                      
+        Eventot event = eventoCtrl.findEventot(EventotController.getIds().get(eventSelectorE.getSelectedIndex()));
         SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy");
         event.setNombreEvento(eventEditNameTF.getText());
-        Lugart lugar = lugarC.findLugart(eventPlaceAddTF.getSelectedIndex() + 1);
+        Lugart lugar = lugarCtrl.findById(eventPlaceAddTF.getSelectedIndex() + 1);
         try {
             event.setFechaEvento(format1.parse(eventDateEditTF.getText()));
-            System.out.println(""+ format1.parse(eventDateEditTF.getText()));
+            System.out.println("" + format1.parse(eventDateEditTF.getText()));
         } catch (ParseException e) {
-            System.out.println("Error al registrar fecha: "+e);
+            System.out.println("Error al registrar fecha: " + e);
         }
         ArrayList<String> names = new ArrayList<>();
         if (!"N/A".equals(eventArtist1EditTF.getSelectedItem().toString())) {
             names.add(eventArtist1EditTF.getSelectedItem().toString());
         }
-        if(!"N/A".equals(eventArtist2EditTF.getSelectedItem().toString())){
+        if (!"N/A".equals(eventArtist2EditTF.getSelectedItem().toString())) {
             names.add(eventArtist2EditTF.getSelectedItem().toString());
         }
-        if(!"N/A".equals(eventArtist3EditTF.getSelectedItem().toString())){
+        if (!"N/A".equals(eventArtist3EditTF.getSelectedItem().toString())) {
             names.add(eventArtist3EditTF.getSelectedItem().toString());
         }
         int capacidad = Integer.parseInt(eventCapacityEditTF.getText());
 
-        ArrayList<Artistat> artists = artistaC.searchArtistCB(names);
-        eventoC.editEvent(event, lugar, artists, capacidad);
+        ArrayList<Artistat> artists = artistaCtrl.buscarByNames(names);
+        eventoCtrl.editEvent(event, lugar, artists, capacidad);
         JOptionPane.showMessageDialog(ha, "Evento editado correctamente");
-        
+
     }//GEN-LAST:event_editEventBMouseClicked
 
     private void generarListasP2() {
         List list;
         String[] names;
         if (jTabbedPane2.getSelectedIndex() == 0) {
-            list = lugarC.findLugartEntities();
-            names = LugartJpaController.listToArrayPlace(list);
+            list = lugarCtrl.findLugarList();
+            names = LugartController.listToArrayPlace(list);
             eventPlaceAddTF.setModel(new DefaultComboBoxModel(names));
-
-            list = artistaC.findArtistatEntities();
-            names = ArtistatJpaController.listToArrayArtist(list);
+            names = artistaCtrl.listar_nombres();
             eventArtist1AddTF.setModel(new DefaultComboBoxModel(names));
             eventArtist2AddTF.setModel(new DefaultComboBoxModel(names));
             eventArtist3AddTF.setModel(new DefaultComboBoxModel(names));
         } else if (jTabbedPane2.getSelectedIndex() == 1) {
-            list = eventoC.findEventotEntities();
-            names = EventotJpaController.listToArrayEvent(list);
+            list = eventoCtrl.findEventotEntities();
+            names = EventotController.listToArrayEvent(list);
             eventSelectorE.setModel(new DefaultComboBoxModel(names));
         } else if (jTabbedPane2.getSelectedIndex() == 2) {
-            list = eventoC.findEventotEntities();
-            names = EventotJpaController.listToArrayEvent(list);
+            list = eventoCtrl.findEventotEntities();
+            names = EventotController.listToArrayEvent(list);
             eventSelectorD.setModel(new DefaultComboBoxModel(names));
         }
     }

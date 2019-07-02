@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `eventoT` (
 CREATE TABLE IF NOT EXISTS `clienteT` (
     `id_cliente` INT(8) NOT NULL COMMENT 'Clave primaria',
     `nombre_cliente` VARCHAR(64) NOT NULL COMMENT 'nombre cliente',
-    `codigo_cliente` DATE NOT NULL COMMENT 'codigo cliente',
+    `codigo_cliente` INT(8) NOT NULL COMMENT 'codigo cliente',
     CONSTRAINT `pk_cliente` PRIMARY KEY (`id_cliente`)
 );
   
@@ -72,6 +72,44 @@ SELECT id_fk_id_artista FROM actividadesculturalesdb.eventoxartistat WHERE id_fk
 CREATE PROCEDURE CAPAIDAD_LUGARxEVENTO (IN id_evento INT)
 SELECT capacidad_ocupada_exl FROM actividadesculturalesdb.eventoxlugart WHERE id_fk_id_evento = id_evento;
 
+CREATE PROCEDURE LIST_ADMINN()
+SELECT adminT.nombre_admin FROM actividadesculturalesdb.adminT;
+
+CREATE PROCEDURE LIST_ADMINC()
+SELECT adminT.id_admin, adminT.nombre_admin, adminT.contrasenia_admin FROM actividadesculturalesdb.adminT;
+
+CREATE PROCEDURE CREATE_ADMIN(IN nombre_adminV VARCHAR(64), IN contrasenia_adminV VARCHAR(64))
+INSERT INTO actividadesculturalesdb.adminT (adminT.nombre_admin, adminT.contrasenia_admin) VALUES (nombre_adminV,contrasenia_adminV);
+
+CREATE PROCEDURE LIST_ARTISTAS()
+SELECT * FROM actividadesculturalesdb.artistat;
+
+CREATE PROCEDURE CREATE_ARTISTA(IN id_artistaV INT(8),IN nombre_artistaV VARCHAR(64), IN ocupacion_artistaV VARCHAR(128))
+INSERT INTO actividadesculturalesdb.artistat (artistat.id_artista, artistat.nombre_artista, artistat.ocupacion_artista) VALUES (id_artistaV,nombre_artistaV,ocupacion_artistaV);
+
+CREATE PROCEDURE EDIT_ARTISTA(IN id_artistaV INT(8),IN nombre_artistaV VARCHAR(64), IN ocupacion_artistaV VARCHAR(128))
+UPDATE actividadesculturalesdb.artistat SET artistat.nombre_artista=nombre_artistaV, artistat.ocupacion_artista=ocupacion_artistaV WHERE artistat.id_artista=id_artistaV;
+
+CREATE PROCEDURE CREATE_LUGAR( IN nombre_lugar VARCHAR(64), IN cubierta_lugar VARCHAR(128), IN capacidad_lugar INT(8), IN seccion_lugar VARCHAR(64))
+INSERT INTO actividadesculturalesdb.lugart ( lugart.nombre_lugar, lugart.cubierta_lugar, lugart.capacidad_lugar, lugart.seccion_lugar) VALUES ( nombre_lugar, cubierta_lugar, capacidad_lugar, seccion_lugar);
+
+CREATE PROCEDURE EDIT_LUGAR(IN id_lugar int(8),IN nombre_lugar VARCHAR(64), IN cubierta_lugar VARCHAR(128), IN capacidad_lugar INT(8), IN seccion_lugar VARCHAR(64))
+UPDATE actividadesculturalesdb.lugart SET  lugart.nombre_lugar = nombre_lugar, lugart.cubierta_lugar = cubierta_lugar, lugart.capacidad_lugar = capacidad_lugar, lugart.seccion_lugar = seccion_lugar WHERE actividadesculturalesdb.lugart.id_lugar = id_lugar;
+
+
+CREATE PROCEDURE LIST_LUGARES()
+SELECT * FROM actividadesculturalesdb.lugart;
+
+
+
+DELIMITER //
+CREATE PROCEDURE DELETE_ARTISTA(IN id_artistaV INT(8))
+BEGIN
+DELETE FROM actividadesculturalesdb.eventoxartistat WHERE eventoxartistat.id_fk_id_artista=id_artistaV;
+DELETE FROM actividadesculturalesdb.artistat WHERE artistat.id_artista=id_artistaV;
+END
+//DELIMITER
+
 DELIMITER //
 CREATE PROCEDURE EDITAR_EVENTO(IN id_eventoC INT, IN nombre_eventoC VARCHAR(64), IN fecha_eventoC DATE, IN artista1 INT, IN artista2 INT, IN artista3 INT, IN lugar INT, IN capacidad INT)
 BEGIN
@@ -91,5 +129,39 @@ BEGIN
     END IF;
     UPDATE actividadesculturalesdb.eventoxlugart SET eventoxlugart.id_fk_id_lugar=lugar, eventoxlugart.capacidad_ocupada_exl=capacidad WHERE eventoxlugart.id_fk_id_evento=id_eventoC;
     END
-//DELIMITER   
+//DELIMITER 
+
+
+DELIMITER //
+CREATE PROCEDURE CREAR_EVENTO(IN nombre_eventoC VARCHAR(64), IN fecha_eventoC DATE, IN artista1 INT, IN artista2 INT, IN artista3 INT, IN lugar INT, IN capacidad INT, IN fk_id_adminC INT)
+BEGIN
+	INSERT INTO actividadesculturalesdb.eventot (eventot.nombre_evento, eventot.fecha_evento, eventot.fk_id_admin) VALUES(nombre_eventoC,fecha_eventoC,fk_id_adminC);
+	IF(artista1<>0)
+    THEN
+		INSERT INTO actividadesculturalesdb.eventoxartistat (eventoxartistat.id_fk_id_evento, eventoxartistat.id_fk_id_artista) VALUES(LAST_EVENT(),artista1);
+    END IF;
+    IF(artista2<>0)
+    THEN
+		INSERT INTO actividadesculturalesdb.eventoxartistat (eventoxartistat.id_fk_id_evento, eventoxartistat.id_fk_id_artista) VALUES(LAST_EVENT(),artista2);
+    END IF;
+    IF(artista3<>0)
+    THEN
+		INSERT INTO actividadesculturalesdb.eventoxartistat (eventoxartistat.id_fk_id_evento, eventoxartistat.id_fk_id_artista) VALUES(LAST_EVENT(),artista3);
+    END IF;
+    INSERT INTO actividadesculturalesdb.eventoxlugart (eventoxlugart.id_fk_id_evento, eventoxlugart.id_fk_id_lugar, eventoxlugart.capacidad_ocupada_exl) VALUES(LAST_EVENT(),lugar,capacidad);
+    END
+//DELIMITER 
+
+
+
+
+
+
+
+
+
+
+CREATE FUNCTION LAST_EVENT() RETURNS INT
+RETURN (SELECT MAX(eventot.id_evento) FROM actividadesculturalesdb.eventot);
+
 SET GLOBAL time_zone = "-5:00";

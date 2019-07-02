@@ -5,10 +5,10 @@
  */
 package Frontera;
 
-import Control.AdmintJpaController;
-import Control.ArtistatJpaController;
-import Control.EventotJpaController;
-import Control.LugartJpaController;
+import Control.AdmintController;
+import Control.ArtistatController;
+import Control.EventotController;
+import Control.LugartController;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JPanel;
@@ -52,7 +52,7 @@ public class HomeApp extends javax.swing.JFrame {
     private void initComponents() {
 
         basicP = new javax.swing.JPanel();
-        homeP = new ImagePanel("C:\\Users\\Joan\\Documents\\NetBeansProjects\\ActividadesCulturales\\resources\\fondo1.jpg");
+        homeP = new ImagePanel("C:\\Users\\JoanGomez\\Documents\\NetBeansProjects\\ActividadesCulturales\\resources\\fondo1.jpg");
         jPanel1 = new javax.swing.JPanel();
         clientB = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();

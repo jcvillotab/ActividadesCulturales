@@ -12,10 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
+
 
 /**
  *
@@ -23,14 +21,6 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "lugart")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Lugart.findAll", query = "SELECT l FROM Lugart l")
-    , @NamedQuery(name = "Lugart.findByIdLugar", query = "SELECT l FROM Lugart l WHERE l.idLugar = :idLugar")
-    , @NamedQuery(name = "Lugart.findByNombreLugar", query = "SELECT l FROM Lugart l WHERE l.nombreLugar = :nombreLugar")
-    , @NamedQuery(name = "Lugart.findByCubiertaLugar", query = "SELECT l FROM Lugart l WHERE l.cubiertaLugar = :cubiertaLugar")
-    , @NamedQuery(name = "Lugart.findByCapacidadLugar", query = "SELECT l FROM Lugart l WHERE l.capacidadLugar = :capacidadLugar")
-    , @NamedQuery(name = "Lugart.findBySeccionLugar", query = "SELECT l FROM Lugart l WHERE l.seccionLugar = :seccionLugar")})
 public class Lugart implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -58,11 +48,12 @@ public class Lugart implements Serializable {
         this.idLugar = idLugar;
     }
 
-    public Lugart(Integer idLugar, String nombreLugar, String cubiertaLugar, int capacidadLugar) {
+    public Lugart(Integer idLugar, String nombreLugar, String cubiertaLugar, int capacidadLugar, String seccionLugar) {
         this.idLugar = idLugar;
         this.nombreLugar = nombreLugar;
         this.cubiertaLugar = cubiertaLugar;
         this.capacidadLugar = capacidadLugar;
+        this.seccionLugar = seccionLugar;
     }
 
     public Integer getIdLugar() {

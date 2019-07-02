@@ -6,6 +6,7 @@
 package Control;
 
 import Control.exceptions.NonexistentEntityException;
+import DAO.LugarDao;
 import Entidad.Lugart;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -22,11 +23,11 @@ import javax.persistence.criteria.Root;
  *
  * @author Armageddon132
  */
-public class LugartJpaController implements Serializable {
-    
+public class LugartController implements Serializable {
+    private LugarDao conection = new LugarDao();
     private EntityManagerFactory emf = null;
 
-    public LugartJpaController() {
+    public LugartController() {
         this.emf = Persistence.createEntityManagerFactory("ActividadesCulturalesPU");
     }
     
@@ -53,20 +54,19 @@ public class LugartJpaController implements Serializable {
             return "Error, seccion no definida";
         }
         
-        EntityManager em = null;
-        try {
-            em = getEntityManager();
-            em.getTransaction().begin();
-            em.persist(lugart);
-            em.getTransaction().commit();
-        } finally {
-            if (em != null) {
-                em.close();
-            }
-        }
-        return "Creacion de lugar exitosa";
+        
+        return conection.create_lugar(lugart) ;
     }
-
+    
+    public String edit(Lugart lugart, int idLugar){
+        return conection.edit_lugar(lugart, idLugar);
+    }
+    
+    public ArrayList findLugarList(){
+        return conection.listar_lugares();
+    }
+    
+    
     public void edit(Lugart lugart) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
@@ -163,6 +163,10 @@ public class LugartJpaController implements Serializable {
             names.add(list.get(i).getNombreLugar());
         }
         return names.toArray(new String[0]);
+    }
+    
+    public Lugart findById(int idLugar){
+        return conection.buscarById(idLugar);
     }
     
 }

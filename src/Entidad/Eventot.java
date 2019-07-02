@@ -6,7 +6,6 @@
 package Entidad;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -15,15 +14,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -31,13 +25,6 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "eventot")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Eventot.findAll", query = "SELECT e FROM Eventot e")
-    , @NamedQuery(name = "Eventot.findByIdEvento", query = "SELECT e FROM Eventot e WHERE e.idEvento = :idEvento")
-    , @NamedQuery(name = "Eventot.findByNombreEvento", query = "SELECT e FROM Eventot e WHERE e.nombreEvento = :nombreEvento")
-    , @NamedQuery(name = "Eventot.findByNombreFecha Evento", query = "SELECT e FROM Eventot e WHERE e.nombreEvento = :nombreEvento AND e.fechaEvento = :fechaEvento")
-    , @NamedQuery(name = "Eventot.findByFechaEvento", query = "SELECT e FROM Eventot e WHERE e.fechaEvento = :fechaEvento")})
 public class Eventot implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -102,30 +89,4 @@ public class Eventot implements Serializable {
     public void setFkIdAdmin(Admint fkIdAdmin) {
         this.fkIdAdmin = fkIdAdmin;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idEvento != null ? idEvento.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Eventot)) {
-            return false;
-        }
-        Eventot other = (Eventot) object;
-        if ((this.idEvento == null && other.idEvento != null) || (this.idEvento != null && !this.idEvento.equals(other.idEvento))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Entidad.Eventot[ idEvento=" + idEvento + " ]";
-    }
-    
 }

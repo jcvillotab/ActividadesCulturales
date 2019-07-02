@@ -6,22 +6,11 @@
 package Entidad;
 
 import java.io.Serializable;
-import java.util.Collection;
-import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -29,12 +18,6 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "clientet")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Clientet.findAll", query = "SELECT c FROM Clientet c")
-    , @NamedQuery(name = "Clientet.findByIdCliente", query = "SELECT c FROM Clientet c WHERE c.idCliente = :idCliente")
-    , @NamedQuery(name = "Clientet.findByNombreCliente", query = "SELECT c FROM Clientet c WHERE c.nombreCliente = :nombreCliente")
-    , @NamedQuery(name = "Clientet.findByCodigoCliente", query = "SELECT c FROM Clientet c WHERE c.codigoCliente = :codigoCliente")})
 public class Clientet implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -47,13 +30,7 @@ public class Clientet implements Serializable {
     private String nombreCliente;
     @Basic(optional = false)
     @Column(name = "codigo_cliente")
-    @Temporal(TemporalType.DATE)
-    private Date codigoCliente;
-    @JoinTable(name = "eventoxclientet", joinColumns = {
-        @JoinColumn(name = "id_fk_id_cliente", referencedColumnName = "id_cliente")}, inverseJoinColumns = {
-        @JoinColumn(name = "id_fk_id_evento", referencedColumnName = "id_evento")})
-    @ManyToMany
-    private Collection<Eventot> eventotCollection;
+    private Integer codigoCliente;
 
     public Clientet() {
     }
@@ -62,7 +39,7 @@ public class Clientet implements Serializable {
         this.idCliente = idCliente;
     }
 
-    public Clientet(Integer idCliente, String nombreCliente, Date codigoCliente) {
+    public Clientet(Integer idCliente, String nombreCliente, Integer codigoCliente) {
         this.idCliente = idCliente;
         this.nombreCliente = nombreCliente;
         this.codigoCliente = codigoCliente;
@@ -84,46 +61,11 @@ public class Clientet implements Serializable {
         this.nombreCliente = nombreCliente;
     }
 
-    public Date getCodigoCliente() {
+    public Integer getCodigoCliente() {
         return codigoCliente;
     }
 
-    public void setCodigoCliente(Date codigoCliente) {
+    public void setCodigoCliente(Integer codigoCliente) {
         this.codigoCliente = codigoCliente;
-    }
-
-    @XmlTransient
-    public Collection<Eventot> getEventotCollection() {
-        return eventotCollection;
-    }
-
-    public void setEventotCollection(Collection<Eventot> eventotCollection) {
-        this.eventotCollection = eventotCollection;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idCliente != null ? idCliente.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Clientet)) {
-            return false;
-        }
-        Clientet other = (Clientet) object;
-        if ((this.idCliente == null && other.idCliente != null) || (this.idCliente != null && !this.idCliente.equals(other.idCliente))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Entidad.Clientet[ idCliente=" + idCliente + " ]";
-    }
-    
+    }    
 }
