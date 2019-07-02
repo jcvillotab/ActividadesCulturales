@@ -96,29 +96,5 @@ public class Lugart implements Serializable {
         this.seccionLugar = seccionLugar;
     }
     
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idLugar != null ? idLugar.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Lugart)) {
-            return false;
-        }
-        Lugart other = (Lugart) object;
-        if ((this.idLugar == null && other.idLugar != null) || (this.idLugar != null && !this.idLugar.equals(other.idLugar))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Entidad.Lugart[ idLugar=" + idLugar + " ]";
-    }
     
 }
