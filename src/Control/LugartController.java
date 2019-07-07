@@ -71,6 +71,22 @@ public class LugartController implements Serializable {
         return artistas;
     }
     
+    public String[][] listar_datos(){
+        Lugart temp;
+        ArrayList<Lugart> lugares = conDB.listar_lugares();
+        String[][] data = new String[lugares.size()][5];
+        
+        for (int i = 0; i < lugares.size(); i++) {
+            temp = lugares.get(i);
+            data[i][0] = String.valueOf(temp.getIdLugar());
+            data[i][1] = temp.getNombreLugar();
+            data[i][2] = temp.getCubiertaLugar();
+            data[i][3] = temp.getSeccionLugar();
+            data[i][4] = String.valueOf(temp.getCapacidadLugar());
+        }
+        return data;
+    }
+    
     public String[] listar_nombres(){
         ArrayList<Lugart> artistas = listar_lugares();
         String[] names = new String[artistas.size()+1];
