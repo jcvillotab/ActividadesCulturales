@@ -22,6 +22,7 @@ CREATE TABLE IF NOT EXISTS `eventoT` (
     `id_evento` INT(8) NOT NULL AUTO_INCREMENT COMMENT 'Clave primaria',
     `nombre_evento` VARCHAR(64) NOT NULL COMMENT 'nombre evento',
     `fecha_evento` DATE NOT NULL COMMENT 'fecha evento',
+    `estado_evento` INT(2) NOT NULL COMMENT 'estado',
     `fk_id_admin` INT(8) NOT NULL COMMENT 'fk admin',
     CONSTRAINT `pk_evento` PRIMARY KEY (`id_evento`)
 );
@@ -85,6 +86,9 @@ INSERT INTO actividadesculturalesdb.adminT (adminT.nombre_admin, adminT.contrase
 CREATE PROCEDURE LIST_ARTISTAS()
 SELECT * FROM actividadesculturalesdb.artistat;
 
+CREATE PROCEDURE LIST_EVENT()
+SELECT * FROM actividadesculturalesdb.eventot;
+
 CREATE PROCEDURE CREATE_ARTISTA(IN id_artistaV INT(8),IN nombre_artistaV VARCHAR(64), IN ocupacion_artistaV VARCHAR(128))
 INSERT INTO actividadesculturalesdb.artistat (artistat.id_artista, artistat.nombre_artista, artistat.ocupacion_artista) VALUES (id_artistaV,nombre_artistaV,ocupacion_artistaV);
 
@@ -97,6 +101,8 @@ INSERT INTO actividadesculturalesdb.lugart ( lugart.nombre_lugar, lugart.cubiert
 CREATE PROCEDURE EDIT_LUGAR(IN id_lugar int(8),IN nombre_lugar VARCHAR(64), IN cubierta_lugar VARCHAR(128), IN capacidad_lugar INT(8), IN seccion_lugar VARCHAR(64))
 UPDATE actividadesculturalesdb.lugart SET  lugart.nombre_lugar = nombre_lugar, lugart.cubierta_lugar = cubierta_lugar, lugart.capacidad_lugar = capacidad_lugar, lugart.seccion_lugar = seccion_lugar WHERE lugart.id_lugar = id_lugar;
 
+CREATE PROCEDURE CLOSE_EVENT(IN id_eventoC int(8))
+UPDATE actividadesculturalesdb.eventot SET eventot.estado_evento = 1 WHERE eventot.id_evento = id_eventoC;
 
 CREATE PROCEDURE LIST_LUGARES()
 SELECT * FROM actividadesculturalesdb.lugart;
@@ -143,7 +149,7 @@ BEGIN
 DELIMITER //
 CREATE PROCEDURE CREAR_EVENTO(IN nombre_eventoC VARCHAR(64), IN fecha_eventoC DATE, IN artista1 INT, IN artista2 INT, IN artista3 INT, IN lugar INT, IN capacidad INT, IN fk_id_adminC INT)
 BEGIN
-	INSERT INTO actividadesculturalesdb.eventot (eventot.nombre_evento, eventot.fecha_evento, eventot.fk_id_admin) VALUES(nombre_eventoC,fecha_eventoC,fk_id_adminC);
+	INSERT INTO actividadesculturalesdb.eventot (eventot.nombre_evento, eventot.fecha_evento, eventot.fk_id_admin, eventot.estado_evento) VALUES(nombre_eventoC,fecha_eventoC,fk_id_adminC,0);
 	IF(artista1<>0)
     THEN
 		INSERT INTO actividadesculturalesdb.eventoxartistat (eventoxartistat.id_fk_id_evento, eventoxartistat.id_fk_id_artista) VALUES(LAST_EVENT(),artista1);
