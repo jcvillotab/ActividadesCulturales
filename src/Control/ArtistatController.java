@@ -7,6 +7,7 @@ package Control;
 
 import DAO.ArtistaDao;
 import Entidad.Artistat;
+import Entidad.Lugart;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -56,6 +57,20 @@ public class ArtistatController implements Serializable {
             names[i+1] = artistas.get(i).getNombreArtista();
         }
         return names;
+    }
+    
+    public String[][] listar_datos(){
+        Artistat temp;
+        ArrayList<Artistat> artistas = conDB.listar_artistas();
+        String[][] data = new String[artistas.size()][3];
+        
+        for (int i = 0; i < artistas.size(); i++) {
+            temp = artistas.get(i);
+            data[i][0] = String.valueOf(temp.getIdArtista());
+            data[i][1] = temp.getNombreArtista();
+            data[i][2] = temp.getOcupacionArtista();
+        }
+        return data;
     }
     
     public Artistat buscarById(Integer id){
