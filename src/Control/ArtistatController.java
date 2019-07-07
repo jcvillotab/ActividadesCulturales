@@ -65,7 +65,9 @@ public class ArtistatController implements Serializable {
     public ArrayList buscarByIds(ArrayList<Integer> ids){
         ArrayList<String> names = new ArrayList();
         for (Integer id : ids) {
-            names.add(buscarById(id).getNombreArtista());
+            if(id!=0){
+                names.add(buscarById(id).getNombreArtista());
+            }
         }
         return names;
     }

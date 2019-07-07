@@ -40,6 +40,9 @@ public class Eventot implements Serializable {
     @Column(name = "fecha_evento")
     @Temporal(TemporalType.DATE)
     private Date fechaEvento;
+    @Basic(optional = false)
+    @Column(name = "estado_evento")
+    private int estadoEvento;
     @JoinColumn(name = "fk_id_admin", referencedColumnName = "id_admin")
     @ManyToOne(optional = false)
     private Admint fkIdAdmin;
@@ -51,10 +54,11 @@ public class Eventot implements Serializable {
         this.idEvento = idEvento;
     }
 
-    public Eventot(Integer idEvento, String nombreEvento, Date fechaEvento) {
+    public Eventot(Integer idEvento, String nombreEvento, Date fechaEvento, int estado) {
         this.idEvento = idEvento;
         this.nombreEvento = nombreEvento;
         this.fechaEvento = fechaEvento;
+        this.estadoEvento = estado;
     }
 
     public Integer getIdEvento() {
@@ -88,5 +92,13 @@ public class Eventot implements Serializable {
 
     public void setFkIdAdmin(Admint fkIdAdmin) {
         this.fkIdAdmin = fkIdAdmin;
+    }
+
+    public int getEstadoEvento() {
+        return estadoEvento;
+    }
+
+    public void setEstadoEvento(int estadoEvento) {
+        this.estadoEvento = estadoEvento;
     }
 }
