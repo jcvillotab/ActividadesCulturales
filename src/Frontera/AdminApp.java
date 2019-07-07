@@ -492,6 +492,11 @@ public class AdminApp extends javax.swing.JPanel {
         });
 
         deleteEventB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        deleteEventB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteEventBMouseClicked(evt);
+            }
+        });
 
         jLabel19.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1367,7 +1372,8 @@ public class AdminApp extends javax.swing.JPanel {
         int count = 0;
         for (int i = 0; i < names.size(); i++) {
             for (int j = 0; j < namesModel.length; j++) {
-                if (names.get(i) == namesModel[j]) {
+                System.out.println(names.get(i)+" =? "+namesModel[j]);
+                if (names.get(i).equals(namesModel[j])) {
                     indexNames[count] = j;
                     count++;
                 }
@@ -1410,8 +1416,8 @@ public class AdminApp extends javax.swing.JPanel {
         int capacidad = Integer.parseInt(eventCapacityEditTF.getText());
 
         ArrayList<Artistat> artists = artistaCtrl.buscarByNames(names);
-        eventoCtrl.editEvent(event, lugar, artists, capacidad);
-        JOptionPane.showMessageDialog(ha, "Evento editado correctamente");
+        String res = eventoCtrl.editEvent(event, lugar, artists, capacidad);
+        JOptionPane.showMessageDialog(ha, res);
 
     }//GEN-LAST:event_editEventBMouseClicked
 
@@ -1439,14 +1445,12 @@ public class AdminApp extends javax.swing.JPanel {
         eventPlaceView.setText(lugar.getNombreLugar());
         eventCapacityView.setText("" + capacidad);  
     }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void eventDateAddTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventDateAddTFActionPerformed
-        
-    }//GEN-LAST:event_eventDateAddTFActionPerformed
-
-    private void placeViewAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_placeViewAncestorAdded
-        // TODO add your handling code here:
-    }//GEN-LAST:event_placeViewAncestorAdded
+  
+    private void deleteEventBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteEventBMouseClicked
+        Eventot event = eventoCtrl.findEventot(EventotController.getIds().get(eventSelectorE.getSelectedIndex()));
+        String res = eventoCtrl.close_event(event.getIdEvento());
+        JOptionPane.showMessageDialog(ha, res);
+    }//GEN-LAST:event_deleteEventBMouseClicked
 
     private void generarListasP2() {
         String[] names;
@@ -1458,11 +1462,11 @@ public class AdminApp extends javax.swing.JPanel {
             eventArtist2AddTF.setModel(new DefaultComboBoxModel(names));
             eventArtist3AddTF.setModel(new DefaultComboBoxModel(names));
         } else if (jTabbedPane2.getSelectedIndex() == 1) {
-            //names = eventoCtrl.listarNombres();
-            //eventSelectorE.setModel(new DefaultComboBoxModel(names));
+            names = eventoCtrl.listarNombres();
+            eventSelectorE.setModel(new DefaultComboBoxModel(names));
         } else if (jTabbedPane2.getSelectedIndex() == 2) {
-            //names = eventoCtrl.listarNombres();
-            //eventSelectorD.setModel(new DefaultComboBoxModel(names));
+            names = eventoCtrl.listarNombres();
+            eventSelectorD.setModel(new DefaultComboBoxModel(names));
         }
     }
 

@@ -57,50 +57,14 @@ public class EventotController implements Serializable {
     }
 
     public int buscarCapacidad (int id_evento){
-        try {
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/actividadesculturalesdb?zeroDateTimeBehavior=convertToNull","root","btZ7op0gGo");
-            String sentencia = "{call CAPAIDAD_LUGARxEVENTO("+id_evento+")}";
-            CallableStatement ms = (CallableStatement) con.prepareCall(sentencia);
-            ResultSet rs = ms.executeQuery();
-            int capacidad = 0;
-            while(rs.next()){
-                capacidad = rs.getInt(1);
-            }
-            return capacidad;
-        } catch (Exception e) {
-            System.out.println("Error en procedimiento almacenado CAPAIDAD_LUGARxEVENTO: "+e);
-            return -1;
-        }
+        return conDB.capacidad(id_evento);
     }
     
     public ArrayList buscar_ids_artistas(int id_evento) {
         ArrayList<Integer> ids = new ArrayList();
-        try {
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/actividadesculturalesdb?zeroDateTimeBehavior=convertToNull", "root", "btZ7op0gGo");
-            String sentencia = "{call IDS_ARTISTAS(" + id_evento + ")}";
-            CallableStatement ms = (CallableStatement) con.prepareCall(sentencia);
-            ResultSet rs = ms.executeQuery();
-            int id;
-            int count = 0;
-            while (rs.next()) {
-                id = rs.getInt(1);
-                ids.add(id);
-                count++;
-            }
-            if (count < 3) {
-                int aux = 3 - count;
-                for (int i = 0; i < aux; i++) {
-                    ids.add(0);
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("ERROR EN EL PPROCEDIMIENTO ALMACENADO: " + e);
-        }
+        ids = conDB.buscar_ids_artistas(id_evento);
         return ids;
     }
-
-    
-    
 
     public Eventot findEventot(Integer id) {
         EntityManager em = getEntityManager();
@@ -110,8 +74,20 @@ public class EventotController implements Serializable {
             em.close();
         }
     }
+    
+    public ArrayList listarEventos(){
+        ArrayList<Eventot> eventosT = conDB.listar();
+        ArrayList<Eventot> eventos = new ArrayList();
+        for (Eventot evento : eventosT) {
+            if(evento.getEstadoEvento()==0){
+                eventos.add(evento);
+            }
+        }
+        return eventos;
+    }
 
-    public static String[] listToArrayEvent(List<Eventot> list) {
+    public String[] listarNombres() {
+        ArrayList<Eventot> list = listarEventos();
         List<String> names = new ArrayList<>();
         ids = new ArrayList<>();
         for (Eventot list1 : list) {
@@ -147,7 +123,7 @@ public class EventotController implements Serializable {
         return res;
     }
 
-    public void editEvent(Eventot event, Lugart lugar, List<Artistat> artists, int capacity) {
+    public String editEvent(Eventot event, Lugart lugar, List<Artistat> artists, int capacity) {
         int[] ids_artist = new int[4];
         SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
         int count = 0;
@@ -161,14 +137,13 @@ public class EventotController implements Serializable {
                 ids_artist[count+i+1]=0;
             }
         }
-        try {
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/actividadesculturalesdb?zeroDateTimeBehavior=convertToNull","root","btZ7op0gGo");
-            String sentencia = "{call EDITAR_EVENTO("+event.getIdEvento()+",'"+event.getNombreEvento()+"','"+format1.format(event.getFechaEvento())+"',"+ids_artist[0]+","+ids_artist[1]+","+ids_artist[2]+","+lugar.getIdLugar()+","+capacity+")}";
-            CallableStatement ms = (CallableStatement) con.prepareCall(sentencia);
-            ms.executeQuery();
-        } catch (Exception e) {
-            System.out.println("Error con procedimiento almacenado:"+e);
-        }
+        String res = conDB.editar_evento(event, ids_artist, lugar, capacity);
+        return res;
+    }
+    
+    public String close_event(int id_evento){
+        String res = conDB.close_evento(id_evento);
+        return res;
     }
     
     public int buscarIdLugar(int idEvento){
