@@ -5,7 +5,7 @@
  */
 package DAO;
 
-import Entidad.Artistat;
+
 import Entidad.Eventot;
 import Entidad.Lugart;
 import com.mysql.cj.jdbc.CallableStatement;
@@ -116,7 +116,6 @@ public class EventoDao {
     public ArrayList buscar_ids_artistas(int id_evento){
         ArrayList<Integer> ids = new ArrayList();
         try {
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/actividadesculturalesdb?zeroDateTimeBehavior=convertToNull", "root", "btZ7op0gGo");
             String sentencia = "{call IDS_ARTISTAS(" + id_evento + ")}";
             CallableStatement ms = (CallableStatement) con.prepareCall(sentencia);
             ResultSet rs = ms.executeQuery();
@@ -139,5 +138,7 @@ public class EventoDao {
             return null;
         }
     }
+    
+    
     
 }

@@ -396,11 +396,6 @@
                                 </Component>
                               </SubComponents>
                             </Container>
-                            <Component class="org.jdesktop.swingx.JXDatePicker" name="eventDateAddTF">
-                              <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eventDateAddTFActionPerformed"/>
-                              </Events>
-                            </Component>
                             <Component class="javax.swing.JLabel" name="jLabel52">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Hora"/>
@@ -411,6 +406,8 @@
                                 <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JSpinner(new SpinnerDateModel())"/>
                                 <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="JSpinner.DateEditor timeEditor = new JSpinner.DateEditor(eventAddTimeTF, &quot;HH:mm:ss&quot;);&#xa;eventAddTimeTF.setEditor(timeEditor);&#xa;eventAddTimeTF.setValue(new Date());"/>
                               </AuxValues>
+                            </Component>
+                            <Component class="org.jdesktop.swingx.JXDatePicker" name="eventDateAddTF">
                             </Component>
                           </SubComponents>
                         </Container>
@@ -801,169 +798,42 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabel46" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
-                                              <Component id="jComboBox1" min="-2" pref="315" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jLabel47" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jLabel48" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jLabel49" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jLabel50" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jLabel51" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Group type="102" attributes="0">
-                                                      <Component id="eventArtist1View" min="-2" pref="110" max="-2" attributes="0"/>
-                                                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                                                      <Component id="eventArtist2View" min="-2" pref="106" max="-2" attributes="0"/>
-                                                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                                                      <Component id="eventArtist3View" pref="104" max="32767" attributes="0"/>
-                                                  </Group>
-                                                  <Component id="eventNameView" max="32767" attributes="0"/>
-                                                  <Component id="eventPlaceView" max="32767" attributes="0"/>
-                                                  <Component id="eventCapacityView" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
-                                                  <Component id="eventDateView" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace pref="170" max="32767" attributes="0"/>
+                                      <Component id="jScrollPane2" pref="674" max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel46" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel47" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="eventNameView" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel48" min="-2" max="-2" attributes="0"/>
-                                          <Component id="eventPlaceView" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel49" min="-2" max="-2" attributes="0"/>
-                                          <Component id="eventArtist1View" min="-2" max="-2" attributes="0"/>
-                                          <Component id="eventArtist2View" min="-2" max="-2" attributes="0"/>
-                                          <Component id="eventArtist3View" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel50" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="eventCapacityView" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel51" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="eventDateView" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace pref="130" max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                                      <Component id="jScrollPane2" min="-2" pref="227" max="-2" attributes="0"/>
+                                      <EmptySpace pref="68" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
                           </Layout>
                           <SubComponents>
-                            <Component class="javax.swing.JLabel" name="jLabel46">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Evento"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JComboBox" name="jComboBox1">
-                              <Properties>
-                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                                  <StringArray count="4">
-                                    <StringItem index="0" value="Item 1"/>
-                                    <StringItem index="1" value="Item 2"/>
-                                    <StringItem index="2" value="Item 3"/>
-                                    <StringItem index="3" value="Item 4"/>
-                                  </StringArray>
-                                </Property>
-                              </Properties>
-                              <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox1ActionPerformed"/>
-                              </Events>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="jLabel47">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Nombre Evento"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="eventNameView">
-                              <Properties>
-                                <Property name="editable" type="boolean" value="false"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="jLabel48">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Lugar"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="eventPlaceView">
-                              <Properties>
-                                <Property name="editable" type="boolean" value="false"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="jLabel49">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Artistas"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="eventArtist1View">
-                              <Properties>
-                                <Property name="editable" type="boolean" value="false"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="eventArtist2View">
-                              <Properties>
-                                <Property name="editable" type="boolean" value="false"/>
-                              </Properties>
-                              <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eventArtist2ViewActionPerformed"/>
-                              </Events>
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="eventArtist3View">
-                              <Properties>
-                                <Property name="editable" type="boolean" value="false"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="jLabel50">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Capacidad"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="eventCapacityView">
-                              <Properties>
-                                <Property name="editable" type="boolean" value="false"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="jLabel51">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Fecha"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="eventDateView">
-                              <Properties>
-                                <Property name="editable" type="boolean" value="false"/>
-                              </Properties>
-                              <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eventDateViewActionPerformed"/>
-                              </Events>
-                            </Component>
+                            <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+
+                              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                              <SubComponents>
+                                <Component class="javax.swing.JTable" name="eventViewTable">
+                                  <Properties>
+                                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                                      <Table columnCount="4" rowCount="4">
+                                        <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                                        <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                                        <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                                        <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                                      </Table>
+                                    </Property>
+                                  </Properties>
+                                </Component>
+                              </SubComponents>
+                            </Container>
                           </SubComponents>
                         </Container>
                       </SubComponents>
@@ -1357,19 +1227,19 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTabbedPane4" alignment="0" max="32767" attributes="0"/>
+                          <Component id="placeView" alignment="0" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTabbedPane4" alignment="0" max="32767" attributes="0"/>
+                          <Component id="placeView" alignment="0" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Container class="javax.swing.JTabbedPane" name="jTabbedPane4">
+                    <Container class="javax.swing.JTabbedPane" name="placeView">
                       <Events>
-                        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jTabbedPane4StateChanged"/>
+                        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="placeViewStateChanged"/>
                       </Events>
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
@@ -1693,10 +1563,7 @@
                             </Container>
                           </SubComponents>
                         </Container>
-                        <Container class="javax.swing.JPanel" name="placeView">
-                          <Events>
-                            <EventHandler event="ancestorAdded" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="placeViewAncestorAdded"/>
-                          </Events>
+                        <Container class="javax.swing.JPanel" name="jPanel3">
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                               <JTabbedPaneConstraints tabName="Ver">
@@ -1708,19 +1575,19 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace pref="29" max="32767" attributes="0"/>
-                                      <Component id="jScrollPane1" min="-2" pref="634" max="-2" attributes="0"/>
-                                      <EmptySpace pref="31" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace pref="83" max="32767" attributes="0"/>
+                                      <Component id="jScrollPane1" min="-2" pref="534" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
-                                      <Component id="jScrollPane1" min="-2" pref="117" max="-2" attributes="0"/>
-                                      <EmptySpace pref="139" max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+                                      <Component id="jScrollPane1" min="-2" pref="128" max="-2" attributes="0"/>
+                                      <EmptySpace pref="148" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>

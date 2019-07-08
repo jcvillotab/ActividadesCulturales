@@ -7,7 +7,6 @@ package Control;
 
 import DAO.ArtistaDao;
 import Entidad.Artistat;
-import Entidad.Lugart;
 import java.io.Serializable;
 import java.util.ArrayList;
 

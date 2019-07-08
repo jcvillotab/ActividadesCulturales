@@ -8,23 +8,13 @@ package Control;
 import DAO.EventoDao;
 import java.io.Serializable;
 import javax.persistence.Query;
-
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import Entidad.Admint;
-
 import java.util.ArrayList;
-
 import Entidad.Artistat;
 import Entidad.Eventot;
 import Entidad.Lugart;
-import com.mysql.cj.jdbc.CallableStatement;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -104,6 +94,7 @@ public class EventotController implements Serializable {
         int idT = ids.get(x);
         return idsEvento;
     }
+    
 
     
 
