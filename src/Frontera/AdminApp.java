@@ -113,7 +113,7 @@ public class AdminApp extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         eventViewTable = new javax.swing.JTable();
         artistP = new javax.swing.JPanel();
-        jpanel4 = new javax.swing.JTabbedPane();
+        artistView = new javax.swing.JTabbedPane();
         artistCreate = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
@@ -124,8 +124,6 @@ public class AdminApp extends javax.swing.JPanel {
         addArtistB = new javax.swing.JPanel();
         jLabel30 = new javax.swing.JLabel();
         artistEdit = new javax.swing.JPanel();
-        jLabel31 = new javax.swing.JLabel();
-        artistList = new javax.swing.JComboBox();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
@@ -134,6 +132,8 @@ public class AdminApp extends javax.swing.JPanel {
         artistNameEditTF = new javax.swing.JTextField();
         editArtistB = new javax.swing.JPanel();
         jLabel35 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        artistEditTable = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jscroll = new javax.swing.JScrollPane();
         artistViewTable = new javax.swing.JTable();
@@ -166,7 +166,7 @@ public class AdminApp extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         placeViewTable = new javax.swing.JTable();
-        jPanel4 = new javax.swing.JPanel();
+        statisticsP = new javax.swing.JPanel();
         jTabbedPane3 = new javax.swing.JTabbedPane();
         jPanel5 = new javax.swing.JPanel();
         jLabel36 = new javax.swing.JLabel();
@@ -459,7 +459,7 @@ public class AdminApp extends javax.swing.JPanel {
                         .addComponent(eventEditNameTF, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(eventSelectorE, javax.swing.GroupLayout.Alignment.LEADING, 0, 576, Short.MAX_VALUE)
                         .addComponent(eventEditPlaceTF, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eventEditLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(editEventB, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -627,9 +627,10 @@ public class AdminApp extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Evento", eventP);
 
-        jpanel4.addChangeListener(new javax.swing.event.ChangeListener() {
+        artistView.setPreferredSize(new java.awt.Dimension(455, 377));
+        artistView.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jpanel4StateChanged(evt);
+                artistViewStateChanged(evt);
             }
         });
 
@@ -695,7 +696,7 @@ public class AdminApp extends javax.swing.JPanel {
                     .addGroup(artistCreateLayout.createSequentialGroup()
                         .addGap(247, 247, 247)
                         .addComponent(addArtistB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(180, Short.MAX_VALUE))
+                .addContainerGap(169, Short.MAX_VALUE))
         );
         artistCreateLayout.setVerticalGroup(
             artistCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -714,19 +715,10 @@ public class AdminApp extends javax.swing.JPanel {
                     .addComponent(artistIdAddTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(55, 55, 55)
                 .addComponent(addArtistB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
-        jpanel4.addTab("Añadir", artistCreate);
-
-        jLabel31.setText("Artista");
-
-        artistList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        artistList.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                artistListActionPerformed(evt);
-            }
-        });
+        artistView.addTab("Añadir", artistCreate);
 
         jLabel32.setText("Nombre");
 
@@ -734,7 +726,11 @@ public class AdminApp extends javax.swing.JPanel {
 
         jLabel34.setText("Identificación");
 
-        artistIdEditTF.setEnabled(false);
+        artistIdEditTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                artistIdEditTFActionPerformed(evt);
+            }
+        });
 
         editArtistB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         editArtistB.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -752,47 +748,73 @@ public class AdminApp extends javax.swing.JPanel {
         editArtistBLayout.setHorizontalGroup(
             editArtistBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(editArtistBLayout.createSequentialGroup()
-                .addContainerGap(59, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         editArtistBLayout.setVerticalGroup(
             editArtistBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(editArtistBLayout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        artistEditTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Nombre", "Ocupacion", "Identificacion"
+            }
+        ));
+        artistEditTable.setCellSelectionEnabled(true);
+        artistEditTable.setDefaultEditor(Object.class, null);
+        artistEditTable.setColumnSelectionAllowed(false);
+        artistEditTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                artistEditTableMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(artistEditTable);
 
         javax.swing.GroupLayout artistEditLayout = new javax.swing.GroupLayout(artistEdit);
         artistEdit.setLayout(artistEditLayout);
         artistEditLayout.setHorizontalGroup(
             artistEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(artistEditLayout.createSequentialGroup()
-                .addGap(168, 168, 168)
                 .addGroup(artistEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel34)
-                    .addComponent(jLabel33)
-                    .addComponent(jLabel32)
-                    .addComponent(jLabel31))
-                .addGap(18, 18, 18)
-                .addGroup(artistEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(editArtistB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(artistEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(artistList, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(artistNameEditTF)
-                        .addComponent(artistJobEditTF, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(artistIdEditTF, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(178, Short.MAX_VALUE))
+                    .addGroup(artistEditLayout.createSequentialGroup()
+                        .addGap(306, 306, 306)
+                        .addComponent(editArtistB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(artistEditLayout.createSequentialGroup()
+                        .addGap(140, 140, 140)
+                        .addGroup(artistEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel34)
+                            .addComponent(jLabel33)
+                            .addComponent(jLabel32))
+                        .addGap(18, 18, 18)
+                        .addGroup(artistEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(artistNameEditTF)
+                            .addComponent(artistJobEditTF, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(artistEditLayout.createSequentialGroup()
+                                .addComponent(artistIdEditTF)
+                                .addGap(109, 109, 109))))
+                    .addGroup(artistEditLayout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
         artistEditLayout.setVerticalGroup(
             artistEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(artistEditLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(artistEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel31)
-                    .addComponent(artistList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(25, 25, 25)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(artistEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel32)
                     .addComponent(artistNameEditTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -804,21 +826,28 @@ public class AdminApp extends javax.swing.JPanel {
                 .addGroup(artistEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel34)
                     .addComponent(artistIdEditTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(editArtistB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60))
+                .addContainerGap())
         );
 
-        jpanel4.addTab("Editar", artistEdit);
+        artistView.addTab("Editar", artistEdit);
 
         artistViewTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-
+                "Nombre", "Ocupacion", "Identificacion"
             }
         ));
+        artistViewTable.setCellSelectionEnabled(true);
+        artistViewTable.setDefaultEditor(Object.class, null);
+        artistViewTable.setColumnSelectionAllowed(false);
         jscroll.setViewportView(artistViewTable);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -826,29 +855,29 @@ public class AdminApp extends javax.swing.JPanel {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(101, Short.MAX_VALUE)
-                .addComponent(jscroll, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(93, 93, 93))
+                .addContainerGap(77, Short.MAX_VALUE)
+                .addComponent(jscroll, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(67, 67, 67))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(jscroll, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addGap(83, 83, 83)
+                .addComponent(jscroll, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(153, Short.MAX_VALUE))
         );
 
-        jpanel4.addTab("Ver", jPanel2);
+        artistView.addTab("Ver", jPanel2);
 
         javax.swing.GroupLayout artistPLayout = new javax.swing.GroupLayout(artistP);
         artistP.setLayout(artistPLayout);
         artistPLayout.setHorizontalGroup(
             artistPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpanel4)
+            .addComponent(artistView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         artistPLayout.setVerticalGroup(
             artistPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpanel4)
+            .addComponent(artistView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Artistas", artistP);
@@ -1284,18 +1313,18 @@ public class AdminApp extends javax.swing.JPanel {
 
         jTabbedPane3.addTab("Lugar", jPanel7);
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout statisticsPLayout = new javax.swing.GroupLayout(statisticsP);
+        statisticsP.setLayout(statisticsPLayout);
+        statisticsPLayout.setHorizontalGroup(
+            statisticsPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jTabbedPane3)
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        statisticsPLayout.setVerticalGroup(
+            statisticsPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jTabbedPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 381, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Estadisticas", jPanel4);
+        jTabbedPane1.addTab("Estadisticas", statisticsP);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -1322,9 +1351,9 @@ public class AdminApp extends javax.swing.JPanel {
         BgLayout.setVerticalGroup(
             BgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BgLayout.createSequentialGroup()
-                .addContainerGap(124, Short.MAX_VALUE)
+                .addContainerGap(123, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(166, Short.MAX_VALUE))
+                .addContainerGap(165, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -1360,17 +1389,15 @@ public class AdminApp extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_eventSelectorDActionPerformed
 
-    private void jpanel4StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jpanel4StateChanged
+    private void artistViewStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_artistViewStateChanged
         String[] names;
-        String[] columnNames = {"Nombre", "Identificacion", "Ocupacion"};
+        String[] columnNames = {"Nombre", "Ocupacion", "Identificacion"};
         String[][] data = artistaCtrl.listar_datos();
-                
-        names = artistaCtrl.listar_nombres();
-        artistList.setModel(new DefaultComboBoxModel(names));
         
         artistViewTable.setModel(new DefaultTableModel(data, columnNames));
-        //artistViewSelector.setModel(new DefaultComboBoxModel(names));
-    }//GEN-LAST:event_jpanel4StateChanged
+        artistEditTable.setModel(new DefaultTableModel(data, columnNames));
+
+    }//GEN-LAST:event_artistViewStateChanged
 
     private void placeViewStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_placeViewStateChanged
 
@@ -1409,25 +1436,6 @@ public class AdminApp extends javax.swing.JPanel {
 
     }//GEN-LAST:event_editPlaceBMouseClicked
 
-    private void artistListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_artistListActionPerformed
-        String name = artistList.getSelectedItem().toString();
-        List<Artistat> list = artistaCtrl.listar_artistas();
-        Artistat artista = null;
-
-        for (Artistat list1 : list) {
-            artista = list1;
-            if (artista.getNombreArtista().equals(name)) {
-                break;
-            }
-        }
-
-        artistNameEditTF.setText(artista.getNombreArtista());
-        artistJobEditTF.setText(artista.getOcupacionArtista());
-        artistIdEditTF.setText(Integer.toString(artista.getIdArtista()));
-
-        artistId = artista.getIdArtista();
-    }//GEN-LAST:event_artistListActionPerformed
-
     private void addArtistBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addArtistBMouseClicked
         Artistat artista = new Artistat();
         artista.setNombreArtista(artistNameAddTF.getText());
@@ -1437,16 +1445,6 @@ public class AdminApp extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(ha, res);
 
     }//GEN-LAST:event_addArtistBMouseClicked
-
-    private void editArtistBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editArtistBMouseClicked
-        Artistat artista = artistaCtrl.buscarById(artistId);
-        artista.setNombreArtista(artistNameEditTF.getText());
-        artista.setOcupacionArtista(artistJobEditTF.getText());
-        artista.setIdArtista(Integer.parseInt(artistIdEditTF.getText()));
-        String res = artistaCtrl.edit(artista);
-        JOptionPane.showMessageDialog(ha, res);
-        artistId = artista.getIdArtista();
-    }//GEN-LAST:event_editArtistBMouseClicked
 
     private void addEventBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addEventBMouseClicked
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
@@ -1579,6 +1577,33 @@ public class AdminApp extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
+
+    private void editArtistBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editArtistBMouseClicked
+        Artistat artista = artistaCtrl.buscarById(artistId);
+        artista.setNombreArtista(artistNameEditTF.getText());
+        artista.setOcupacionArtista(artistJobEditTF.getText());
+        artista.setIdArtista(Integer.parseInt(artistIdEditTF.getText()));
+        String res = artistaCtrl.edit(artista);
+        JOptionPane.showMessageDialog(ha, res);
+        artistId = artista.getIdArtista();
+    }//GEN-LAST:event_editArtistBMouseClicked
+
+    private void artistIdEditTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_artistIdEditTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_artistIdEditTFActionPerformed
+
+    private void artistEditTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_artistEditTableMouseClicked
+        DefaultTableModel model = (DefaultTableModel) artistEditTable.getModel();
+        int index = artistEditTable.getSelectedRow();
+        
+        Artistat artista = artistaCtrl.buscarById(Integer.parseInt(model.getValueAt(index, 0).toString()));
+        
+        artistNameEditTF.setText(artista.getNombreArtista());
+        artistJobEditTF.setText(artista.getOcupacionArtista());
+        artistIdEditTF.setText(String.valueOf(artista.getIdArtista()));
+        artistId = artista.getIdArtista();
+    }//GEN-LAST:event_artistEditTableMouseClicked
+
     private void placeEditSelectionTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_placeEditSelectionTableMouseClicked
         DefaultTableModel model = (DefaultTableModel) placeEditSelectionTable.getModel();
         int index = placeEditSelectionTable.getSelectedRow();
@@ -1592,6 +1617,7 @@ public class AdminApp extends javax.swing.JPanel {
         placeId = lugar.getIdLugar();
         
     }//GEN-LAST:event_placeEditSelectionTableMouseClicked
+
     
     private String[][] datos(){
         Eventot temp;
@@ -1657,14 +1683,15 @@ public class AdminApp extends javax.swing.JPanel {
     private javax.swing.JPanel addEventB;
     private javax.swing.JPanel artistCreate;
     private javax.swing.JPanel artistEdit;
+    private javax.swing.JTable artistEditTable;
     private javax.swing.JTextField artistIdAddTF;
     private javax.swing.JTextField artistIdEditTF;
     private javax.swing.JTextField artistJobAddTF;
     private javax.swing.JTextField artistJobEditTF;
-    private javax.swing.JComboBox artistList;
     private javax.swing.JTextField artistNameAddTF;
     private javax.swing.JTextField artistNameEditTF;
     private javax.swing.JPanel artistP;
+    private javax.swing.JTabbedPane artistView;
     private javax.swing.JTable artistViewTable;
     private javax.swing.JPanel createPlaceB;
     private javax.swing.JPanel deleteEventB;
@@ -1721,7 +1748,6 @@ public class AdminApp extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
@@ -1746,7 +1772,6 @@ public class AdminApp extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
@@ -1766,7 +1791,6 @@ public class AdminApp extends javax.swing.JPanel {
     private org.jdesktop.swingx.JXDatePicker jXDatePicker2;
     private org.jdesktop.swingx.JXDatePicker jXDatePicker3;
     private org.jdesktop.swingx.JXDatePicker jXDatePicker4;
-    private javax.swing.JTabbedPane jpanel4;
     private javax.swing.JScrollPane jscroll;
     private javax.swing.JPanel placeAdd;
     private javax.swing.JTextField placeCapacityAddTF;
@@ -1782,5 +1806,6 @@ public class AdminApp extends javax.swing.JPanel {
     private javax.swing.JTextField placeSectionEditTF;
     private javax.swing.JTabbedPane placeView;
     private javax.swing.JTable placeViewTable;
+    private javax.swing.JPanel statisticsP;
     // End of variables declaration//GEN-END:variables
 }
