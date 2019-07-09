@@ -161,7 +161,7 @@ public class AdminApp extends javax.swing.JPanel {
         placeCapacityEditTF = new javax.swing.JTextField();
         editPlaceB = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
+        jScrollPane4 = new javax.swing.JScrollPane();
         placeEditSelectionTable = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -1034,7 +1034,7 @@ public class AdminApp extends javax.swing.JPanel {
                 placeEditSelectionTableMouseClicked(evt);
             }
         });
-        jScrollPane3.setViewportView(placeEditSelectionTable);
+        jScrollPane4.setViewportView(placeEditSelectionTable);
 
         javax.swing.GroupLayout placeEditLayout = new javax.swing.GroupLayout(placeEdit);
         placeEdit.setLayout(placeEditLayout);
@@ -1064,14 +1064,14 @@ public class AdminApp extends javax.swing.JPanel {
                                 .addComponent(placeCapacityEditTF, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(placeEditLayout.createSequentialGroup()
                         .addGap(108, 108, 108)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(134, Short.MAX_VALUE))
         );
         placeEditLayout.setVerticalGroup(
             placeEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(placeEditLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addGroup(placeEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(placeNameEditTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1351,9 +1351,9 @@ public class AdminApp extends javax.swing.JPanel {
         BgLayout.setVerticalGroup(
             BgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BgLayout.createSequentialGroup()
-                .addContainerGap(123, Short.MAX_VALUE)
+                .addContainerGap(124, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(165, Short.MAX_VALUE))
+                .addContainerGap(166, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -1390,7 +1390,7 @@ public class AdminApp extends javax.swing.JPanel {
     }//GEN-LAST:event_eventSelectorDActionPerformed
 
     private void artistViewStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_artistViewStateChanged
-        String[] names;
+
         String[] columnNames = {"Nombre", "Ocupacion", "Identificacion"};
         String[][] data = artistaCtrl.listar_datos();
         
@@ -1778,6 +1778,7 @@ public class AdminApp extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner2;
     private javax.swing.JSpinner jSpinner3;
