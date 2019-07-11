@@ -33,9 +33,8 @@ public class EventoDao {
     
     
     public String crear_evento(Eventot evento,int[] artistas, int lugar, int capacidad, int fk_admin){
-        SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         try {
-            System.out.println("llegue aqui");
             String sentencia_crear = "{call CREAR_EVENTO('"+evento.getNombreEvento()+"','"+format1.format(evento.getFechaEvento())+"',"+artistas[0]+","+artistas[1]+","+artistas[2]+","+lugar+","+capacidad+","+fk_admin+")}";
             CallableStatement ms = (CallableStatement) con.prepareCall(sentencia_crear);
             ms.executeQuery();
@@ -46,7 +45,7 @@ public class EventoDao {
     }
     
     public String editar_evento(Eventot event, int[] ids_artist, Lugart lugar, int capacity){
-        SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         try {
             String sentencia = "{call EDITAR_EVENTO("+event.getIdEvento()+",'"+event.getNombreEvento()+"','"+format1.format(event.getFechaEvento())+"',"+ids_artist[0]+","+ids_artist[1]+","+ids_artist[2]+","+lugar.getIdLugar()+","+capacity+")}";
             CallableStatement ms = (CallableStatement) con.prepareCall(sentencia);
@@ -70,7 +69,6 @@ public class EventoDao {
     
     public ArrayList listar(){
         ArrayList<Eventot> eventos = new ArrayList();                                           
-        SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
         try {
             Eventot eventTemp;
             CallableStatement ms =  (CallableStatement) con.prepareCall("{call LIST_EVENT()}");

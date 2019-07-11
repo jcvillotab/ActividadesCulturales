@@ -116,7 +116,7 @@ public class EventotController implements Serializable {
 
     public String editEvent(Eventot event, Lugart lugar, List<Artistat> artists, int capacity) {
         int[] ids_artist = new int[4];
-        SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+        
         int count = 0;
         for (int i = 0; i < artists.size(); i++) {
             ids_artist[i]=artists.get(i).getIdArtista();

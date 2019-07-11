@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `artistaT` (
 CREATE TABLE IF NOT EXISTS `eventoT` (
     `id_evento` INT(8) NOT NULL AUTO_INCREMENT COMMENT 'Clave primaria',
     `nombre_evento` VARCHAR(64) NOT NULL COMMENT 'nombre evento',
-    `fecha_evento` DATE NOT NULL COMMENT 'fecha evento',
+    `fecha_evento` DATETIME NOT NULL COMMENT 'fecha evento',
     `estado_evento` INT(2) NOT NULL COMMENT 'estado',
     `fk_id_admin` INT(8) NOT NULL COMMENT 'fk admin',
     CONSTRAINT `pk_evento` PRIMARY KEY (`id_evento`)
@@ -107,14 +107,26 @@ UPDATE actividadesculturalesdb.eventot SET eventot.estado_evento = 1 WHERE event
 CREATE PROCEDURE LIST_LUGARES()
 SELECT * FROM actividadesculturalesdb.lugart;
 
+CREATE PROCEDURE LIST_RESERVAS(IN idCliente int)
+SELECT * FROM actividadesculturalesdb.eventoxclientet WHERE id_fk_id_cliente = idCliente;
+
 DELIMITER //
-CREATE PROCEDURE RESERVE(IN id_cliente int(8), IN id_evento int(8))
+CREATE PROCEDURE DELETE_RESERVE(IN id_cliente int(8), IN id_evento int(8))
 BEGIN
-INSERT INTO actividadesculturalesdb.eventoxclientet (eventoxclientet.id_fk_id_evento, eventoxclientetid_fk_id_cliente) VALUES (id_evento, id_cliente);
-UPDATE actividadesculturalesdb.eventoxlugart SET eventoxlugart.capacidad_ocupada_exl = eventoxlugart.capacidad_ocupada_ex - 1 WHERE eventoxlugart.id_fk_id_evento = id_evento;
+DELETE FROM actividadesculturalesdb.eventoxclientet  WHERE ((id_fk_id_cliente= id_cliente) AND (id_fk_id_evento = id_evento));
+UPDATE actividadesculturalesdb.eventoxlugart SET eventoxlugart.capacidad_ocupada_exl = eventoxlugart.capacidad_ocupada_exl + 1 WHERE eventoxlugart.id_fk_id_evento = id_evento ;
 END
 //DELIMITER
 
+
+
+DELIMITER //
+CREATE PROCEDURE RESERVE(IN id_cliente int(8), IN id_evento int(8))
+BEGIN
+INSERT INTO actividadesculturalesdb.eventoxclientet (eventoxclientet.id_fk_id_evento, eventoxclientet.id_fk_id_cliente) VALUES (id_evento, id_cliente);
+UPDATE actividadesculturalesdb.eventoxlugart SET eventoxlugart.capacidad_ocupada_exl = eventoxlugart.capacidad_ocupada_exl - 1 WHERE eventoxlugart.id_fk_id_evento = id_evento;
+END
+//DELIMITER
 
 DELIMITER //
 CREATE PROCEDURE DELETE_ARTISTA(IN id_artistaV INT(8))
@@ -125,7 +137,7 @@ END
 //DELIMITER
 
 DELIMITER //
-CREATE PROCEDURE EDITAR_EVENTO(IN id_eventoC INT, IN nombre_eventoC VARCHAR(64), IN fecha_eventoC DATE, IN artista1 INT, IN artista2 INT, IN artista3 INT, IN lugar INT, IN capacidad INT)
+CREATE PROCEDURE EDITAR_EVENTO(IN id_eventoC INT, IN nombre_eventoC VARCHAR(64), IN fecha_eventoC DATETIME, IN artista1 INT, IN artista2 INT, IN artista3 INT, IN lugar INT, IN capacidad INT)
 BEGIN
 	UPDATE actividadesculturalesdb.eventot SET eventot.nombre_evento=nombre_eventoC, eventot.fecha_evento=fecha_eventoC WHERE eventot.id_evento=id_eventoC;
     DELETE FROM actividadesculturalesdb.eventoxartistat WHERE eventoxartistat.id_fk_id_evento = id_eventoC;
@@ -147,7 +159,7 @@ BEGIN
 
 
 DELIMITER //
-CREATE PROCEDURE CREAR_EVENTO(IN nombre_eventoC VARCHAR(64), IN fecha_eventoC DATE, IN artista1 INT, IN artista2 INT, IN artista3 INT, IN lugar INT, IN capacidad INT, IN fk_id_adminC INT)
+CREATE PROCEDURE CREAR_EVENTO(IN nombre_eventoC VARCHAR(64), IN fecha_eventoC DATETIME, IN artista1 INT, IN artista2 INT, IN artista3 INT, IN lugar INT, IN capacidad INT, IN fk_id_adminC INT)
 BEGIN
 	INSERT INTO actividadesculturalesdb.eventot (eventot.nombre_evento, eventot.fecha_evento, eventot.fk_id_admin, eventot.estado_evento) VALUES(nombre_eventoC,fecha_eventoC,fk_id_adminC,0);
 	IF(artista1<>0)
@@ -163,8 +175,28 @@ BEGIN
 		INSERT INTO actividadesculturalesdb.eventoxartistat (eventoxartistat.id_fk_id_evento, eventoxartistat.id_fk_id_artista) VALUES(LAST_EVENT(),artista3);
     END IF;
     INSERT INTO actividadesculturalesdb.eventoxlugart (eventoxlugart.id_fk_id_evento, eventoxlugart.id_fk_id_lugar, eventoxlugart.capacidad_ocupada_exl) VALUES(LAST_EVENT(),lugar,capacidad);
-    END
+END
 //DELIMITER 
+
+
+DELIMITER //
+CREATE FUNCTION CLIENT_EXIST(id_cliente int) RETURNS INT
+BEGIN
+	DECLARE v_id int;
+	IF(EXISTS(SELECT * FROM actividadesculturalesdb.clientet WHERE codigo_cliente = id_cliente)) THEN
+		SET v_id = 1;
+	ELSE
+		SET v_id = 0;
+	END IF;	
+    RETURN v_id;
+END 
+//DELIMITER 
+
+
+CREATE FUNCTION RETURN_ID_CLIENT(codigoCliente int) RETURNS int
+RETURN (select clientet.id_cliente FROM actividadesculturalesdb.clientet WHERE codigo_cliente = codigoCliente);
+
+
 
 CREATE FUNCTION RETURN_ID_LUGAR (id_evento int) RETURNS INT
 RETURN (SELECT id_fk_id_lugar FROM actividadesculturalesdb.eventoxlugart WHERE id_fk_id_evento = id_evento);

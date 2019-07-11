@@ -5,6 +5,15 @@
  */
 package Frontera;
 
+import Control.ArtistatController;
+import Control.ClientetController;
+import Control.EventotController;
+import Entidad.Eventot;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author manue
@@ -14,8 +23,14 @@ public class ClientApp extends javax.swing.JPanel {
     /**
      * Creates new form ClientApp
      */
+    public HomeApp ha;
+    private final EventotController eventoCtrl = new EventotController();
+    private final ArtistatController artistaCtrl = new ArtistatController();
+    private final ClientetController clienteCtrl = new ClientetController();
+    
     public ClientApp() {
         initComponents();
+        actualizarTabla();
     }
 
     /**
@@ -63,6 +78,11 @@ public class ClientApp extends javax.swing.JPanel {
         jTabbedPane1.setToolTipText("");
         jTabbedPane1.setMinimumSize(new java.awt.Dimension(741, 402));
         jTabbedPane1.setPreferredSize(new java.awt.Dimension(741, 402));
+        jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jTabbedPane1StateChanged(evt);
+            }
+        });
 
         jLabel3.setText("Id del cliente");
 
@@ -73,10 +93,20 @@ public class ClientApp extends javax.swing.JPanel {
         });
 
         reserveEventB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        reserveEventB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                reserveEventBMouseClicked(evt);
+            }
+        });
 
         jLabel21.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel21.setText("Reservar");
+        jLabel21.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel21MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout reserveEventBLayout = new javax.swing.GroupLayout(reserveEventB);
         reserveEventB.setLayout(reserveEventBLayout);
@@ -143,6 +173,9 @@ public class ClientApp extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        eventsRTable.setCellSelectionEnabled(true);
+        eventsRTable.setDefaultEditor(Object.class, null);
+        eventsRTable.setColumnSelectionAllowed(false);
         jScrollPane3.setViewportView(eventsRTable);
         if (eventsRTable.getColumnModel().getColumnCount() > 0) {
             eventsRTable.getColumnModel().getColumn(0).setResizable(false);
@@ -190,16 +223,16 @@ public class ClientApp extends javax.swing.JPanel {
                     .addComponent(addClientEventB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, reservarPLayout.createSequentialGroup()
-                .addContainerGap(49, Short.MAX_VALUE)
+                .addContainerGap(58, Short.MAX_VALUE)
                 .addGroup(reservarPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, reservarPLayout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, reservarPLayout.createSequentialGroup()
                         .addComponent(goBackREventB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(reserveEventB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, reservarPLayout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27))))
         );
         reservarPLayout.setVerticalGroup(
             reservarPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,11 +246,11 @@ public class ClientApp extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(addClientEventB, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(addClientEventB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
                 .addGroup(reservarPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(reserveEventB, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(goBackREventB, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(reserveEventB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(goBackREventB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(130, 130, 130))
         );
 
@@ -255,6 +288,11 @@ public class ClientApp extends javax.swing.JPanel {
         );
 
         deleteEventB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        deleteEventB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteEventBMouseClicked(evt);
+            }
+        });
 
         jLabel20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -302,6 +340,9 @@ public class ClientApp extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        eventsCTable.setCellSelectionEnabled(true);
+        eventsCTable.setDefaultEditor(Object.class, null);
+        eventsCTable.setColumnSelectionAllowed(false);
         jScrollPane1.setViewportView(eventsCTable);
         if (eventsCTable.getColumnModel().getColumnCount() > 0) {
             eventsCTable.getColumnModel().getColumn(0).setResizable(false);
@@ -312,6 +353,11 @@ public class ClientApp extends javax.swing.JPanel {
         }
 
         searchEventB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        searchEventB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                searchEventBMouseClicked(evt);
+            }
+        });
 
         jLabel23.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -368,13 +414,13 @@ public class ClientApp extends javax.swing.JPanel {
                             .addComponent(jLabel4)))
                     .addGroup(consultarPLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(searchEventB, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(searchEventB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addGroup(consultarPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(goBackCEventB, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(deleteEventB, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(goBackCEventB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deleteEventB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -407,9 +453,9 @@ public class ClientApp extends javax.swing.JPanel {
         BgLayout.setVerticalGroup(
             BgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgLayout.createSequentialGroup()
-                .addContainerGap(123, Short.MAX_VALUE)
+                .addContainerGap(124, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(165, Short.MAX_VALUE))
+                .addContainerGap(166, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -437,6 +483,98 @@ public class ClientApp extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_idSearchTFActionPerformed
 
+    private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
+        if(jTabbedPane1.getSelectedIndex() == 0){
+            actualizarTabla();
+        }
+    }//GEN-LAST:event_jTabbedPane1StateChanged
+
+    private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
+        
+    }//GEN-LAST:event_jLabel21MouseClicked
+
+    private void reserveEventBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reserveEventBMouseClicked
+        String res;
+        DefaultTableModel model = (DefaultTableModel) eventsRTable.getModel();
+        int index = eventsRTable.getSelectedRow();
+        
+        res = clienteCtrl.reservar(Integer.parseInt(clientIdTF.getText()), Integer.parseInt(model.getValueAt(index, 0).toString()));
+        JOptionPane.showMessageDialog(ha,res);
+    }//GEN-LAST:event_reserveEventBMouseClicked
+
+    private void searchEventBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchEventBMouseClicked
+        ArrayList<Integer> eventoId = clienteCtrl.listar_id_evento_reservas(Integer.parseInt(idSearchTF.getText()));
+        ArrayList<Eventot> eventos = new ArrayList<>();
+        Eventot temp;
+        for (Integer eventoId1 : eventoId) {
+            temp = eventoCtrl.findEventot(eventoId1);
+            eventos.add(temp);
+        }
+        actualizarTabla(eventos);
+    }//GEN-LAST:event_searchEventBMouseClicked
+
+    private void deleteEventBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteEventBMouseClicked
+        String res;
+        DefaultTableModel model = (DefaultTableModel) eventsCTable.getModel();
+        int index = eventsCTable.getSelectedRow();
+        
+        res = clienteCtrl.eliminarReserva(Integer.parseInt(idSearchTF.getText()), Integer.parseInt(model.getValueAt(index, 0).toString()));
+        JOptionPane.showMessageDialog(ha,res);
+    }//GEN-LAST:event_deleteEventBMouseClicked
+    
+    private void actualizarTabla(){
+        Eventot temp;
+        int capacidad;
+        ArrayList<Integer> artistIds;
+        ArrayList<String> artistNames;
+        String[] tableNames = {"Id", "Nombre", "Lugar", "Artista Principal", "Capacidad", "Fecha/Hora"};
+        SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        ArrayList<Eventot> eventList = eventoCtrl.listarEventos();
+        String[][] datos = new String[eventList.size()][6];
+        
+        for (int i = 0; i < eventList.size(); i++) {
+            temp = eventList.get(i);
+            artistIds = eventoCtrl.buscar_ids_artistas(temp.getIdEvento());
+            artistNames = artistaCtrl.buscarByIds(artistIds);
+            capacidad = eventoCtrl.buscarCapacidad(temp.getIdEvento());
+            
+            datos[i][0] = String.valueOf(temp.getIdEvento());
+            datos[i][1] = temp.getNombreEvento();
+            datos[i][2] = "";
+            datos[i][3] = artistNames.get(0);
+            datos[i][4] = String.valueOf(capacidad);
+            datos[i][5] = format1.format(temp.getFechaEvento());
+        }
+
+        eventsRTable.setModel(new DefaultTableModel(datos, tableNames));
+
+    }
+    
+    private void actualizarTabla(ArrayList<Eventot> eventList){
+        Eventot temp;
+        int capacidad;
+        ArrayList<Integer> artistIds;
+        ArrayList<String> artistNames;
+        String[] tableNames = {"Id", "Nombre", "Lugar", "Artista Principal", "Capacidad", "Fecha/Hora"};
+        SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String[][] datos = new String[eventList.size()][6];
+        
+        for (int i = 0; i < eventList.size(); i++) {
+            temp = eventList.get(i);
+            artistIds = eventoCtrl.buscar_ids_artistas(temp.getIdEvento());
+            artistNames = artistaCtrl.buscarByIds(artistIds);
+            capacidad = eventoCtrl.buscarCapacidad(temp.getIdEvento());
+            
+            datos[i][0] = String.valueOf(temp.getIdEvento());
+            datos[i][1] = temp.getNombreEvento();
+            datos[i][2] = "";
+            datos[i][3] = artistNames.get(0);
+            datos[i][4] = String.valueOf(capacidad);
+            datos[i][5] = format1.format(temp.getFechaEvento());
+        }
+
+        eventsCTable.setModel(new DefaultTableModel(datos, tableNames));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Bg;
