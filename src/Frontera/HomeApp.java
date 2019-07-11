@@ -5,6 +5,8 @@
  */
 package Frontera;
 
+import java.awt.Color;
+
 
 /**
  *
@@ -15,15 +17,25 @@ public class HomeApp extends javax.swing.JFrame {
     /**
      * Creates new form HomeApp
      */
+    
+    
+    
+    
+    
     private LoginApp login = new LoginApp();
     private AdminApp admin = new AdminApp();
     private ClientApp client = new ClientApp();
     
+    
+    
+
+
     public HomeApp() {
         initComponents();
         login.ha = this;
         admin.ha = this;
         client.ha = this;
+        
     }
 
     /**
@@ -60,16 +72,34 @@ public class HomeApp extends javax.swing.JFrame {
 
         clientB.setBackground(new java.awt.Color(78, 159, 233));
         clientB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        clientB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         clientB.setPreferredSize(new java.awt.Dimension(190, 80));
         clientB.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 clientBMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                clientBMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                clientBMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                clientBMousePressed(evt);
             }
         });
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel1.setText("Cliente");
         jLabel1.setAlignmentY(0.0F);
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel1MouseEntered(evt);
+            }
+        });
 
         javax.swing.GroupLayout clientBLayout = new javax.swing.GroupLayout(clientB);
         clientB.setLayout(clientBLayout);
@@ -91,10 +121,20 @@ public class HomeApp extends javax.swing.JFrame {
         adminB.setBackground(new java.awt.Color(78, 159, 233));
         adminB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         adminB.setToolTipText("");
+        adminB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         adminB.setPreferredSize(new java.awt.Dimension(190, 80));
         adminB.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 adminBMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                adminBMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                adminBMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                adminBMousePressed(evt);
             }
         });
 
@@ -102,6 +142,14 @@ public class HomeApp extends javax.swing.JFrame {
         jLabel2.setText("Administrador");
         jLabel2.setToolTipText("");
         jLabel2.setAlignmentY(0.0F);
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel2MouseEntered(evt);
+            }
+        });
 
         javax.swing.GroupLayout adminBLayout = new javax.swing.GroupLayout(adminB);
         adminB.setLayout(adminBLayout);
@@ -171,19 +219,95 @@ public class HomeApp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void adminBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminBMouseClicked
-        basicP.setVisible(false);
-        basicP.remove(homeP);
-        basicP.add(login);
-        basicP.setVisible(true);
+        eventClickAdminBB();
     }//GEN-LAST:event_adminBMouseClicked
 
     private void clientBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clientBMouseClicked
+        eventClickClienteBB();
+    }//GEN-LAST:event_clientBMouseClicked
+    boolean ps = true;
+    boolean ps2 = true;
+    private void adminBMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminBMouseEntered
+        ps=false;
+        eventButtonAdminBB();
+    }//GEN-LAST:event_adminBMouseEntered
+
+    private void adminBMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminBMouseExited
+        ps=true;
+        eventButtonAdminBB();
+    }//GEN-LAST:event_adminBMouseExited
+
+    private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
+        ps=false;
+        eventButtonAdminBB();
+    }//GEN-LAST:event_jLabel2MouseEntered
+
+    private void clientBMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clientBMouseEntered
+        ps2=false;
+        eventButtonClienteBB();
+    }//GEN-LAST:event_clientBMouseEntered
+
+    private void clientBMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clientBMouseExited
+        ps2=true;
+        eventButtonClienteBB();
+    }//GEN-LAST:event_clientBMouseExited
+
+    private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
+        ps2=false;
+        eventButtonClienteBB();
+    }//GEN-LAST:event_jLabel1MouseEntered
+
+    private void adminBMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminBMousePressed
+        Color colorbg = new Color(25,109,185,255);
+        adminB.setBackground(colorbg);
+    }//GEN-LAST:event_adminBMousePressed
+
+    private void clientBMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clientBMousePressed
+        Color colorbg = new Color(25,109,185,255);
+        clientB.setBackground(colorbg);
+    }//GEN-LAST:event_clientBMousePressed
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        eventClickAdminBB();
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        eventClickClienteBB();
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    public void eventButtonAdminBB(){
+        Color colorbg;
+        if(!ps){  
+            colorbg = new Color(121,191,255,255);
+        }else{  
+            colorbg = new Color(78,159,233,255);
+        }
+        adminB.setBackground(colorbg);
+    }
+    
+    public void eventButtonClienteBB(){
+        Color colorbg;
+        if(!ps2){  
+            colorbg = new Color(121,191,255,255);
+        }else{  
+            colorbg = new Color(78,159,233,255);
+        }
+        clientB.setBackground(colorbg);
+    }
+    
+    public void eventClickClienteBB(){
         basicP.setVisible(false);
         basicP.remove(homeP);
         basicP.add(client);
         basicP.setVisible(true);
-    }//GEN-LAST:event_clientBMouseClicked
-
+    }
+    
+    public void eventClickAdminBB(){
+        basicP.setVisible(false);
+        basicP.remove(homeP);
+        basicP.add(login);
+        basicP.setVisible(true);
+    }
     /**
      * @param args the command line arguments
      */

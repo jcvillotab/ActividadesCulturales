@@ -7,6 +7,7 @@ package Frontera;
 
 import Control.AdmintController;
 import Entidad.Admint;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,7 +21,7 @@ public class LoginApp extends javax.swing.JPanel {
      */
     public HomeApp ha;
     private AdmintController adminCtrl = new AdmintController();
-    
+
     public LoginApp() {
         initComponents();
     }
@@ -64,6 +65,7 @@ public class LoginApp extends javax.swing.JPanel {
         Bg.setMinimumSize(new java.awt.Dimension(980, 689));
         Bg.setPreferredSize(new java.awt.Dimension(1360, 720));
 
+        BgLogin.setBackground(new java.awt.Color(255, 255, 255));
         BgLogin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         BgLogin.setMaximumSize(new java.awt.Dimension(530, 490));
         BgLogin.setMinimumSize(new java.awt.Dimension(275, 490));
@@ -73,8 +75,10 @@ public class LoginApp extends javax.swing.JPanel {
             }
         });
 
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel3.setText("LogIn");
+        jLabel3.setForeground(new java.awt.Color(25, 109, 185));
+        jLabel3.setText("Ingresar");
         jLabel3.setFocusable(false);
 
         userTF.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -91,15 +95,36 @@ public class LoginApp extends javax.swing.JPanel {
 
         jLabel6.setText("Contraseña");
 
-        loginB1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        loginB1.setBackground(new java.awt.Color(25, 109, 185));
+        loginB1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        loginB1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         loginB1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 loginB1MouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                loginB1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                loginB1MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                loginB1MousePressed(evt);
+            }
         });
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Ingresar");
         jLabel5.setFocusable(false);
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel5MouseEntered(evt);
+            }
+        });
 
         javax.swing.GroupLayout loginB1Layout = new javax.swing.GroupLayout(loginB1);
         loginB1.setLayout(loginB1Layout);
@@ -118,18 +143,34 @@ public class LoginApp extends javax.swing.JPanel {
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        singUpB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        singUpB.setBackground(new java.awt.Color(255, 255, 255));
+        singUpB.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        singUpB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         singUpB.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 singUpBMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                singUpBMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                singUpBMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                singUpBMousePressed(evt);
+            }
         });
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(25, 109, 185));
         jLabel4.setText("Registro");
         jLabel4.setFocusable(false);
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel4MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel4MouseEntered(evt);
             }
         });
 
@@ -167,11 +208,12 @@ public class LoginApp extends javax.swing.JPanel {
                         .addComponent(userTF, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(passwordTF, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(BgLoginLayout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(loginB1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(BgLoginLayout.createSequentialGroup()
-                        .addGap(74, 74, 74)
-                        .addComponent(singUpB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(57, 57, 57)
+                        .addGroup(BgLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(loginB1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(BgLoginLayout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addComponent(singUpB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(117, Short.MAX_VALUE))
         );
         BgLoginLayout.setVerticalGroup(
@@ -198,17 +240,17 @@ public class LoginApp extends javax.swing.JPanel {
         Bg.setLayout(BgLayout);
         BgLayout.setHorizontalGroup(
             BgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgLayout.createSequentialGroup()
-                .addContainerGap(463, Short.MAX_VALUE)
+            .addGroup(BgLayout.createSequentialGroup()
+                .addContainerGap(435, Short.MAX_VALUE)
                 .addComponent(BgLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(408, 408, 408))
+                .addContainerGap(436, Short.MAX_VALUE))
         );
         BgLayout.setVerticalGroup(
             BgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BgLayout.createSequentialGroup()
-                .addGap(123, 123, 123)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgLayout.createSequentialGroup()
+                .addContainerGap(124, Short.MAX_VALUE)
                 .addComponent(BgLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addGap(98, 98, 98))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -224,38 +266,108 @@ public class LoginApp extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void singUpBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_singUpBMouseClicked
-    
-        SignUpApp sup = new SignUpApp();
-        sup.ha = ha;
-        ha.setBasicP(sup);
+        eventoRegistrarClick();
     }//GEN-LAST:event_singUpBMouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        // TODO add your handling code here:
+        eventoRegistrarClick();
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void BgLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BgLoginMouseClicked
-        
+
     }//GEN-LAST:event_BgLoginMouseClicked
 
     private void loginB1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginB1MouseClicked
-        Admint admin = new Admint(userTF.getText(),passwordTF.getText());
-        
-        String res = adminCtrl.LoginAdmint(admin);
-        if(res == "Datos correctos"){
-            AdminApp app = new AdminApp();
-            app.adminS = adminCtrl.getAdminS();
-            ha.setBasicP(app);
-        }else{
-            JOptionPane.showMessageDialog(ha, res);
-        }
+        eventLogInClick();
     }//GEN-LAST:event_loginB1MouseClicked
 
     private void userTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userTFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_userTFActionPerformed
 
+    boolean ps = true;
+    boolean ps2 = true;
+    private void loginB1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginB1MouseEntered
+        ps = false;
+        eventButtonIngresarBB();
+    }//GEN-LAST:event_loginB1MouseEntered
 
+    private void loginB1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginB1MouseExited
+        ps = true;
+        eventButtonIngresarBB();
+    }//GEN-LAST:event_loginB1MouseExited
+
+    private void loginB1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginB1MousePressed
+        Color colorbg = new Color(78, 159, 233, 255);
+        loginB1.setBackground(colorbg);
+    }//GEN-LAST:event_loginB1MousePressed
+
+    private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseEntered
+        ps = false;
+        eventButtonIngresarBB();
+    }//GEN-LAST:event_jLabel5MouseEntered
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        eventLogInClick();
+    }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void singUpBMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_singUpBMouseEntered
+        ps2=false;
+        eventButtonRegistrarBB();
+    }//GEN-LAST:event_singUpBMouseEntered
+
+    private void singUpBMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_singUpBMouseExited
+        ps2=true;
+        eventButtonRegistrarBB();
+    }//GEN-LAST:event_singUpBMouseExited
+
+    private void singUpBMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_singUpBMousePressed
+        ps2=false;
+        eventButtonRegistrarBB();
+    }//GEN-LAST:event_singUpBMousePressed
+
+    private void jLabel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseEntered
+        ps2=false;
+        eventButtonRegistrarBB();
+    }//GEN-LAST:event_jLabel4MouseEntered
+
+    public void eventLogInClick() {
+        Admint admin = new Admint(userTF.getText(), passwordTF.getText());
+        String res = adminCtrl.LoginAdmint(admin);
+        if (res == "Datos correctos") {
+            AdminApp app = new AdminApp();
+            app.adminS = adminCtrl.getAdminS();
+            ha.setBasicP(app);
+        } else {
+            JOptionPane.showMessageDialog(ha, res);
+        }
+    }
+    
+    public void eventoRegistrarClick(){
+        SignUpApp sup = new SignUpApp();
+        sup.ha = ha;
+        ha.setBasicP(sup);
+    }
+
+    public void eventButtonIngresarBB() {
+        Color colorbg;
+        if (!ps) {
+            colorbg = new Color(6, 69, 127, 255);
+        } else {
+            colorbg = new Color(25, 109, 185, 255);
+        }
+        loginB1.setBackground(colorbg);
+    }
+    
+    public void eventButtonRegistrarBB() {
+        Color colorbg;
+        if (!ps2) {
+            colorbg = new Color(228, 228, 228, 255);
+        } else {
+            colorbg = new Color(248, 248, 248, 255);
+        }
+        singUpB.setBackground(colorbg);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Bg;
     private javax.swing.JPanel BgLogin;
