@@ -1496,40 +1496,48 @@ public class AdminApp extends javax.swing.JPanel {
     //EVENTO DISPARADOR INCIIAL
     private void eventSelectorEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventSelectorEActionPerformed
 
-
-        //int[] ids = eventoC.returnIdsEvento(eventSelectorE.getSelectedIndex());
-        Eventot event = eventoCtrl.findEventot(EventotController.getIds().get(eventSelectorE.getSelectedIndex()));
-
+        SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy");
+        int id_evento = EventotController.getIds().get(eventSelectorE.getSelectedIndex());
+        Eventot event = eventoCtrl.findEventot(id_evento);
+        String nameLugar = lugarCtrl.findById(eventoCtrl.buscarIdLugar(id_evento)).getNombreLugar();
         ArrayList<Integer> ids = eventoCtrl.buscar_ids_artistas(EventotController.getIds().get(eventSelectorE.getSelectedIndex()));
         int capacidad = eventoCtrl.buscarCapacidad(EventotController.getIds().get(eventSelectorE.getSelectedIndex()));
-        ArrayList<String> names = artistaCtrl.buscarByIds(ids);
-        String[] namesModel = artistaCtrl.listar_nombres();
-        int[] indexNames = {0, 0, 0};
+        ArrayList<String> nameesArtistas = artistaCtrl.buscarByIds(ids);
+        String[] namesModelArtistas = artistaCtrl.listar_nombres();
+        String[] namesModelLugares = lugarCtrl.listar_nombres();
+        int[] indexNamesArtistas = {0, 0, 0};
 
         eventEditNameTF.setText(event.getNombreEvento());
-        
-        
-        eventDateEditTF.setDate(event.getFechaEvento());
-        eventTimeEditTF.setValue(event.getFechaEvento());
+        eventDateEditTF.setText(format1.format(event.getFechaEvento()));
         int count = 0;
-        for (int i = 0; i < names.size(); i++) {
-            for (int j = 0; j < namesModel.length; j++) {
-                System.out.println(names.get(i)+" =? "+namesModel[j]);
-                if (names.get(i).equals(namesModel[j])) {
-                    indexNames[count] = j;
+        for (int i = 0; i < nameesArtistas.size(); i++) {
+            for (int j = 0; j < namesModelArtistas.length; j++) {
+                System.out.println(nameesArtistas.get(i)+" =? "+namesModelArtistas[j]);
+                if (nameesArtistas.get(i).equals(namesModelArtistas[j])) {
+                    indexNamesArtistas[count] = j;
                     count++;
                 }
             }
         }
+        int indexLugar = 0;
+        for (int i = 0; i < namesModelLugares.length; i++) {
+            if(nameLugar.equals(namesModelLugares[i])){
+                indexLugar = i;
+                break;
+            }
+        }
 
-        eventEditPlaceTF.setModel(new DefaultComboBoxModel(LugartController.listToArrayPlace(lugarCtrl.findLugarList())));
-        eventArtist1EditTF.setModel(new DefaultComboBoxModel(namesModel));
-        eventArtist2EditTF.setModel(new DefaultComboBoxModel(namesModel));
-        eventArtist3EditTF.setModel(new DefaultComboBoxModel(namesModel));
-        eventArtist1EditTF.setSelectedIndex(indexNames[0]);
-        eventArtist2EditTF.setSelectedIndex(indexNames[1]);
-        eventArtist3EditTF.setSelectedIndex(indexNames[2]);
+        eventEditPlaceTF.setModel(new DefaultComboBoxModel(namesModelLugares));
+        eventArtist1EditTF.setModel(new DefaultComboBoxModel(namesModelArtistas));
+        eventArtist2EditTF.setModel(new DefaultComboBoxModel(namesModelArtistas));
+        eventArtist3EditTF.setModel(new DefaultComboBoxModel(namesModelArtistas));
+        eventEditPlaceTF.setSelectedIndex(indexLugar);
+        eventArtist1EditTF.setSelectedIndex(indexNamesArtistas[0]);
+        eventArtist2EditTF.setSelectedIndex(indexNamesArtistas[1]);
+        eventArtist3EditTF.setSelectedIndex(indexNamesArtistas[2]);
         eventCapacityEditTF.setText("" + capacidad);
+        eventTimeEditTF.setValue(event.getFechaEvento());
+        
 
 
     }//GEN-LAST:event_eventSelectorEActionPerformed
