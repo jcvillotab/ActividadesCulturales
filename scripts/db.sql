@@ -196,7 +196,8 @@ END
 CREATE FUNCTION RETURN_ID_CLIENT(codigoCliente int) RETURNS int
 RETURN (select clientet.id_cliente FROM actividadesculturalesdb.clientet WHERE codigo_cliente = codigoCliente);
 
-
+CREATE PROCEDURE RETURN_ID_LUGARP (IN id_evento int)
+RETURN (SELECT id_fk_id_lugar FROM actividadesculturalesdb.eventoxlugart WHERE id_fk_id_evento = id_evento);
 
 CREATE FUNCTION RETURN_ID_LUGAR (id_evento int) RETURNS INT
 RETURN (SELECT id_fk_id_lugar FROM actividadesculturalesdb.eventoxlugart WHERE id_fk_id_evento = id_evento);

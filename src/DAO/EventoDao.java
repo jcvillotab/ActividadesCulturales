@@ -86,9 +86,13 @@ public class EventoDao {
     
     public int buscarIdLugar(int idEvento){
         try {
-            CallableStatement ms =  (CallableStatement) con.prepareCall("{call EDIT_LUGAR("+ idEvento +")}");
-            ms.execute();
-            return ms.getInt(idEvento);
+            int res= 0;
+            CallableStatement ms =  (CallableStatement) con.prepareCall("{call RETURN_ID_LUGARP("+ idEvento +")}");
+            ResultSet rs = ms.executeQuery();
+            while(rs.next()){
+                res = rs.getInt(1);
+            }
+            return res;
         } catch (Exception e) {
             e.printStackTrace();
             return 0;
