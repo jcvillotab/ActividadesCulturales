@@ -107,17 +107,26 @@ UPDATE actividadesculturalesdb.eventot SET eventot.estado_evento = 1 WHERE event
 CREATE PROCEDURE LIST_LUGARES()
 SELECT * FROM actividadesculturalesdb.lugart;
 
-CREATE PROCEDURE GET_CLIENT(IN id_Client int(8))
+CREATE PROCEDURE LIST_RESERVAS(IN idCliente int)
+SELECT * FROM actividadesculturalesdb.eventoxclientet WHERE id_fk_id_cliente = idCliente;
+
+DELIMITER //
+CREATE PROCEDURE DELETE_RESERVE(IN id_cliente int(8), IN id_evento int(8))
+BEGIN
+DELETE FROM actividadesculturalesdb.eventoxclientet  WHERE ((id_fk_id_cliente= id_cliente) AND (id_fk_id_evento = id_evento));
+UPDATE actividadesculturalesdb.eventoxlugart SET eventoxlugart.capacidad_ocupada_exl = eventoxlugart.capacidad_ocupada_exl + 1 WHERE eventoxlugart.id_fk_id_evento = id_evento ;
+END
+//DELIMITER
+
 
 
 DELIMITER //
 CREATE PROCEDURE RESERVE(IN id_cliente int(8), IN id_evento int(8))
 BEGIN
-INSERT INTO actividadesculturalesdb.eventoxclientet (eventoxclientet.id_fk_id_evento, eventoxclientetid_fk_id_cliente) VALUES (id_evento, id_cliente);
-UPDATE actividadesculturalesdb.eventoxlugart SET eventoxlugart.capacidad_ocupada_exl = eventoxlugart.capacidad_ocupada_ex - 1 WHERE eventoxlugart.id_fk_id_evento = id_evento;
+INSERT INTO actividadesculturalesdb.eventoxclientet (eventoxclientet.id_fk_id_evento, eventoxclientet.id_fk_id_cliente) VALUES (id_evento, id_cliente);
+UPDATE actividadesculturalesdb.eventoxlugart SET eventoxlugart.capacidad_ocupada_exl = eventoxlugart.capacidad_ocupada_exl - 1 WHERE eventoxlugart.id_fk_id_evento = id_evento;
 END
 //DELIMITER
-
 
 DELIMITER //
 CREATE PROCEDURE DELETE_ARTISTA(IN id_artistaV INT(8))
@@ -166,23 +175,28 @@ BEGIN
 		INSERT INTO actividadesculturalesdb.eventoxartistat (eventoxartistat.id_fk_id_evento, eventoxartistat.id_fk_id_artista) VALUES(LAST_EVENT(),artista3);
     END IF;
     INSERT INTO actividadesculturalesdb.eventoxlugart (eventoxlugart.id_fk_id_evento, eventoxlugart.id_fk_id_lugar, eventoxlugart.capacidad_ocupada_exl) VALUES(LAST_EVENT(),lugar,capacidad);
-    END
+END
 //DELIMITER 
 
 
 DELIMITER //
-CREATE PROCEDURE CLIENT_EXIST(
-    IN  id_cliente int,
-    OUT v_id  int
-)
+CREATE FUNCTION CLIENT_EXIST(id_cliente int) RETURNS INT
 BEGIN
-	IF(EXISTS(SELECT * FROM actividadesculturalesdb.clientet WHERE id_cliente = id_Cliente)) THEN
+	DECLARE v_id int;
+	IF(EXISTS(SELECT * FROM actividadesculturalesdb.clientet WHERE codigo_cliente = id_cliente)) THEN
 		SET v_id = 1;
 	ELSE
 		SET v_id = 0;
 	END IF;	
-END
-//DELIMITER
+    RETURN v_id;
+END 
+//DELIMITER 
+
+
+CREATE FUNCTION RETURN_ID_CLIENT(codigoCliente int) RETURNS int
+RETURN (select clientet.id_cliente FROM actividadesculturalesdb.clientet WHERE codigo_cliente = codigoCliente);
+
+
 
 CREATE FUNCTION RETURN_ID_LUGAR (id_evento int) RETURNS INT
 RETURN (SELECT id_fk_id_lugar FROM actividadesculturalesdb.eventoxlugart WHERE id_fk_id_evento = id_evento);
