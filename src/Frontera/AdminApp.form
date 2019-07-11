@@ -436,17 +436,15 @@
                                           <Component id="jLabel24" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel25" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel20" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                                   <Group type="102" alignment="0" attributes="0">
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="eventDateEditTF" alignment="0" min="-2" pref="114" max="-2" attributes="0"/>
-                                                          <Component id="eventCapacityEditTF" alignment="0" min="-2" pref="52" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <EmptySpace max="32767" attributes="0"/>
+                                                      <Component id="eventCapacityEditTF" min="-2" pref="52" max="-2" attributes="0"/>
+                                                      <EmptySpace pref="340" max="32767" attributes="0"/>
                                                   </Group>
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Component id="eventArtist1EditTF" min="-2" pref="161" max="-2" attributes="0"/>
@@ -462,13 +460,15 @@
                                               <Component id="eventSelectorE" alignment="0" pref="576" max="32767" attributes="0"/>
                                               <Component id="eventEditPlaceTF" max="32767" attributes="0"/>
                                           </Group>
+                                          <Component id="eventDateEditTF" min="-2" pref="107" max="-2" attributes="0"/>
+                                          <Component id="eventTimeEditTF" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace pref="16" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace max="32767" attributes="0"/>
                                       <Component id="editEventB" min="-2" pref="163" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="260" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -509,9 +509,14 @@
                                           <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="eventDateEditTF" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace pref="40" max="32767" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="eventTimeEditTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="editEventB" min="-2" pref="46" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                                      <EmptySpace pref="33" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -608,13 +613,8 @@
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel25">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Fecha y Hora"/>
+                                <Property name="text" type="java.lang.String" value="Fecha"/>
                               </Properties>
-                            </Component>
-                            <Component class="javax.swing.JFormattedTextField" name="eventDateEditTF">
-                              <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eventDateEditTFActionPerformed"/>
-                              </Events>
                             </Component>
                             <Container class="javax.swing.JPanel" name="editEventB">
                               <Properties>
@@ -677,6 +677,19 @@
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eventArtist3EditTFActionPerformed"/>
                               </Events>
                             </Component>
+                            <Component class="org.jdesktop.swingx.JXDatePicker" name="eventDateEditTF">
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="jLabel6">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Hora"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JSpinner" name="eventTimeEditTF">
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JSpinner(new SpinnerDateModel());&#xa;timeEditor2 = new JSpinner.DateEditor(eventTimeEditTF, &quot;HH:mm:ss&quot;);&#xa;eventTimeEditTF.setEditor(timeEditor2);&#xa;eventTimeEditTF.setValue(new Date())"/>
+                                <AuxValue name="JavaCodeGenerator_DeclarationPost" type="java.lang.String" value="private JSpinner.DateEditor timeEditor2;"/>
+                              </AuxValues>
+                            </Component>
                           </SubComponents>
                         </Container>
                         <Container class="javax.swing.JPanel" name="eventDelete">
@@ -704,7 +717,7 @@
                                               <Component id="deleteEventB" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace pref="271" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -814,7 +827,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                                       <Component id="jScrollPane2" min="-2" pref="219" max="-2" attributes="0"/>
-                                      <EmptySpace pref="76" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>

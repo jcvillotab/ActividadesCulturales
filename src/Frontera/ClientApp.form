@@ -59,9 +59,9 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="123" max="32767" attributes="0"/>
+                  <EmptySpace pref="124" max="32767" attributes="0"/>
                   <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="165" max="32767" attributes="0"/>
+                  <EmptySpace pref="166" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -108,6 +108,9 @@
               <AccessibilityProperties>
                 <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="cliente"/>
               </AccessibilityProperties>
+              <Events>
+                <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jTabbedPane1StateChanged"/>
+              </Events>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
               <SubComponents>
@@ -137,17 +140,17 @@
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace pref="49" max="32767" attributes="0"/>
+                              <EmptySpace pref="58" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="jScrollPane3" min="-2" pref="614" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                                  </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="goBackREventB" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="reserveEventB" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="jScrollPane3" min="-2" pref="614" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -166,11 +169,11 @@
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="addClientEventB" min="-2" pref="47" max="-2" attributes="0"/>
+                              <Component id="addClientEventB" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="reserveEventB" min="-2" pref="47" max="-2" attributes="0"/>
-                                  <Component id="goBackREventB" min="-2" pref="47" max="-2" attributes="0"/>
+                                  <Component id="reserveEventB" min="-2" max="-2" attributes="0"/>
+                                  <Component id="goBackREventB" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
                           </Group>
@@ -198,6 +201,9 @@
                           </Border>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="reserveEventBMouseClicked"/>
+                      </Events>
 
                       <Layout>
                         <DimensionLayout dim="0">
@@ -228,6 +234,9 @@
                             <Property name="horizontalAlignment" type="int" value="0"/>
                             <Property name="text" type="java.lang.String" value="Reservar"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel21MouseClicked"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -323,6 +332,9 @@
                               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                             </Property>
                           </Properties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="eventsRTable.setCellSelectionEnabled(true);&#xa;eventsRTable.setDefaultEditor(Object.class, null);&#xa;eventsRTable.setColumnSelectionAllowed(false);"/>
+                          </AuxValues>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -417,15 +429,15 @@
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="searchEventB" min="-2" pref="47" max="-2" attributes="0"/>
+                                      <Component id="searchEventB" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace pref="31" max="32767" attributes="0"/>
                               <Component id="jScrollPane1" min="-2" pref="191" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="goBackCEventB" min="-2" pref="47" max="-2" attributes="0"/>
-                                  <Component id="deleteEventB" min="-2" pref="47" max="-2" attributes="0"/>
+                                  <Component id="goBackCEventB" min="-2" max="-2" attributes="0"/>
+                                  <Component id="deleteEventB" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -492,6 +504,9 @@
                           </Border>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deleteEventBMouseClicked"/>
+                      </Events>
 
                       <Layout>
                         <DimensionLayout dim="0">
@@ -576,6 +591,9 @@
                               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                             </Property>
                           </Properties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="eventsCTable.setCellSelectionEnabled(true);&#xa;eventsCTable.setDefaultEditor(Object.class, null);&#xa;eventsCTable.setColumnSelectionAllowed(false);"/>
+                          </AuxValues>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -587,6 +605,9 @@
                           </Border>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="searchEventBMouseClicked"/>
+                      </Events>
 
                       <Layout>
                         <DimensionLayout dim="0">

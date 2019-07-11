@@ -15,23 +15,15 @@ public class HomeApp extends javax.swing.JFrame {
     /**
      * Creates new form HomeApp
      */
-    
-    
-    
-    
-    
     private LoginApp login = new LoginApp();
     private AdminApp admin = new AdminApp();
-
+    private ClientApp client = new ClientApp();
     
-    
-    
-
-
     public HomeApp() {
         initComponents();
         login.ha = this;
         admin.ha = this;
+        client.ha = this;
     }
 
     /**
@@ -69,6 +61,11 @@ public class HomeApp extends javax.swing.JFrame {
         clientB.setBackground(new java.awt.Color(78, 159, 233));
         clientB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         clientB.setPreferredSize(new java.awt.Dimension(190, 80));
+        clientB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                clientBMouseClicked(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel1.setText("Cliente");
@@ -179,6 +176,13 @@ public class HomeApp extends javax.swing.JFrame {
         basicP.add(login);
         basicP.setVisible(true);
     }//GEN-LAST:event_adminBMouseClicked
+
+    private void clientBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clientBMouseClicked
+        basicP.setVisible(false);
+        basicP.remove(homeP);
+        basicP.add(client);
+        basicP.setVisible(true);
+    }//GEN-LAST:event_clientBMouseClicked
 
     /**
      * @param args the command line arguments

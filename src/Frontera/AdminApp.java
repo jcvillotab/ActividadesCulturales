@@ -21,12 +21,10 @@ import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
+import javax.swing.JTable;
 import javax.swing.SpinnerDateModel;
 import javax.swing.table.DefaultTableModel;
 
@@ -100,10 +98,15 @@ public class AdminApp extends javax.swing.JPanel {
         jLabel24 = new javax.swing.JLabel();
         eventCapacityEditTF = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
-        eventDateEditTF = new javax.swing.JFormattedTextField();
         editEventB = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
         eventArtist3EditTF = new javax.swing.JComboBox();
+        eventDateEditTF = new org.jdesktop.swingx.JXDatePicker();
+        jLabel6 = new javax.swing.JLabel();
+        eventTimeEditTF = new JSpinner(new SpinnerDateModel());
+        timeEditor2 = new JSpinner.DateEditor(eventTimeEditTF, "HH:mm:ss");
+        eventTimeEditTF.setEditor(timeEditor2);
+        eventTimeEditTF.setValue(new Date());
         eventDelete = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         eventSelectorD = new javax.swing.JComboBox();
@@ -384,13 +387,7 @@ public class AdminApp extends javax.swing.JPanel {
 
         jLabel24.setText("Capacidad");
 
-        jLabel25.setText("Fecha y Hora");
-
-        eventDateEditTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                eventDateEditTFActionPerformed(evt);
-            }
-        });
+        jLabel25.setText("Fecha");
 
         editEventB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         editEventB.setPreferredSize(new java.awt.Dimension(82, 37));
@@ -427,6 +424,8 @@ public class AdminApp extends javax.swing.JPanel {
             }
         });
 
+        jLabel6.setText("Hora");
+
         javax.swing.GroupLayout eventEditLayout = new javax.swing.GroupLayout(eventEdit);
         eventEdit.setLayout(eventEditLayout);
         eventEditLayout.setHorizontalGroup(
@@ -439,16 +438,15 @@ public class AdminApp extends javax.swing.JPanel {
                     .addComponent(jLabel23)
                     .addComponent(jLabel24)
                     .addComponent(jLabel25)
-                    .addComponent(jLabel20))
+                    .addComponent(jLabel20)
+                    .addComponent(jLabel6))
                 .addGap(18, 18, 18)
                 .addGroup(eventEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(eventEditLayout.createSequentialGroup()
                         .addGroup(eventEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(eventEditLayout.createSequentialGroup()
-                                .addGroup(eventEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(eventDateEditTF, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(eventCapacityEditTF, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(eventCapacityEditTF, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 340, Short.MAX_VALUE))
                             .addGroup(eventEditLayout.createSequentialGroup()
                                 .addComponent(eventArtist1EditTF, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
@@ -458,12 +456,14 @@ public class AdminApp extends javax.swing.JPanel {
                     .addGroup(eventEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(eventEditNameTF, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(eventSelectorE, javax.swing.GroupLayout.Alignment.LEADING, 0, 576, Short.MAX_VALUE)
-                        .addComponent(eventEditPlaceTF, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(eventEditPlaceTF, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(eventDateEditTF, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(eventTimeEditTF, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(16, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eventEditLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(editEventB, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(260, 260, 260))
         );
         eventEditLayout.setVerticalGroup(
             eventEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -495,9 +495,13 @@ public class AdminApp extends javax.swing.JPanel {
                 .addGroup(eventEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25)
                     .addComponent(eventDateEditTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(eventEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(eventTimeEditTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addGap(18, 18, 18)
                 .addComponent(editEventB, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Editar", eventEdit);
@@ -553,7 +557,7 @@ public class AdminApp extends javax.swing.JPanel {
                     .addGroup(eventDeleteLayout.createSequentialGroup()
                         .addGap(281, 281, 281)
                         .addComponent(deleteEventB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(271, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         eventDeleteLayout.setVerticalGroup(
             eventDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -609,7 +613,7 @@ public class AdminApp extends javax.swing.JPanel {
             .addGroup(eventViewLayout.createSequentialGroup()
                 .addGap(56, 56, 56)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Ver", eventView);
@@ -1373,10 +1377,6 @@ public class AdminApp extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void eventDateEditTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventDateEditTFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_eventDateEditTFActionPerformed
-
     private void artistNameAddTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_artistNameAddTFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_artistNameAddTFActionPerformed
@@ -1458,16 +1458,13 @@ public class AdminApp extends javax.swing.JPanel {
         
         
         fecha = df.format(eventDateAddTF.getDate());
-        System.out.println("Fecha: "+ fecha);
         hora = timeEditor.getFormat().format(eventAddTimeTF.getValue());
-        System.out.println("Hora: " + hora);
         ldt = LocalDate.parse(fecha).atTime(LocalTime.parse(hora));
-        System.out.println("Fecha hora"+ldt.toString());
         date = Date.from(ldt.atZone(ZoneId.systemDefault()).toInstant());
-        System.out.println("Objeto Date: "+ date.toString());
+
         
         event.setNombreEvento(eventNameAddTF.getText());
-        event.setFechaEvento(eventDateAddTF.getDate());
+        event.setFechaEvento(date);
 
         ArrayList<String> names = new ArrayList<>();
         if (!"N/A".equals(eventArtist1AddTF.getSelectedItem().toString())) {
@@ -1498,7 +1495,7 @@ public class AdminApp extends javax.swing.JPanel {
 
     //EVENTO DISPARADOR INCIIAL
     private void eventSelectorEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventSelectorEActionPerformed
-        SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy");
+
 
         //int[] ids = eventoC.returnIdsEvento(eventSelectorE.getSelectedIndex());
         Eventot event = eventoCtrl.findEventot(EventotController.getIds().get(eventSelectorE.getSelectedIndex()));
@@ -1510,7 +1507,10 @@ public class AdminApp extends javax.swing.JPanel {
         int[] indexNames = {0, 0, 0};
 
         eventEditNameTF.setText(event.getNombreEvento());
-        eventDateEditTF.setText(format1.format(event.getFechaEvento()));
+        
+        
+        eventDateEditTF.setDate(event.getFechaEvento());
+        eventTimeEditTF.setValue(event.getFechaEvento());
         int count = 0;
         for (int i = 0; i < names.size(); i++) {
             for (int j = 0; j < namesModel.length; j++) {
@@ -1535,16 +1535,24 @@ public class AdminApp extends javax.swing.JPanel {
     }//GEN-LAST:event_eventSelectorEActionPerformed
 
     private void editEventBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editEventBMouseClicked
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        LocalDateTime ldt;
+        String fecha;
+        String hora;
+        Date date;
+        
         Eventot event = eventoCtrl.findEventot(EventotController.getIds().get(eventSelectorE.getSelectedIndex()));
-        SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy");
+        
         event.setNombreEvento(eventEditNameTF.getText());
         Lugart lugar = lugarCtrl.findById(eventPlaceAddTF.getSelectedIndex() + 1);
-        try {
-            event.setFechaEvento(format1.parse(eventDateEditTF.getText()));
-            System.out.println("" + format1.parse(eventDateEditTF.getText()));
-        } catch (ParseException e) {
-            System.out.println("Error al registrar fecha: " + e);
-        }
+        
+        fecha = df.format(eventDateEditTF.getDate());
+        hora = timeEditor2.getFormat().format(eventTimeEditTF.getValue());
+        ldt = LocalDate.parse(fecha).atTime(LocalTime.parse(hora));
+        date = Date.from(ldt.atZone(ZoneId.systemDefault()).toInstant());
+        
+        event.setFechaEvento(date);
+ 
         ArrayList<String> names = new ArrayList<>();
         if (!"N/A".equals(eventArtist1EditTF.getSelectedItem().toString())) {
             names.add(eventArtist1EditTF.getSelectedItem().toString());
@@ -1625,7 +1633,7 @@ public class AdminApp extends javax.swing.JPanel {
         ArrayList<Integer> artistIds;
         ArrayList<String> artistNames;
         
-        SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         ArrayList<Eventot> eventList = eventoCtrl.listarEventos();
         String[][] datos = new String[eventList.size()][8];
         
@@ -1674,7 +1682,7 @@ public class AdminApp extends javax.swing.JPanel {
             tableData = datos();
             eventViewTable.setModel(new DefaultTableModel(tableData, tableNames));
         }
-            
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1710,7 +1718,7 @@ public class AdminApp extends javax.swing.JPanel {
     private javax.swing.JTextField eventCapacityEditTF;
     private javax.swing.JPanel eventCreate;
     private org.jdesktop.swingx.JXDatePicker eventDateAddTF;
-    private javax.swing.JFormattedTextField eventDateEditTF;
+    private org.jdesktop.swingx.JXDatePicker eventDateEditTF;
     private javax.swing.JPanel eventDelete;
     private javax.swing.JPanel eventEdit;
     private javax.swing.JTextField eventEditNameTF;
@@ -1720,6 +1728,8 @@ public class AdminApp extends javax.swing.JPanel {
     private javax.swing.JComboBox eventPlaceAddTF;
     private javax.swing.JComboBox eventSelectorD;
     private javax.swing.JComboBox eventSelectorE;
+    private javax.swing.JSpinner eventTimeEditTF;
+    private JSpinner.DateEditor timeEditor2;
     private javax.swing.JPanel eventView;
     private javax.swing.JTable eventViewTable;
     private javax.swing.JComboBox<String> jComboBox1;
@@ -1766,6 +1776,7 @@ public class AdminApp extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
