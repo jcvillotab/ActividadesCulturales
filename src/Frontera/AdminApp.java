@@ -1496,7 +1496,6 @@ public class AdminApp extends javax.swing.JPanel {
     //EVENTO DISPARADOR INCIIAL
     private void eventSelectorEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventSelectorEActionPerformed
 
-        SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy");
         int id_evento = EventotController.getIds().get(eventSelectorE.getSelectedIndex());
         Eventot event = eventoCtrl.findEventot(id_evento);
         String nameLugar = lugarCtrl.findById(eventoCtrl.buscarIdLugar(id_evento)).getNombreLugar();
@@ -1507,8 +1506,8 @@ public class AdminApp extends javax.swing.JPanel {
         String[] namesModelLugares = lugarCtrl.listar_nombres();
         int[] indexNamesArtistas = {0, 0, 0};
 
-        eventEditNameTF.setText(event.getNombreEvento());
-        eventDateEditTF.setText(format1.format(event.getFechaEvento()));
+        
+        
         int count = 0;
         for (int i = 0; i < nameesArtistas.size(); i++) {
             for (int j = 0; j < namesModelArtistas.length; j++) {
@@ -1522,11 +1521,15 @@ public class AdminApp extends javax.swing.JPanel {
         int indexLugar = 0;
         for (int i = 0; i < namesModelLugares.length; i++) {
             if(nameLugar.equals(namesModelLugares[i])){
+                System.out.println("entre"+i);
                 indexLugar = i;
                 break;
             }
         }
-
+        
+        eventEditNameTF.setText(event.getNombreEvento());  
+        eventDateEditTF.setDate(event.getFechaEvento());
+        eventTimeEditTF.setValue(event.getFechaEvento());
         eventEditPlaceTF.setModel(new DefaultComboBoxModel(namesModelLugares));
         eventArtist1EditTF.setModel(new DefaultComboBoxModel(namesModelArtistas));
         eventArtist2EditTF.setModel(new DefaultComboBoxModel(namesModelArtistas));
@@ -1536,7 +1539,6 @@ public class AdminApp extends javax.swing.JPanel {
         eventArtist2EditTF.setSelectedIndex(indexNamesArtistas[1]);
         eventArtist3EditTF.setSelectedIndex(indexNamesArtistas[2]);
         eventCapacityEditTF.setText("" + capacidad);
-        eventTimeEditTF.setValue(event.getFechaEvento());
         
 
 
@@ -1640,6 +1642,7 @@ public class AdminApp extends javax.swing.JPanel {
         int capacidad;
         ArrayList<Integer> artistIds;
         ArrayList<String> artistNames;
+        String nameLugar;
         
         SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         ArrayList<Eventot> eventList = eventoCtrl.listarEventos();
@@ -1647,13 +1650,14 @@ public class AdminApp extends javax.swing.JPanel {
         
         for (int i = 0; i < eventList.size(); i++) {
             temp = eventList.get(i);
+            nameLugar = lugarCtrl.findById(eventoCtrl.buscarIdLugar(temp.getIdEvento())).getNombreLugar();
             artistIds = eventoCtrl.buscar_ids_artistas(temp.getIdEvento());
             artistNames = artistaCtrl.buscarByIds(artistIds);
             capacidad = eventoCtrl.buscarCapacidad(temp.getIdEvento());
             
             datos[i][0] = String.valueOf(temp.getIdEvento());
             datos[i][1] = temp.getNombreEvento();
-            datos[i][2] = "";
+            datos[i][2] = nameLugar;
             datos[i][6] = String.valueOf(capacidad);
             datos[i][7] = format1.format(temp.getFechaEvento());
             

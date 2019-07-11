@@ -8,6 +8,7 @@ package Frontera;
 import Control.ArtistatController;
 import Control.ClientetController;
 import Control.EventotController;
+import Control.LugartController;
 import Entidad.Eventot;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class ClientApp extends javax.swing.JPanel {
     private final EventotController eventoCtrl = new EventotController();
     private final ArtistatController artistaCtrl = new ArtistatController();
     private final ClientetController clienteCtrl = new ClientetController();
+    private final LugartController lugarCtrl = new LugartController();
     
     public ClientApp() {
         initComponents();
@@ -527,6 +529,7 @@ public class ClientApp extends javax.swing.JPanel {
         int capacidad;
         ArrayList<Integer> artistIds;
         ArrayList<String> artistNames;
+        String nameLugar;
         String[] tableNames = {"Id", "Nombre", "Lugar", "Artista Principal", "Capacidad", "Fecha/Hora"};
         SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         ArrayList<Eventot> eventList = eventoCtrl.listarEventos();
@@ -537,10 +540,11 @@ public class ClientApp extends javax.swing.JPanel {
             artistIds = eventoCtrl.buscar_ids_artistas(temp.getIdEvento());
             artistNames = artistaCtrl.buscarByIds(artistIds);
             capacidad = eventoCtrl.buscarCapacidad(temp.getIdEvento());
+            nameLugar = lugarCtrl.findById(eventoCtrl.buscarIdLugar(temp.getIdEvento())).getNombreLugar();
             
             datos[i][0] = String.valueOf(temp.getIdEvento());
             datos[i][1] = temp.getNombreEvento();
-            datos[i][2] = "";
+            datos[i][2] = nameLugar;
             datos[i][3] = artistNames.get(0);
             datos[i][4] = String.valueOf(capacidad);
             datos[i][5] = format1.format(temp.getFechaEvento());
@@ -558,16 +562,18 @@ public class ClientApp extends javax.swing.JPanel {
         String[] tableNames = {"Id", "Nombre", "Lugar", "Artista Principal", "Capacidad", "Fecha/Hora"};
         SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String[][] datos = new String[eventList.size()][6];
+        String nameLugar;
         
         for (int i = 0; i < eventList.size(); i++) {
             temp = eventList.get(i);
+            nameLugar = lugarCtrl.findById(eventoCtrl.buscarIdLugar(temp.getIdEvento())).getNombreLugar();
             artistIds = eventoCtrl.buscar_ids_artistas(temp.getIdEvento());
             artistNames = artistaCtrl.buscarByIds(artistIds);
             capacidad = eventoCtrl.buscarCapacidad(temp.getIdEvento());
             
             datos[i][0] = String.valueOf(temp.getIdEvento());
             datos[i][1] = temp.getNombreEvento();
-            datos[i][2] = "";
+            datos[i][2] = nameLugar;
             datos[i][3] = artistNames.get(0);
             datos[i][4] = String.valueOf(capacidad);
             datos[i][5] = format1.format(temp.getFechaEvento());
