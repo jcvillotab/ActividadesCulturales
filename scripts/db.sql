@@ -192,6 +192,10 @@ BEGIN
 END 
 //DELIMITER 
 
+CREATE FUNCTION RETURN_CAPACIDAD_EVENTO(idEvento int) RETURNS int
+RETURN((SELECT COUNT(id_fk_id_evento) from eventoxclientet WHERE id_fk_id_evento = idEvento) + (SELECT capacidad_ocupada_exl from eventoxlugart where id_fk_id_evento= idEvento));
+
+
 
 CREATE FUNCTION RETURN_ID_CLIENT(codigoCliente int) RETURNS int
 RETURN (select clientet.id_cliente FROM actividadesculturalesdb.clientet WHERE codigo_cliente = codigoCliente);

@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import Entidad.Artistat;
 import Entidad.Eventot;
 import Entidad.Lugart;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -95,9 +94,13 @@ public class EventotController implements Serializable {
         return idsEvento;
     }
     
+    public int returnCapacidadEvento(int idEvento) {
+        return conDB.capacidad_evento(idEvento);
+    }
 
-    
-
+    public int returnReservasEvento(int idEvento) {
+        return conDB.reservas_hechas(idEvento);
+    }
     public String crear(Eventot event, Lugart place, ArrayList<Artistat> artist, int capacity, Admint adminS) {
         int[] artistas = new int[4];
         int count = 0;
@@ -140,4 +143,6 @@ public class EventotController implements Serializable {
     public int buscarIdLugar(int idEvento){
         return conDB.buscarIdLugar(idEvento);
     }
+    
+    
 }

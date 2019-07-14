@@ -6,6 +6,7 @@
 package Frontera;
 
 import Control.ArtistatController;
+import Control.EstadisticasController;
 import Control.EventotController;
 import Control.LugartController;
 import Entidad.Admint;
@@ -42,6 +43,7 @@ public class AdminApp extends javax.swing.JPanel {
     private ArtistatController artistaCtrl = new ArtistatController();
     private EventotController eventoCtrl = new EventotController();
     private LugartController lugarCtrl = new LugartController();
+    private EstadisticasController reportCtrl = new EstadisticasController();
     private int placeId;
     private int artistId;
 
@@ -185,11 +187,12 @@ public class AdminApp extends javax.swing.JPanel {
         jTextField1 = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jLabel42 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<String>();
-        jTextField2 = new javax.swing.JTextField();
+        eventReportSelector = new javax.swing.JComboBox<String>();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        eventReportTextBox = new javax.swing.JTextArea();
         jPanel7 = new javax.swing.JPanel();
         jLabel43 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<String>();
+        placeReportSelector = new javax.swing.JComboBox<String>();
         jTextField3 = new javax.swing.JTextField();
         jLabel44 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
@@ -700,7 +703,7 @@ public class AdminApp extends javax.swing.JPanel {
                     .addGroup(artistCreateLayout.createSequentialGroup()
                         .addGap(247, 247, 247)
                         .addComponent(addArtistB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addContainerGap(180, Short.MAX_VALUE))
         );
         artistCreateLayout.setVerticalGroup(
             artistCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1147,6 +1150,12 @@ public class AdminApp extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Lugares", placeP);
 
+        jTabbedPane3.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jTabbedPane3StateChanged(evt);
+            }
+        });
+
         jLabel36.setText("Fecha");
 
         jLabel37.setText("Hora");
@@ -1223,13 +1232,16 @@ public class AdminApp extends javax.swing.JPanel {
 
         jLabel42.setText("Evento");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        eventReportSelector.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        eventReportSelector.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                eventReportSelectorActionPerformed(evt);
             }
         });
+
+        eventReportTextBox.setColumns(20);
+        eventReportTextBox.setRows(5);
+        jScrollPane5.setViewportView(eventReportTextBox);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -1238,12 +1250,12 @@ public class AdminApp extends javax.swing.JPanel {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 633, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel42)
                         .addGap(18, 18, 18)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(39, Short.MAX_VALUE))
+                        .addComponent(eventReportSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1251,17 +1263,17 @@ public class AdminApp extends javax.swing.JPanel {
                 .addGap(28, 28, 28)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel42)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
-                .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
-                .addContainerGap())
+                    .addComponent(eventReportSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Evento", jPanel6);
 
         jLabel43.setText("Lugar");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        placeReportSelector.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel44.setText("Fecha");
 
@@ -1289,7 +1301,7 @@ public class AdminApp extends javax.swing.JPanel {
                         .addGroup(jPanel7Layout.createSequentialGroup()
                             .addComponent(jLabel43)
                             .addGap(18, 18, 18)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(placeReportSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel44)
                         .addGap(601, 601, 601)))
@@ -1301,7 +1313,7 @@ public class AdminApp extends javax.swing.JPanel {
                 .addGap(30, 30, 30)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel43)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(placeReportSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel44)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1591,10 +1603,6 @@ public class AdminApp extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_eventDateAddTFActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
 
     private void editArtistBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editArtistBMouseClicked
         Artistat artista = artistaCtrl.buscarById(artistId);
@@ -1635,6 +1643,30 @@ public class AdminApp extends javax.swing.JPanel {
         placeId = lugar.getIdLugar();
         
     }//GEN-LAST:event_placeEditSelectionTableMouseClicked
+
+    private void eventReportSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventReportSelectorActionPerformed
+        String[] values = new String[4];
+        
+        int id_evento = EventotController.getIds().get(eventSelectorE.getSelectedIndex());
+        Eventot event = eventoCtrl.findEventot(id_evento);
+        values[0] = event.getNombreEvento();
+        values[1] =  String.valueOf(eventoCtrl.returnCapacidadEvento(id_evento));
+        values[2] = String.valueOf(lugarCtrl.findById(eventoCtrl.buscarIdLugar(id_evento)).getCapacidadLugar());
+        values[3] =  String.valueOf(eventoCtrl.returnReservasEvento(id_evento));
+        System.out.println(reportCtrl.porcentajeOcupacionEvento(values));
+        eventReportTextBox.setText(reportCtrl.porcentajeOcupacionEvento(values));
+    }//GEN-LAST:event_eventReportSelectorActionPerformed
+
+    private void jTabbedPane3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane3StateChanged
+        String [] names;
+        if (jTabbedPane3.getSelectedIndex() == 1) {
+           names = eventoCtrl.listarNombres();
+           eventReportSelector.setModel(new DefaultComboBoxModel(names));
+       }else if(jTabbedPane3.getSelectedIndex() == 2){
+           names = lugarCtrl.listar_nombres();
+           placeReportSelector.setModel(new DefaultComboBoxModel(names));
+       }
+    }//GEN-LAST:event_jTabbedPane3StateChanged
 
     
     private String[][] datos(){
@@ -1738,14 +1770,14 @@ public class AdminApp extends javax.swing.JPanel {
     private javax.swing.JTextField eventNameAddTF;
     private javax.swing.JPanel eventP;
     private javax.swing.JComboBox eventPlaceAddTF;
+    private javax.swing.JComboBox<String> eventReportSelector;
+    private javax.swing.JTextArea eventReportTextBox;
     private javax.swing.JComboBox eventSelectorD;
     private javax.swing.JComboBox eventSelectorE;
     private javax.swing.JSpinner eventTimeEditTF;
     private JSpinner.DateEditor timeEditor2;
     private javax.swing.JPanel eventView;
     private javax.swing.JTable eventViewTable;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1802,6 +1834,7 @@ public class AdminApp extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner2;
     private javax.swing.JSpinner jSpinner3;
@@ -1809,7 +1842,6 @@ public class AdminApp extends javax.swing.JPanel {
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
     private org.jdesktop.swingx.JXDatePicker jXDatePicker2;
@@ -1826,6 +1858,7 @@ public class AdminApp extends javax.swing.JPanel {
     private javax.swing.JTextField placeNameAddTF;
     private javax.swing.JTextField placeNameEditTF;
     private javax.swing.JPanel placeP;
+    private javax.swing.JComboBox<String> placeReportSelector;
     private javax.swing.JTextField placeSectionAddTF;
     private javax.swing.JTextField placeSectionEditTF;
     private javax.swing.JTabbedPane placeView;
