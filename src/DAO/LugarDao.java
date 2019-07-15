@@ -23,7 +23,7 @@ public class LugarDao {
     
     public LugarDao() {
         try {
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/actividadesculturalesdb?zeroDateTimeBehavior=convertToNull","root","juancamilovill9");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/actividadesculturalesdb?zeroDateTimeBehavior=convertToNull","root","mfbejaranob");
         } catch (Exception e) {
             System.out.println("error en la conexion: "+e);
         }

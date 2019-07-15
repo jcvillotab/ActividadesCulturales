@@ -186,7 +186,7 @@ BEGIN
 	IF(EXISTS(SELECT * FROM actividadesculturalesdb.clientet WHERE codigo_cliente = id_cliente)) THEN
 		SET v_id = 1;
 	ELSE
-		SET v_id = 0;
+		SET v_id = -1;
 	END IF;	
     RETURN v_id;
 END 
@@ -199,14 +199,13 @@ RETURN (select clientet.id_cliente FROM actividadesculturalesdb.clientet WHERE c
 CREATE PROCEDURE RETURN_ID_LUGARP (IN id_evento int)
 RETURN (SELECT id_fk_id_lugar FROM actividadesculturalesdb.eventoxlugart WHERE id_fk_id_evento = id_evento);
 
-CREATE FUNCTION RETURN_ID_LUGAR (id_evento int) RETURNS INT
+CREATE FUNCTION RETURNclientet_ID_LUGAR (id_evento int) RETURNS INT
 RETURN (SELECT id_fk_id_lugar FROM actividadesculturalesdb.eventoxlugart WHERE id_fk_id_evento = id_evento);
 
 CREATE FUNCTION LAST_EVENT() RETURNS INT
 RETURN (SELECT MAX(eventot.id_evento) FROM actividadesculturalesdb.eventot);
 
 SET GLOBAL time_zone = "-5:00";
-
 
 INSERT INTO clientet (nombre_cliente,codigo_cliente) VALUES ("Zachary Justice","41487938");
 INSERT INTO clientet (nombre_cliente,codigo_cliente) VALUES ("Upton Rivers","48330359");
@@ -233,4 +232,3 @@ INSERT INTO clientet (nombre_cliente,codigo_cliente) VALUES ("Preston Nixon","37
 INSERT INTO clientet (nombre_cliente,codigo_cliente) VALUES ("Arthur Solis","39771250");
 INSERT INTO clientet (nombre_cliente,codigo_cliente) VALUES ("Kieran Barber","32759502");
 INSERT INTO clientet (nombre_cliente,codigo_cliente) VALUES ("Kuame Pennington","35521630");
-	

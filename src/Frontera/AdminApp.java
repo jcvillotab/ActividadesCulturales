@@ -1391,7 +1391,7 @@ public class AdminApp extends javax.swing.JPanel {
 
     private void artistViewStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_artistViewStateChanged
 
-        String[] columnNames = {"Nombre", "Ocupacion", "Identificacion"};
+        String[] columnNames = {"Identificacion", "Nombre", "Ocupacion"};
         String[][] data = artistaCtrl.listar_datos();
         
         artistViewTable.setModel(new DefaultTableModel(data, columnNames));

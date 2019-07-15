@@ -21,7 +21,7 @@ public class AdminDao {
 
     public AdminDao() {
         try {
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/actividadesculturalesdb?zeroDateTimeBehavior=convertToNull","root","juancamilovill9");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/actividadesculturalesdb?zeroDateTimeBehavior=convertToNull","root","mfbejaranob");
         } catch (Exception e) {
             System.out.println("error en la conexion"+e);
         }
@@ -40,7 +40,7 @@ public class AdminDao {
             }
             ms = (CallableStatement) con.prepareCall(sentencia_crear);
             ms.executeQuery();
-            return "registro exitoso";
+            return "Registro exitoso";
             
         } catch (Exception e) {
             return "Error en db: "+e;
@@ -59,11 +59,11 @@ public class AdminDao {
                         setAdminS(tempAdmin);
                         return "Datos correctos";
                     }else{
-                        return "Contraseña incorreecta";
+                        return "Contraseña incorrecta";
                     }
                 }
             }
-            return "Usuario no existe";
+            return "El nombre de usuario no existe";
             
         } catch (Exception e) {
             return "Error en db: "+e;
