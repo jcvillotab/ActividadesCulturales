@@ -46,11 +46,11 @@ public class ClientTest {
         int idEvento = 1;
         assertEquals(clientC.reservar(idCliente,idEvento), CLIENTE_NO_EXISTE);
     }
-    /*
+    
     @Test
     public void TestTodoCorrectoReserva(){
         int idCliente = 48330359;
         int idEvento = 1;
         assertEquals(clientC.reservar(idCliente,idEvento), TODO_CORRECTO_RESERVA);
-    }*/
+    }
 }
