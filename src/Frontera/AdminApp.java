@@ -217,6 +217,7 @@ public class AdminApp extends javax.swing.JPanel {
         jTabbedPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
         jTabbedPane1.setMinimumSize(new java.awt.Dimension(741, 402));
         jTabbedPane1.setPreferredSize(new java.awt.Dimension(741, 402));
+
         jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTabbedPane1MouseClicked(evt);
@@ -224,6 +225,12 @@ public class AdminApp extends javax.swing.JPanel {
         });
 
         eventP.setBackground(new java.awt.Color(255, 255, 255));
+
+        jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jTabbedPane1StateChanged(evt);
+            }
+        });
 
         jTabbedPane2.setBackground(new java.awt.Color(255, 255, 255));
         jTabbedPane2.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -1599,12 +1606,12 @@ public class AdminApp extends javax.swing.JPanel {
 
     private void artistViewStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_artistViewStateChanged
 
-        String[] columnNames = {"Nombre", "Ocupacion", "Identificacion"};
+        String[] columnNames = {"Identificacion", "Nombre", "Ocupacion"};
         String[][] data = artistaCtrl.listar_datos();
         
         artistViewTable.setModel(new DefaultTableModel(data, columnNames));
         artistEditTable.setModel(new DefaultTableModel(data, columnNames));
-
+        defaultValuesArtist();
     }//GEN-LAST:event_artistViewStateChanged
 
     private void placeViewStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_placeViewStateChanged
@@ -1614,7 +1621,7 @@ public class AdminApp extends javax.swing.JPanel {
         
         placeViewTable.setModel(new DefaultTableModel(data, columnNames));
         placeEditSelectionTable.setModel(new DefaultTableModel(data, columnNames));
-        
+        defaultValuesPlace();
     }//GEN-LAST:event_placeViewStateChanged
 
     private void createPlaceBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createPlaceBMouseClicked
@@ -1631,6 +1638,7 @@ public class AdminApp extends javax.swing.JPanel {
 
     private void addArtistBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addArtistBMouseClicked
         crearArtista();
+
     }//GEN-LAST:event_addArtistBMouseClicked
 
     private void addEventBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addEventBMouseClicked
@@ -1770,6 +1778,7 @@ public class AdminApp extends javax.swing.JPanel {
            placeReportSelector.setModel(new DefaultComboBoxModel(names));
        }
     }//GEN-LAST:event_jTabbedPane3StateChanged
+
 
     private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
         generarListasP2();
@@ -1915,6 +1924,17 @@ public class AdminApp extends javax.swing.JPanel {
         eventButton(editPlaceB, false);
     }//GEN-LAST:event_jLabel11MouseEntered
 
+    private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
+        if(jTabbedPane1.getSelectedIndex() == 0){
+            //codigo de borrar cosas de evento aqui:
+        }else if(jTabbedPane1.getSelectedIndex() == 1){
+            defaultValuesArtist();
+        }else if(jTabbedPane1.getSelectedIndex() == 2){
+            defaultValuesPlace();
+        }
+    }//GEN-LAST:event_jTabbedPane1StateChanged
+
+
     
     private String[][] datos(){
         Eventot temp;
@@ -1976,6 +1996,7 @@ public class AdminApp extends javax.swing.JPanel {
 
     }
     
+
     public void eventButton(javax.swing.JPanel panel, boolean ps) {
         Color colorbg;
         if (ps) {
@@ -2129,6 +2150,27 @@ public class AdminApp extends javax.swing.JPanel {
     }
     
     
+
+    private void defaultValuesArtist(){
+        artistNameAddTF.setText("");
+        artistJobAddTF.setText("");
+        artistIdAddTF.setText("");
+        artistNameEditTF.setText("");
+        artistJobEditTF.setText("");
+        artistIdEditTF.setText("");
+    }
+    
+    private void defaultValuesPlace(){
+        placeNameAddTF.setText("");
+        placeDeckAddTF.setText("");
+        placeSectionAddTF.setText("");
+        placeCapacityAddTF.setText("");
+        placeNameEditTF.setText("");
+        placeDeckEditTF.setText("");
+        placeSectionEditTF.setText("");
+        placeCapacityEditTF.setText("");;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Bg;
     private javax.swing.JPanel addArtistB;

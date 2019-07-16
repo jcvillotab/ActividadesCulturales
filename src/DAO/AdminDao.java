@@ -46,6 +46,7 @@ public class AdminDao {
             con.close();
             con = DriverManager.getConnection(driverC,userDB,passDB);
             return "registro exitoso";
+
             
         } catch (Exception e) {
             return "Error en db: "+e;
@@ -64,11 +65,11 @@ public class AdminDao {
                         setAdminS(tempAdmin);
                         return "Datos correctos";
                     }else{
-                        return "Contraseña incorreecta";
+                        return "Contraseña incorrecta";
                     }
                 }
             }
-            return "Usuario no existe";
+            return "El nombre de usuario no existe";
             
         } catch (Exception e) {
             return "Error en db: "+e;

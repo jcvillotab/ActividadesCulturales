@@ -21,6 +21,7 @@ public class ClienteDao {
     public ClienteDao() {
         try {
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/actividadesculturalesdb?zeroDateTimeBehavior=convertToNull","root","btZ7op0gGo");
+
         } catch (Exception e) {
             System.out.println("error en la conexion: "+e);
         }
