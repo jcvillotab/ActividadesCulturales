@@ -56,6 +56,7 @@ public class EventotController implements Serializable {
     }
 
     public Eventot findEventot(Integer id) {
+        System.out.println(id);
         EntityManager em = getEntityManager();
         try {
             return em.find(Eventot.class, id);

@@ -195,13 +195,11 @@ END
 CREATE FUNCTION RETURN_CAPACIDAD_EVENTO(idEvento int) RETURNS int
 RETURN((SELECT COUNT(id_fk_id_evento) from eventoxclientet WHERE id_fk_id_evento = idEvento) + (SELECT capacidad_ocupada_exl from eventoxlugart where id_fk_id_evento= idEvento));
 
-
-
 CREATE FUNCTION RETURN_ID_CLIENT(codigoCliente int) RETURNS int
 RETURN (select clientet.id_cliente FROM actividadesculturalesdb.clientet WHERE codigo_cliente = codigoCliente);
 
 CREATE PROCEDURE RETURN_ID_LUGARP (IN id_evento int)
-RETURN (SELECT id_fk_id_lugar FROM actividadesculturalesdb.eventoxlugart WHERE id_fk_id_evento = id_evento);
+SELECT id_fk_id_lugar FROM actividadesculturalesdb.eventoxlugart WHERE id_fk_id_evento = id_evento;
 
 CREATE FUNCTION RETURNclientet_ID_LUGAR (id_evento int) RETURNS INT
 RETURN (SELECT id_fk_id_lugar FROM actividadesculturalesdb.eventoxlugart WHERE id_fk_id_evento = id_evento);

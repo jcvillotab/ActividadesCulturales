@@ -13,6 +13,7 @@ import Entidad.Admint;
 import Entidad.Artistat;
 import Entidad.Eventot;
 import Entidad.Lugart;
+import java.awt.Color;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -24,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.SpinnerDateModel;
@@ -49,6 +51,7 @@ public class AdminApp extends javax.swing.JPanel {
 
     public AdminApp() {
         initComponents();
+        generarListasP2();
     }
 
     /**
@@ -67,6 +70,9 @@ public class AdminApp extends javax.swing.JPanel {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         eventP = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
+        eventView = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        eventViewTable = new javax.swing.JTable();
         eventCreate = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         eventNameAddTF = new javax.swing.JTextField();
@@ -114,11 +120,11 @@ public class AdminApp extends javax.swing.JPanel {
         eventSelectorD = new javax.swing.JComboBox();
         deleteEventB = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
-        eventView = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        eventViewTable = new javax.swing.JTable();
         artistP = new javax.swing.JPanel();
         artistView = new javax.swing.JTabbedPane();
+        jPanel2 = new javax.swing.JPanel();
+        jscroll = new javax.swing.JScrollPane();
+        artistViewTable = new javax.swing.JTable();
         artistCreate = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
@@ -139,11 +145,11 @@ public class AdminApp extends javax.swing.JPanel {
         jLabel35 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         artistEditTable = new javax.swing.JTable();
-        jPanel2 = new javax.swing.JPanel();
-        jscroll = new javax.swing.JScrollPane();
-        artistViewTable = new javax.swing.JTable();
         placeP = new javax.swing.JPanel();
         placeView = new javax.swing.JTabbedPane();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        placeViewTable = new javax.swing.JTable();
         placeAdd = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -168,9 +174,6 @@ public class AdminApp extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         placeEditSelectionTable = new javax.swing.JTable();
-        jPanel3 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        placeViewTable = new javax.swing.JTable();
         statisticsP = new javax.swing.JPanel();
         jTabbedPane3 = new javax.swing.JTabbedPane();
         jPanel5 = new javax.swing.JPanel();
@@ -207,11 +210,22 @@ public class AdminApp extends javax.swing.JPanel {
         Bg.setMinimumSize(new java.awt.Dimension(980, 689));
         Bg.setPreferredSize(new java.awt.Dimension(1360, 720));
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Admin"));
 
-        jTabbedPane1.setBackground(new java.awt.Color(204, 255, 255));
+        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jTabbedPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
         jTabbedPane1.setMinimumSize(new java.awt.Dimension(741, 402));
         jTabbedPane1.setPreferredSize(new java.awt.Dimension(741, 402));
+
+        jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPane1MouseClicked(evt);
+            }
+        });
+
+        eventP.setBackground(new java.awt.Color(255, 255, 255));
+
         jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jTabbedPane1StateChanged(evt);
@@ -225,6 +239,55 @@ public class AdminApp extends javax.swing.JPanel {
             }
         });
 
+        eventView.setBackground(new java.awt.Color(255, 255, 255));
+
+        eventViewTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(eventViewTable);
+
+        javax.swing.GroupLayout eventViewLayout = new javax.swing.GroupLayout(eventView);
+        eventView.setLayout(eventViewLayout);
+        eventViewLayout.setHorizontalGroup(
+            eventViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eventViewLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 672, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        eventViewLayout.setVerticalGroup(
+            eventViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(eventViewLayout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTabbedPane2.addTab("Ver", eventView);
+
+        eventCreate.setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel12.setText("Nombre Evento");
 
         jLabel13.setText("Lugar");
@@ -234,13 +297,13 @@ public class AdminApp extends javax.swing.JPanel {
         jLabel14.setText("Artistas");
 
         eventArtist1AddTF.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        eventArtist1AddTF.setPreferredSize(new java.awt.Dimension(163, 20));
+        eventArtist1AddTF.setPreferredSize(new java.awt.Dimension(163, 23));
 
         eventArtist2AddTF.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        eventArtist2AddTF.setPreferredSize(new java.awt.Dimension(163, 20));
+        eventArtist2AddTF.setPreferredSize(new java.awt.Dimension(163, 23));
 
         eventArtist3AddTF.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        eventArtist3AddTF.setPreferredSize(new java.awt.Dimension(163, 20));
+        eventArtist3AddTF.setPreferredSize(new java.awt.Dimension(163, 23));
         eventArtist3AddTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 eventArtist3AddTFActionPerformed(evt);
@@ -251,15 +314,36 @@ public class AdminApp extends javax.swing.JPanel {
 
         jLabel16.setText("Fecha");
 
-        addEventB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        addEventB.setBackground(new java.awt.Color(6, 69, 127));
+        addEventB.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        addEventB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         addEventB.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 addEventBMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                addEventBMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                addEventBMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                addEventBMousePressed(evt);
+            }
         });
 
-        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Crear");
+        jLabel17.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel17MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel17MouseEntered(evt);
+            }
+        });
 
         javax.swing.GroupLayout addEventBLayout = new javax.swing.GroupLayout(addEventB);
         addEventB.setLayout(addEventBLayout);
@@ -294,7 +378,7 @@ public class AdminApp extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(eventCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(eventCreateLayout.createSequentialGroup()
-                        .addGap(0, 514, Short.MAX_VALUE)
+                        .addGap(0, 501, Short.MAX_VALUE)
                         .addComponent(addEventB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eventCreateLayout.createSequentialGroup()
@@ -323,11 +407,11 @@ public class AdminApp extends javax.swing.JPanel {
                                 .addComponent(eventNameAddTF)
                                 .addGroup(eventCreateLayout.createSequentialGroup()
                                     .addComponent(eventArtist1AddTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 82, Short.MAX_VALUE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(eventArtist2AddTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                                    .addComponent(eventArtist3AddTF, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(eventArtist3AddTF, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(17, Short.MAX_VALUE))))
         );
         eventCreateLayout.setVerticalGroup(
             eventCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -358,12 +442,14 @@ public class AdminApp extends javax.swing.JPanel {
                 .addGroup(eventCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel52)
                     .addComponent(eventAddTimeTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addComponent(addEventB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44))
         );
 
         jTabbedPane2.addTab("Crear", eventCreate);
+
+        eventEdit.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel20.setText("Evento");
 
@@ -397,25 +483,45 @@ public class AdminApp extends javax.swing.JPanel {
 
         jLabel25.setText("Fecha");
 
-        editEventB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        editEventB.setPreferredSize(new java.awt.Dimension(82, 37));
+        editEventB.setBackground(new java.awt.Color(6, 69, 127));
+        editEventB.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        editEventB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        editEventB.setPreferredSize(new java.awt.Dimension(171, 49));
         editEventB.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 editEventBMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                editEventBMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                editEventBMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                editEventBMousePressed(evt);
+            }
         });
 
-        jLabel26.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel26.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(255, 255, 255));
         jLabel26.setText("Editar");
+        jLabel26.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel26MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel26MouseEntered(evt);
+            }
+        });
 
         javax.swing.GroupLayout editEventBLayout = new javax.swing.GroupLayout(editEventB);
         editEventB.setLayout(editEventBLayout);
         editEventBLayout.setHorizontalGroup(
             editEventBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(editEventBLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editEventBLayout.createSequentialGroup()
                 .addContainerGap(54, Short.MAX_VALUE)
-                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addComponent(jLabel26)
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         editEventBLayout.setVerticalGroup(
             editEventBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -450,28 +556,27 @@ public class AdminApp extends javax.swing.JPanel {
                     .addComponent(jLabel6))
                 .addGap(18, 18, 18)
                 .addGroup(eventEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(eventEditLayout.createSequentialGroup()
-                        .addGroup(eventEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(eventEditLayout.createSequentialGroup()
-                                .addComponent(eventCapacityEditTF, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 340, Short.MAX_VALUE))
-                            .addGroup(eventEditLayout.createSequentialGroup()
-                                .addComponent(eventArtist1EditTF, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                                .addComponent(eventArtist2EditTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)))
-                        .addComponent(eventArtist3EditTF, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(eventEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(eventEditNameTF, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(eventSelectorE, javax.swing.GroupLayout.Alignment.LEADING, 0, 576, Short.MAX_VALUE)
-                        .addComponent(eventEditPlaceTF, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(eventDateEditTF, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(eventTimeEditTF, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(16, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eventEditLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(editEventB, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(260, 260, 260))
+                    .addGroup(eventEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(eventEditNameTF)
+                        .addComponent(eventSelectorE, 0, 576, Short.MAX_VALUE)
+                        .addComponent(eventEditPlaceTF, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(eventEditLayout.createSequentialGroup()
+                            .addGroup(eventEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(eventEditLayout.createSequentialGroup()
+                                    .addComponent(eventCapacityEditTF, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 340, Short.MAX_VALUE))
+                                .addGroup(eventEditLayout.createSequentialGroup()
+                                    .addComponent(eventArtist1EditTF, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                                    .addComponent(eventArtist2EditTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)))
+                            .addComponent(eventArtist3EditTF, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(eventEditLayout.createSequentialGroup()
+                            .addComponent(eventTimeEditTF, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(editEventB, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(eventDateEditTF, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         eventEditLayout.setVerticalGroup(
             eventEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -503,16 +608,22 @@ public class AdminApp extends javax.swing.JPanel {
                 .addGroup(eventEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25)
                     .addComponent(eventDateEditTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(eventEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(eventTimeEditTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addGap(18, 18, 18)
-                .addComponent(editEventB, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addGroup(eventEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(eventEditLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(eventEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(eventTimeEditTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eventEditLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addComponent(editEventB, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(51, Short.MAX_VALUE))))
         );
 
         jTabbedPane2.addTab("Editar", eventEdit);
+
+        eventDelete.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel18.setText("Evento");
 
@@ -523,25 +634,46 @@ public class AdminApp extends javax.swing.JPanel {
             }
         });
 
-        deleteEventB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        deleteEventB.setBackground(new java.awt.Color(6, 69, 127));
+        deleteEventB.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        deleteEventB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        deleteEventB.setPreferredSize(new java.awt.Dimension(171, 49));
         deleteEventB.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 deleteEventBMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                deleteEventBMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                deleteEventBMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                deleteEventBMousePressed(evt);
+            }
         });
 
-        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel19.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel19.setText("Eliminar");
+        jLabel19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel19MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel19MouseEntered(evt);
+            }
+        });
 
         javax.swing.GroupLayout deleteEventBLayout = new javax.swing.GroupLayout(deleteEventB);
         deleteEventB.setLayout(deleteEventBLayout);
         deleteEventBLayout.setHorizontalGroup(
             deleteEventBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(deleteEventBLayout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
+                .addContainerGap(46, Short.MAX_VALUE)
                 .addComponent(jLabel19)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         deleteEventBLayout.setVerticalGroup(
             deleteEventBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -556,15 +688,14 @@ public class AdminApp extends javax.swing.JPanel {
         eventDeleteLayout.setHorizontalGroup(
             eventDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(eventDeleteLayout.createSequentialGroup()
-                .addGroup(eventDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(eventDeleteLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel18)
-                        .addGap(18, 18, 18)
-                        .addComponent(eventSelectorD, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(eventDeleteLayout.createSequentialGroup()
-                        .addGap(281, 281, 281)
-                        .addComponent(deleteEventB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap()
+                .addComponent(jLabel18)
+                .addGap(18, 18, 18)
+                .addComponent(eventSelectorD, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(269, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eventDeleteLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(deleteEventB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         eventDeleteLayout.setVerticalGroup(
@@ -574,57 +705,12 @@ public class AdminApp extends javax.swing.JPanel {
                 .addGroup(eventDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
                     .addComponent(eventSelectorD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 212, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
                 .addComponent(deleteEventB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Eliminar", eventDelete);
-
-        eventViewTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(eventViewTable);
-
-        javax.swing.GroupLayout eventViewLayout = new javax.swing.GroupLayout(eventView);
-        eventView.setLayout(eventViewLayout);
-        eventViewLayout.setHorizontalGroup(
-            eventViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eventViewLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 674, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        eventViewLayout.setVerticalGroup(
-            eventViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(eventViewLayout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jTabbedPane2.addTab("Ver", eventView);
 
         javax.swing.GroupLayout eventPLayout = new javax.swing.GroupLayout(eventP);
         eventP.setLayout(eventPLayout);
@@ -639,12 +725,54 @@ public class AdminApp extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Evento", eventP);
 
+        artistP.setBackground(new java.awt.Color(255, 255, 255));
+
         artistView.setPreferredSize(new java.awt.Dimension(455, 377));
         artistView.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 artistViewStateChanged(evt);
             }
         });
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        artistViewTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Nombre", "Ocupacion", "Identificacion"
+            }
+        ));
+        artistViewTable.setCellSelectionEnabled(true);
+        artistViewTable.setDefaultEditor(Object.class, null);
+        artistViewTable.setColumnSelectionAllowed(false);
+        jscroll.setViewportView(artistViewTable);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(75, Short.MAX_VALUE)
+                .addComponent(jscroll, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(67, 67, 67))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addComponent(jscroll, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(155, Short.MAX_VALUE))
+        );
+
+        artistView.addTab("Ver", jPanel2);
+
+        artistCreate.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel27.setText("Nombre");
 
@@ -658,32 +786,53 @@ public class AdminApp extends javax.swing.JPanel {
             }
         });
 
-        addArtistB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        addArtistB.setBackground(new java.awt.Color(6, 69, 127));
+        addArtistB.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        addArtistB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addArtistB.setPreferredSize(new java.awt.Dimension(171, 49));
         addArtistB.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 addArtistBMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                addArtistBMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                addArtistBMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                addArtistBMousePressed(evt);
+            }
         });
 
-        jLabel30.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel30.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(255, 255, 255));
         jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel30.setText("Añadir");
+        jLabel30.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel30MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel30MouseEntered(evt);
+            }
+        });
 
         javax.swing.GroupLayout addArtistBLayout = new javax.swing.GroupLayout(addArtistB);
         addArtistB.setLayout(addArtistBLayout);
         addArtistBLayout.setHorizontalGroup(
             addArtistBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addArtistBLayout.createSequentialGroup()
-                .addContainerGap(70, Short.MAX_VALUE)
+                .addContainerGap(54, Short.MAX_VALUE)
                 .addComponent(jLabel30)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         addArtistBLayout.setVerticalGroup(
             addArtistBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addArtistBLayout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel30)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout artistCreateLayout = new javax.swing.GroupLayout(artistCreate);
@@ -691,24 +840,23 @@ public class AdminApp extends javax.swing.JPanel {
         artistCreateLayout.setHorizontalGroup(
             artistCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(artistCreateLayout.createSequentialGroup()
+                .addGap(132, 132, 132)
                 .addGroup(artistCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(artistCreateLayout.createSequentialGroup()
-                        .addGap(132, 132, 132)
-                        .addGroup(artistCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel29)
-                            .addComponent(jLabel27)
-                            .addComponent(jLabel28))
-                        .addGap(18, 18, 18)
-                        .addGroup(artistCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(artistNameAddTF)
-                            .addComponent(artistJobAddTF)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, artistCreateLayout.createSequentialGroup()
-                                .addComponent(artistIdAddTF, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
-                                .addGap(137, 137, 137))))
-                    .addGroup(artistCreateLayout.createSequentialGroup()
-                        .addGap(247, 247, 247)
-                        .addComponent(addArtistB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(180, Short.MAX_VALUE))
+                    .addComponent(jLabel29)
+                    .addComponent(jLabel27)
+                    .addComponent(jLabel28))
+                .addGap(18, 18, 18)
+                .addGroup(artistCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(artistNameAddTF)
+                    .addComponent(artistJobAddTF)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, artistCreateLayout.createSequentialGroup()
+                        .addComponent(artistIdAddTF, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+                        .addGap(137, 137, 137)))
+                .addContainerGap(178, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, artistCreateLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(addArtistB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         artistCreateLayout.setVerticalGroup(
             artistCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -725,12 +873,14 @@ public class AdminApp extends javax.swing.JPanel {
                 .addGroup(artistCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel29)
                     .addComponent(artistIdAddTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(55, 55, 55)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                 .addComponent(addArtistB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         artistView.addTab("Añadir", artistCreate);
+
+        artistEdit.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel32.setText("Nombre");
 
@@ -744,32 +894,53 @@ public class AdminApp extends javax.swing.JPanel {
             }
         });
 
-        editArtistB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        editArtistB.setBackground(new java.awt.Color(6, 69, 127));
+        editArtistB.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        editArtistB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        editArtistB.setPreferredSize(new java.awt.Dimension(171, 49));
         editArtistB.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 editArtistBMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                editArtistBMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                editArtistBMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                editArtistBMousePressed(evt);
+            }
         });
 
-        jLabel35.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel35.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel35.setForeground(new java.awt.Color(255, 255, 255));
         jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel35.setText("Editar");
+        jLabel35.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel35MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel35MouseEntered(evt);
+            }
+        });
 
         javax.swing.GroupLayout editArtistBLayout = new javax.swing.GroupLayout(editArtistB);
         editArtistB.setLayout(editArtistBLayout);
         editArtistBLayout.setHorizontalGroup(
             editArtistBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(editArtistBLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(54, Short.MAX_VALUE)
                 .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         editArtistBLayout.setVerticalGroup(
             editArtistBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(editArtistBLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         artistEditTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -801,9 +972,6 @@ public class AdminApp extends javax.swing.JPanel {
             .addGroup(artistEditLayout.createSequentialGroup()
                 .addGroup(artistEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(artistEditLayout.createSequentialGroup()
-                        .addGap(306, 306, 306)
-                        .addComponent(editArtistB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(artistEditLayout.createSequentialGroup()
                         .addGap(140, 140, 140)
                         .addGroup(artistEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel34)
@@ -819,67 +987,35 @@ public class AdminApp extends javax.swing.JPanel {
                     .addGroup(artistEditLayout.createSequentialGroup()
                         .addGap(67, 67, 67)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, artistEditLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(editArtistB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         artistEditLayout.setVerticalGroup(
             artistEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(artistEditLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(artistEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel32)
                     .addComponent(artistNameEditTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(artistEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel33)
                     .addComponent(artistJobEditTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(artistEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel34)
                     .addComponent(artistIdEditTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(editArtistB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         artistView.addTab("Editar", artistEdit);
-
-        artistViewTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Nombre", "Ocupacion", "Identificacion"
-            }
-        ));
-        artistViewTable.setCellSelectionEnabled(true);
-        artistViewTable.setDefaultEditor(Object.class, null);
-        artistViewTable.setColumnSelectionAllowed(false);
-        jscroll.setViewportView(artistViewTable);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(77, Short.MAX_VALUE)
-                .addComponent(jscroll, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addComponent(jscroll, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(153, Short.MAX_VALUE))
-        );
-
-        artistView.addTab("Ver", jPanel2);
 
         javax.swing.GroupLayout artistPLayout = new javax.swing.GroupLayout(artistP);
         artistP.setLayout(artistPLayout);
@@ -894,11 +1030,52 @@ public class AdminApp extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Artistas", artistP);
 
+        placeP.setBackground(new java.awt.Color(255, 255, 255));
+
         placeView.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 placeViewStateChanged(evt);
             }
         });
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
+        placeViewTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        placeViewTable.setCellSelectionEnabled(true);
+        placeViewTable.setDefaultEditor(Object.class, null);
+        placeViewTable.setColumnSelectionAllowed(false);
+        jScrollPane1.setViewportView(placeViewTable);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(81, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(77, 77, 77))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(75, 75, 75)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        placeView.addTab("Ver", jPanel3);
+
+        placeAdd.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setText("Nombre");
 
@@ -914,30 +1091,53 @@ public class AdminApp extends javax.swing.JPanel {
             }
         });
 
-        createPlaceB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        createPlaceB.setBackground(new java.awt.Color(6, 69, 127));
+        createPlaceB.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        createPlaceB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        createPlaceB.setMinimumSize(new java.awt.Dimension(171, 49));
+        createPlaceB.setPreferredSize(new java.awt.Dimension(171, 49));
         createPlaceB.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 createPlaceBMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                createPlaceBMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                createPlaceBMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                createPlaceBMousePressed(evt);
+            }
         });
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Crear");
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel5MouseEntered(evt);
+            }
+        });
 
         javax.swing.GroupLayout createPlaceBLayout = new javax.swing.GroupLayout(createPlaceB);
         createPlaceB.setLayout(createPlaceBLayout);
         createPlaceBLayout.setHorizontalGroup(
             createPlaceBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(createPlaceBLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addContainerGap(58, Short.MAX_VALUE)
                 .addComponent(jLabel5)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         createPlaceBLayout.setVerticalGroup(
             createPlaceBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(createPlaceBLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout placeAddLayout = new javax.swing.GroupLayout(placeAdd);
@@ -961,11 +1161,11 @@ public class AdminApp extends javax.swing.JPanel {
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
                         .addComponent(placeCapacityAddTF, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(157, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, placeAddLayout.createSequentialGroup()
-                .addContainerGap(350, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(createPlaceB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(306, 306, 306))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         placeAddLayout.setVerticalGroup(
             placeAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -986,12 +1186,14 @@ public class AdminApp extends javax.swing.JPanel {
                 .addGroup(placeAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(placeCapacityAddTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addComponent(createPlaceB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         placeView.addTab("Añadir", placeAdd);
+
+        placeEdit.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel7.setText("Nombre");
 
@@ -1001,30 +1203,52 @@ public class AdminApp extends javax.swing.JPanel {
 
         jLabel10.setText("Capacidad");
 
-        editPlaceB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        editPlaceB.setBackground(new java.awt.Color(6, 69, 127));
+        editPlaceB.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        editPlaceB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        editPlaceB.setPreferredSize(new java.awt.Dimension(171, 49));
         editPlaceB.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 editPlaceBMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                editPlaceBMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                editPlaceBMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                editPlaceBMousePressed(evt);
+            }
         });
 
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Editar");
+        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel11MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel11MouseEntered(evt);
+            }
+        });
 
         javax.swing.GroupLayout editPlaceBLayout = new javax.swing.GroupLayout(editPlaceB);
         editPlaceB.setLayout(editPlaceBLayout);
         editPlaceBLayout.setHorizontalGroup(
             editPlaceBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(editPlaceBLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addContainerGap(57, Short.MAX_VALUE)
                 .addComponent(jLabel11)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
         editPlaceBLayout.setVerticalGroup(
             editPlaceBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(editPlaceBLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel11)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         placeEditSelectionTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -1055,9 +1279,6 @@ public class AdminApp extends javax.swing.JPanel {
             .addGroup(placeEditLayout.createSequentialGroup()
                 .addGroup(placeEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(placeEditLayout.createSequentialGroup()
-                        .addGap(299, 299, 299)
-                        .addComponent(editPlaceB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(placeEditLayout.createSequentialGroup()
                         .addGap(143, 143, 143)
                         .addGroup(placeEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(placeEditLayout.createSequentialGroup()
@@ -1077,70 +1298,39 @@ public class AdminApp extends javax.swing.JPanel {
                     .addGroup(placeEditLayout.createSequentialGroup()
                         .addGap(108, 108, 108)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addContainerGap(132, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, placeEditLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(editPlaceB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         placeEditLayout.setVerticalGroup(
             placeEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(placeEditLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(placeEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(placeNameEditTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addGap(18, 18, 18)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(placeEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(placeDeckEditTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(placeEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(placeSectionEditTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(placeEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(placeCapacityEditTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(editPlaceB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(21, 21, 21))
         );
 
         placeView.addTab("Editar", placeEdit);
-
-        placeViewTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        placeViewTable.setCellSelectionEnabled(true);
-        placeViewTable.setDefaultEditor(Object.class, null);
-        placeViewTable.setColumnSelectionAllowed(false);
-        jScrollPane1.setViewportView(placeViewTable);
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(83, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        placeView.addTab("Ver", jPanel3);
 
         javax.swing.GroupLayout placePLayout = new javax.swing.GroupLayout(placeP);
         placeP.setLayout(placePLayout);
@@ -1155,11 +1345,15 @@ public class AdminApp extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Lugares", placeP);
 
+        statisticsP.setBackground(new java.awt.Color(255, 255, 255));
+
         jTabbedPane3.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jTabbedPane3StateChanged(evt);
             }
         });
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel36.setText("Fecha");
 
@@ -1207,7 +1401,7 @@ public class AdminApp extends javax.swing.JPanel {
                                         .addComponent(jLabel39)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jXDatePicker2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap(368, Short.MAX_VALUE))))
+                        .addContainerGap(366, Short.MAX_VALUE))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1229,11 +1423,13 @@ public class AdminApp extends javax.swing.JPanel {
                     .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         jTabbedPane3.addTab("Tiempo", jPanel5);
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel42.setText("Evento");
 
@@ -1253,14 +1449,14 @@ public class AdminApp extends javax.swing.JPanel {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addContainerGap(38, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 633, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel42)
                         .addGap(18, 18, 18)
                         .addComponent(eventReportSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1271,10 +1467,12 @@ public class AdminApp extends javax.swing.JPanel {
                     .addComponent(eventReportSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Evento", jPanel6);
+
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel43.setText("Lugar");
 
@@ -1291,7 +1489,7 @@ public class AdminApp extends javax.swing.JPanel {
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addContainerGap(38, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel7Layout.createSequentialGroup()
@@ -1310,7 +1508,7 @@ public class AdminApp extends javax.swing.JPanel {
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel44)
                         .addGap(601, 601, 601)))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1328,8 +1526,8 @@ public class AdminApp extends javax.swing.JPanel {
                     .addComponent(jXDatePicker3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jXDatePicker4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Lugar", jPanel7);
@@ -1342,7 +1540,7 @@ public class AdminApp extends javax.swing.JPanel {
         );
         statisticsPLayout.setVerticalGroup(
             statisticsPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 381, Short.MAX_VALUE)
+            .addComponent(jTabbedPane3)
         );
 
         jTabbedPane1.addTab("Estadisticas", statisticsP);
@@ -1427,13 +1625,7 @@ public class AdminApp extends javax.swing.JPanel {
     }//GEN-LAST:event_placeViewStateChanged
 
     private void createPlaceBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createPlaceBMouseClicked
-        Lugart lugar = new Lugart();
-        lugar.setNombreLugar(placeNameAddTF.getText());
-        lugar.setSeccionLugar(placeSectionAddTF.getText());
-        lugar.setCubiertaLugar(placeDeckAddTF.getText());
-        lugar.setCapacidadLugar(Integer.parseInt(placeCapacityAddTF.getText()));
-        String res = lugarCtrl.create(lugar);
-        JOptionPane.showMessageDialog(ha, res);
+        crearLugar();
     }//GEN-LAST:event_createPlaceBMouseClicked
 
     private void placeCapacityAddTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeCapacityAddTFActionPerformed
@@ -1441,61 +1633,16 @@ public class AdminApp extends javax.swing.JPanel {
     }//GEN-LAST:event_placeCapacityAddTFActionPerformed
 
     private void editPlaceBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editPlaceBMouseClicked
-        
-        Lugart lugar = lugarCtrl.findById(placeId);
-        
-        lugar.setNombreLugar(placeNameEditTF.getText());
-        lugar.setSeccionLugar(placeSectionEditTF.getText());
-        lugar.setCubiertaLugar(placeDeckEditTF.getText());
-        lugar.setCapacidadLugar(Integer.parseInt(placeCapacityEditTF.getText()));
-        lugarCtrl.edit(lugar,lugar.getIdLugar());
-        JOptionPane.showMessageDialog(ha, lugarCtrl.edit(lugar,lugar.getIdLugar()));
-
+        editarLugar();
     }//GEN-LAST:event_editPlaceBMouseClicked
 
     private void addArtistBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addArtistBMouseClicked
-        Artistat artista = new Artistat();
-        artista.setNombreArtista(artistNameAddTF.getText());
-        artista.setIdArtista(Integer.parseInt(artistIdAddTF.getText()));
-        artista.setOcupacionArtista(artistJobAddTF.getText());
-        String res = artistaCtrl.create(artista);
-        JOptionPane.showMessageDialog(ha, res);
-        
+        crearArtista();
+
     }//GEN-LAST:event_addArtistBMouseClicked
 
     private void addEventBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addEventBMouseClicked
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        LocalDateTime ldt;
-        String fecha;
-        String hora;
-        Date date;
-        
-        Eventot event = new Eventot();
-        Lugart lugar = lugarCtrl.findByName(eventPlaceAddTF.getSelectedItem().toString());
-        
-        
-        fecha = df.format(eventDateAddTF.getDate());
-        hora = timeEditor.getFormat().format(eventAddTimeTF.getValue());
-        ldt = LocalDate.parse(fecha).atTime(LocalTime.parse(hora));
-        date = Date.from(ldt.atZone(ZoneId.systemDefault()).toInstant());
-
-        
-        event.setNombreEvento(eventNameAddTF.getText());
-        event.setFechaEvento(date);
-
-        ArrayList<String> names = new ArrayList<>();
-        if (!"N/A".equals(eventArtist1AddTF.getSelectedItem().toString())) {
-            names.add(eventArtist1AddTF.getSelectedItem().toString());
-        }
-        if (!"N/A".equals(eventArtist2AddTF.getSelectedItem().toString())) {
-            names.add(eventArtist2AddTF.getSelectedItem().toString());
-        }
-        if (!"N/A".equals(eventArtist3AddTF.getSelectedItem().toString())) {
-            names.add(eventArtist3AddTF.getSelectedItem().toString());
-        }
-        ArrayList<Artistat> artists = artistaCtrl.buscarByNames(names);
-        String res = eventoCtrl.crear(event, lugar, artists, Integer.parseInt(eventCapacityAddTF.getText()), adminS);
-        JOptionPane.showMessageDialog(ha, res);
+        crearEvento();
     }//GEN-LAST:event_addEventBMouseClicked
 
     private void eventArtist3AddTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventArtist3AddTFActionPerformed
@@ -1562,46 +1709,11 @@ public class AdminApp extends javax.swing.JPanel {
     }//GEN-LAST:event_eventSelectorEActionPerformed
 
     private void editEventBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editEventBMouseClicked
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        LocalDateTime ldt;
-        String fecha;
-        String hora;
-        Date date;
-        
-        Eventot event = eventoCtrl.findEventot(EventotController.getIds().get(eventSelectorE.getSelectedIndex()));
-        
-        event.setNombreEvento(eventEditNameTF.getText());
-        Lugart lugar = lugarCtrl.findById(eventPlaceAddTF.getSelectedIndex() + 1);
-        
-        fecha = df.format(eventDateEditTF.getDate());
-        hora = timeEditor2.getFormat().format(eventTimeEditTF.getValue());
-        ldt = LocalDate.parse(fecha).atTime(LocalTime.parse(hora));
-        date = Date.from(ldt.atZone(ZoneId.systemDefault()).toInstant());
-        
-        event.setFechaEvento(date);
- 
-        ArrayList<String> names = new ArrayList<>();
-        if (!"N/A".equals(eventArtist1EditTF.getSelectedItem().toString())) {
-            names.add(eventArtist1EditTF.getSelectedItem().toString());
-        }
-        if (!"N/A".equals(eventArtist2EditTF.getSelectedItem().toString())) {
-            names.add(eventArtist2EditTF.getSelectedItem().toString());
-        }
-        if (!"N/A".equals(eventArtist3EditTF.getSelectedItem().toString())) {
-            names.add(eventArtist3EditTF.getSelectedItem().toString());
-        }
-        int capacidad = Integer.parseInt(eventCapacityEditTF.getText());
-
-        ArrayList<Artistat> artists = artistaCtrl.buscarByNames(names);
-        String res = eventoCtrl.editEvent(event, lugar, artists, capacidad);
-        JOptionPane.showMessageDialog(ha, res);
-
+        editarEvento();
     }//GEN-LAST:event_editEventBMouseClicked
   
     private void deleteEventBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteEventBMouseClicked
-        Eventot event = eventoCtrl.findEventot(EventotController.getIds().get(eventSelectorE.getSelectedIndex()));
-        String res = eventoCtrl.close_event(event.getIdEvento());
-        JOptionPane.showMessageDialog(ha, res);
+        eliminarEvento();
     }//GEN-LAST:event_deleteEventBMouseClicked
 
     private void eventDateAddTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventDateAddTFActionPerformed
@@ -1610,13 +1722,7 @@ public class AdminApp extends javax.swing.JPanel {
 
 
     private void editArtistBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editArtistBMouseClicked
-        Artistat artista = artistaCtrl.buscarById(artistId);
-        artista.setNombreArtista(artistNameEditTF.getText());
-        artista.setOcupacionArtista(artistJobEditTF.getText());
-        artista.setIdArtista(Integer.parseInt(artistIdEditTF.getText()));
-        String res = artistaCtrl.edit(artista);
-        JOptionPane.showMessageDialog(ha, res);
-        artistId = artista.getIdArtista();
+        editarArtista();
     }//GEN-LAST:event_editArtistBMouseClicked
 
     private void artistIdEditTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_artistIdEditTFActionPerformed
@@ -1673,6 +1779,151 @@ public class AdminApp extends javax.swing.JPanel {
        }
     }//GEN-LAST:event_jTabbedPane3StateChanged
 
+
+    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
+        generarListasP2();
+    }//GEN-LAST:event_jTabbedPane1MouseClicked
+
+    private void addEventBMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addEventBMouseEntered
+        eventButton(addEventB, false);
+    }//GEN-LAST:event_addEventBMouseEntered
+
+    private void addEventBMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addEventBMouseExited
+        eventButton(addEventB, true);
+    }//GEN-LAST:event_addEventBMouseExited
+
+    private void addEventBMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addEventBMousePressed
+        clickedButton(addEventB);
+    }//GEN-LAST:event_addEventBMousePressed
+
+    private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
+        crearEvento();
+    }//GEN-LAST:event_jLabel17MouseClicked
+
+    private void jLabel17MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseEntered
+        eventButton(addEventB, false);
+    }//GEN-LAST:event_jLabel17MouseEntered
+
+    private void editEventBMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editEventBMouseEntered
+        eventButton(editEventB, false);
+    }//GEN-LAST:event_editEventBMouseEntered
+
+    private void editEventBMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editEventBMouseExited
+        eventButton(editEventB, true);
+    }//GEN-LAST:event_editEventBMouseExited
+
+    private void editEventBMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editEventBMousePressed
+        clickedButton(editEventB);
+    }//GEN-LAST:event_editEventBMousePressed
+
+    private void jLabel26MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel26MouseClicked
+        editarEvento();
+    }//GEN-LAST:event_jLabel26MouseClicked
+
+    private void jLabel26MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel26MouseEntered
+        eventButton(editEventB, false);
+    }//GEN-LAST:event_jLabel26MouseEntered
+
+    private void deleteEventBMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteEventBMouseEntered
+        eventButton(deleteEventB, false);
+    }//GEN-LAST:event_deleteEventBMouseEntered
+
+    private void deleteEventBMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteEventBMouseExited
+        eventButton(deleteEventB, true);
+    }//GEN-LAST:event_deleteEventBMouseExited
+
+    private void deleteEventBMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteEventBMousePressed
+        clickedButton(deleteEventB);
+    }//GEN-LAST:event_deleteEventBMousePressed
+
+    private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
+        eliminarEvento();
+    }//GEN-LAST:event_jLabel19MouseClicked
+
+    private void jLabel19MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseEntered
+        eventButton(deleteEventB, false);
+    }//GEN-LAST:event_jLabel19MouseEntered
+
+    private void addArtistBMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addArtistBMouseEntered
+        eventButton(addArtistB, false);
+    }//GEN-LAST:event_addArtistBMouseEntered
+
+    private void addArtistBMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addArtistBMouseExited
+        eventButton(addArtistB, true);
+    }//GEN-LAST:event_addArtistBMouseExited
+
+    private void addArtistBMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addArtistBMousePressed
+        clickedButton(addArtistB);
+    }//GEN-LAST:event_addArtistBMousePressed
+
+    private void jLabel30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel30MouseClicked
+        crearArtista();
+    }//GEN-LAST:event_jLabel30MouseClicked
+
+    private void jLabel30MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel30MouseEntered
+        eventButton(addArtistB, false);
+    }//GEN-LAST:event_jLabel30MouseEntered
+
+    private void editArtistBMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editArtistBMouseEntered
+        eventButton(editArtistB, false);
+    }//GEN-LAST:event_editArtistBMouseEntered
+
+    private void editArtistBMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editArtistBMouseExited
+        eventButton(editArtistB, true);
+    }//GEN-LAST:event_editArtistBMouseExited
+
+    private void editArtistBMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editArtistBMousePressed
+        clickedButton(editArtistB);
+    }//GEN-LAST:event_editArtistBMousePressed
+
+    private void jLabel35MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel35MouseClicked
+        editarArtista();
+    }//GEN-LAST:event_jLabel35MouseClicked
+
+    private void jLabel35MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel35MouseEntered
+        eventButton(editArtistB, false);
+    }//GEN-LAST:event_jLabel35MouseEntered
+
+    private void createPlaceBMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createPlaceBMouseEntered
+        eventButton(createPlaceB, false);
+    }//GEN-LAST:event_createPlaceBMouseEntered
+
+    private void createPlaceBMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createPlaceBMouseExited
+        eventButton(createPlaceB, true);
+    }//GEN-LAST:event_createPlaceBMouseExited
+
+    private void createPlaceBMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createPlaceBMousePressed
+        clickedButton(createPlaceB);
+    }//GEN-LAST:event_createPlaceBMousePressed
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        crearLugar();
+    }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseEntered
+        eventButton(createPlaceB, false);
+    }//GEN-LAST:event_jLabel5MouseEntered
+
+    private void editPlaceBMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editPlaceBMouseEntered
+        eventButton(editPlaceB, false);
+    }//GEN-LAST:event_editPlaceBMouseEntered
+
+    private void editPlaceBMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editPlaceBMouseExited
+        eventButton(editPlaceB, true);
+    }//GEN-LAST:event_editPlaceBMouseExited
+
+    private void editPlaceBMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editPlaceBMousePressed
+        clickedButton(editPlaceB);
+    }//GEN-LAST:event_editPlaceBMousePressed
+
+    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+        editarLugar();
+    }//GEN-LAST:event_jLabel11MouseClicked
+
+    private void jLabel11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseEntered
+        eventButton(editPlaceB, false);
+    }//GEN-LAST:event_jLabel11MouseEntered
+
     private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
         if(jTabbedPane1.getSelectedIndex() == 0){
             //codigo de borrar cosas de evento aqui:
@@ -1682,6 +1933,7 @@ public class AdminApp extends javax.swing.JPanel {
             defaultValuesPlace();
         }
     }//GEN-LAST:event_jTabbedPane1StateChanged
+
 
     
     private String[][] datos(){
@@ -1724,26 +1976,181 @@ public class AdminApp extends javax.swing.JPanel {
         String[] names;
         String[] tableNames = {"Id", "Nombre", "Lugar", "Artista1", "Artista2", "Artista3", "Capacidad", "Fecha"};
         String[][] tableData;
-        if (jTabbedPane2.getSelectedIndex() == 0) {
+        if (jTabbedPane2.getSelectedIndex() == 1) {
             names = lugarCtrl.listar_nombres();
             eventPlaceAddTF.setModel(new DefaultComboBoxModel(names));
             names = artistaCtrl.listar_nombres();
             eventArtist1AddTF.setModel(new DefaultComboBoxModel(names));
             eventArtist2AddTF.setModel(new DefaultComboBoxModel(names));
             eventArtist3AddTF.setModel(new DefaultComboBoxModel(names));
-        } else if (jTabbedPane2.getSelectedIndex() == 1) {
-            names = eventoCtrl.listarNombres();
-            eventSelectorE.setModel(new DefaultComboBoxModel(names));
         } else if (jTabbedPane2.getSelectedIndex() == 2) {
             names = eventoCtrl.listarNombres();
+            eventSelectorE.setModel(new DefaultComboBoxModel(names));
+        } else if (jTabbedPane2.getSelectedIndex() == 3) {
+            names = eventoCtrl.listarNombres();
             eventSelectorD.setModel(new DefaultComboBoxModel(names));
-        }else if(jTabbedPane2.getSelectedIndex() == 3){
+        }else if(jTabbedPane2.getSelectedIndex() == 0){
             tableData = datos();
             eventViewTable.setModel(new DefaultTableModel(tableData, tableNames));
         }
 
     }
     
+
+    public void eventButton(javax.swing.JPanel panel, boolean ps) {
+        Color colorbg;
+        if (ps) {
+            colorbg = new Color(6, 69, 127, 255);
+        } else {
+            colorbg = new Color(25, 109, 185, 255);
+        }
+        panel.setBackground(colorbg);
+    }
+    
+    public void clickedButton(javax.swing.JPanel panel){
+        Color colorbg = new Color(78, 159, 233, 255);
+        panel.setBackground(colorbg);
+    }
+
+    public void crearEvento(){
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        LocalDateTime ldt;
+        String fecha;
+        String hora;
+        Date date;
+        
+        Eventot event = new Eventot();
+        Lugart lugar = lugarCtrl.findByName(eventPlaceAddTF.getSelectedItem().toString());
+        
+        
+        fecha = df.format(eventDateAddTF.getDate());
+        hora = timeEditor.getFormat().format(eventAddTimeTF.getValue());
+        ldt = LocalDate.parse(fecha).atTime(LocalTime.parse(hora));
+        date = Date.from(ldt.atZone(ZoneId.systemDefault()).toInstant());
+
+        
+        event.setNombreEvento(eventNameAddTF.getText());
+        event.setFechaEvento(date);
+
+        ArrayList<String> names = new ArrayList<>();
+        if (!"N/A".equals(eventArtist1AddTF.getSelectedItem().toString())) {
+            names.add(eventArtist1AddTF.getSelectedItem().toString());
+        }
+        if (!"N/A".equals(eventArtist2AddTF.getSelectedItem().toString())) {
+            names.add(eventArtist2AddTF.getSelectedItem().toString());
+        }
+        if (!"N/A".equals(eventArtist3AddTF.getSelectedItem().toString())) {
+            names.add(eventArtist3AddTF.getSelectedItem().toString());
+        }
+        ArrayList<Artistat> artists = artistaCtrl.buscarByNames(names);
+        String res = eventoCtrl.crear(event, lugar, artists, Integer.parseInt(eventCapacityAddTF.getText()), adminS);
+        
+        JOptionPane.showMessageDialog(ha, res);
+    }
+    
+    public void editarEvento(){
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        LocalDateTime ldt;
+        String fecha;
+        String hora;
+        Date date;
+        
+        Eventot event = eventoCtrl.findEventot(EventotController.getIds().get(eventSelectorE.getSelectedIndex()));
+        
+        event.setNombreEvento(eventEditNameTF.getText());
+        Lugart lugar = lugarCtrl.findById(eventPlaceAddTF.getSelectedIndex() + 1);
+        
+        fecha = df.format(eventDateEditTF.getDate());
+        hora = timeEditor2.getFormat().format(eventTimeEditTF.getValue());
+        ldt = LocalDate.parse(fecha).atTime(LocalTime.parse(hora));
+        date = Date.from(ldt.atZone(ZoneId.systemDefault()).toInstant());
+        
+        event.setFechaEvento(date);
+ 
+        ArrayList<String> names = new ArrayList<>();
+        if (!"N/A".equals(eventArtist1EditTF.getSelectedItem().toString())) {
+            names.add(eventArtist1EditTF.getSelectedItem().toString());
+        }
+        if (!"N/A".equals(eventArtist2EditTF.getSelectedItem().toString())) {
+            names.add(eventArtist2EditTF.getSelectedItem().toString());
+        }
+        if (!"N/A".equals(eventArtist3EditTF.getSelectedItem().toString())) {
+            names.add(eventArtist3EditTF.getSelectedItem().toString());
+        }
+        int capacidad = Integer.parseInt(eventCapacityEditTF.getText());
+
+        ArrayList<Artistat> artists = artistaCtrl.buscarByNames(names);
+        String res = eventoCtrl.editEvent(event, lugar, artists, capacidad);
+        if(res.equals("EVENTO EDITADO")){
+            blanquearEvento();
+        }
+        JOptionPane.showMessageDialog(ha, res);
+    }
+    
+    public void eliminarEvento(){
+        Eventot event = eventoCtrl.findEventot(EventotController.getIds().get(eventSelectorE.getSelectedIndex()));
+        String res = eventoCtrl.close_event(event.getIdEvento());
+        JOptionPane.showMessageDialog(ha, res);
+    }
+    
+    public void crearArtista(){
+        Artistat artista = new Artistat();
+        artista.setNombreArtista(artistNameAddTF.getText());
+        artista.setIdArtista(Integer.parseInt(artistIdAddTF.getText()));
+        artista.setOcupacionArtista(artistJobAddTF.getText());
+        String res = artistaCtrl.create(artista);
+        JOptionPane.showMessageDialog(ha, res);
+    }
+    
+    public void editarArtista(){
+        Artistat artista = artistaCtrl.buscarById(artistId);
+        artista.setNombreArtista(artistNameEditTF.getText());
+        artista.setOcupacionArtista(artistJobEditTF.getText());
+        artista.setIdArtista(Integer.parseInt(artistIdEditTF.getText()));
+        String res = artistaCtrl.edit(artista);
+        JOptionPane.showMessageDialog(ha, res);
+        artistId = artista.getIdArtista();
+    }
+    
+    public void crearLugar(){
+        Lugart lugar = new Lugart();
+        lugar.setNombreLugar(placeNameAddTF.getText());
+        lugar.setSeccionLugar(placeSectionAddTF.getText());
+        lugar.setCubiertaLugar(placeDeckAddTF.getText());
+        lugar.setCapacidadLugar(Integer.parseInt(placeCapacityAddTF.getText()));
+        String res = lugarCtrl.create(lugar);
+        JOptionPane.showMessageDialog(ha, res);
+    }
+    
+    public void editarLugar(){
+        Lugart lugar = lugarCtrl.findById(placeId);
+        lugar.setNombreLugar(placeNameEditTF.getText());
+        lugar.setSeccionLugar(placeSectionEditTF.getText());
+        lugar.setCubiertaLugar(placeDeckEditTF.getText());
+        lugar.setCapacidadLugar(Integer.parseInt(placeCapacityEditTF.getText()));
+        lugarCtrl.edit(lugar,lugar.getIdLugar());
+        JOptionPane.showMessageDialog(ha, lugarCtrl.edit(lugar,lugar.getIdLugar()));
+    }
+    
+    public void blanquearEvento(){
+        eventEditNameTF.setText("");  
+        eventDateEditTF.setDate(null);
+        eventEditPlaceTF.setSelectedIndex(0);
+        eventArtist1EditTF.setSelectedIndex(0);
+        eventArtist2EditTF.setSelectedIndex(0);
+        eventArtist3EditTF.setSelectedIndex(0);
+        eventCapacityEditTF.setText("");
+        eventNameAddTF.setText("");
+        eventDateAddTF.setDate(null);
+        eventPlaceAddTF.setSelectedIndex(0);
+        eventArtist1AddTF.setSelectedIndex(0);
+        eventArtist2AddTF.setSelectedIndex(0);
+        eventArtist3AddTF.setSelectedIndex(0);
+        eventCapacityAddTF.setText("");
+    }
+    
+    
+
     private void defaultValuesArtist(){
         artistNameAddTF.setText("");
         artistJobAddTF.setText("");
@@ -1763,6 +2170,7 @@ public class AdminApp extends javax.swing.JPanel {
         placeSectionEditTF.setText("");
         placeCapacityEditTF.setText("");;
     }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Bg;
     private javax.swing.JPanel addArtistB;
