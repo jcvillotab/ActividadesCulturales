@@ -18,10 +18,13 @@ import java.sql.ResultSet;
 public class AdminDao {
     private Admint adminS;
     public Connection con;
+    private String driverC = "jdbc:mysql://localhost:3306/actividadesculturalesdb?zeroDateTimeBehavior=convertToNull";
+    private String userDB = "root";
+    private String passDB = "btZ7op0gGo";
 
     public AdminDao() {
         try {
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/actividadesculturalesdb?zeroDateTimeBehavior=convertToNull","root","juancamilovill9");
+            con = DriverManager.getConnection(driverC,userDB,passDB);
         } catch (Exception e) {
             System.out.println("error en la conexion"+e);
         }
@@ -40,6 +43,8 @@ public class AdminDao {
             }
             ms = (CallableStatement) con.prepareCall(sentencia_crear);
             ms.executeQuery();
+            con.close();
+            con = DriverManager.getConnection(driverC,userDB,passDB);
             return "registro exitoso";
             
         } catch (Exception e) {

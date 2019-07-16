@@ -236,6 +236,7 @@ public class SignUpApp extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(ha, res);
         if(res=="registro exitoso"){
             LoginApp lg = new LoginApp();
+            lg.ha = ha;
             ha.setBasicP(lg);
         }
     }
