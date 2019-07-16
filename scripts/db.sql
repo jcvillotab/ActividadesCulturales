@@ -207,6 +207,9 @@ RETURN (SELECT id_fk_id_lugar FROM actividadesculturalesdb.eventoxlugart WHERE i
 CREATE FUNCTION LAST_EVENT() RETURNS INT
 RETURN (SELECT MAX(eventot.id_evento) FROM actividadesculturalesdb.eventot);
 
+CREATE FUNCTION RETURN_RESERVAS_HECHAS(idEvento int) RETURNS INT
+RETURN (SELECT COUNT(id_fk_id_evento) from eventoxclientet WHERE id_fk_id_evento = idEvento);
+
 SET GLOBAL time_zone = "-5:00";
 
 INSERT INTO clientet (nombre_cliente,codigo_cliente) VALUES ("Zachary Justice","41487938");

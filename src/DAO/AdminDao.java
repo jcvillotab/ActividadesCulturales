@@ -20,7 +20,7 @@ public class AdminDao {
     public Connection con;
     private String driverC = "jdbc:mysql://localhost:3306/actividadesculturalesdb?zeroDateTimeBehavior=convertToNull";
     private String userDB = "root";
-    private String passDB = "btZ7op0gGo";
+    private String passDB = "juancamilovill9";
 
     public AdminDao() {
         try {

@@ -2035,6 +2035,8 @@
                                                       <Group type="103" groupAlignment="0" attributes="0">
                                                           <Group type="102" attributes="0">
                                                               <Component id="jLabel38" min="-2" max="-2" attributes="0"/>
+                                                              <EmptySpace max="-2" attributes="0"/>
+                                                              <Component id="jXDatePicker1" min="-2" max="-2" attributes="0"/>
                                                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                                           </Group>
                                                           <Group type="102" attributes="0">
@@ -2050,11 +2052,15 @@
                                                               <EmptySpace max="-2" attributes="0"/>
                                                               <Component id="jSpinner2" min="-2" pref="104" max="-2" attributes="0"/>
                                                           </Group>
-                                                          <Component id="jLabel39" min="-2" max="-2" attributes="0"/>
+                                                          <Group type="102" attributes="0">
+                                                              <Component id="jLabel39" min="-2" max="-2" attributes="0"/>
+                                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                              <Component id="jXDatePicker2" min="-2" max="-2" attributes="0"/>
+                                                          </Group>
                                                       </Group>
                                                   </Group>
                                               </Group>
-                                              <EmptySpace pref="438" max="32767" attributes="0"/>
+                                              <EmptySpace pref="393" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -2069,6 +2075,8 @@
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel38" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel39" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jXDatePicker1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jXDatePicker2" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="jLabel37" min="-2" max="-2" attributes="0"/>
@@ -2080,7 +2088,7 @@
                                           <Component id="jSpinner3" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jTextField1" pref="223" max="32767" attributes="0"/>
+                                      <Component id="jTextField1" pref="215" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -2122,6 +2130,10 @@
                             <Component class="javax.swing.JSpinner" name="jSpinner3">
                             </Component>
                             <Component class="javax.swing.JTextField" name="jTextField1">
+                            </Component>
+                            <Component class="org.jdesktop.swingx.JXDatePicker" name="jXDatePicker1">
+                            </Component>
+                            <Component class="org.jdesktop.swingx.JXDatePicker" name="jXDatePicker2">
                             </Component>
                           </SubComponents>
                         </Container>
