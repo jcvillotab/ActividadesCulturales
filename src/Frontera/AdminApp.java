@@ -109,12 +109,12 @@ public class AdminApp extends javax.swing.JPanel {
         editEventB = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
         eventArtist3EditTF = new javax.swing.JComboBox();
-        eventDateEditTF = new org.jdesktop.swingx.JXDatePicker();
         jLabel6 = new javax.swing.JLabel();
         eventTimeEditTF = new JSpinner(new SpinnerDateModel());
         timeEditor2 = new JSpinner.DateEditor(eventTimeEditTF, "HH:mm:ss");
         eventTimeEditTF.setEditor(timeEditor2);
         eventTimeEditTF.setValue(new Date());
+        eventDateEditTF = new org.jdesktop.swingx.JXDatePicker();
         eventDelete = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         eventSelectorD = new javax.swing.JComboBox();
@@ -181,8 +181,6 @@ public class AdminApp extends javax.swing.JPanel {
         jLabel37 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
-        jXDatePicker1 = new org.jdesktop.swingx.JXDatePicker();
-        jXDatePicker2 = new org.jdesktop.swingx.JXDatePicker();
         jLabel40 = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
         jSpinner2 = new javax.swing.JSpinner();
@@ -200,8 +198,6 @@ public class AdminApp extends javax.swing.JPanel {
         jLabel44 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
-        jXDatePicker3 = new org.jdesktop.swingx.JXDatePicker();
-        jXDatePicker4 = new org.jdesktop.swingx.JXDatePicker();
 
         setMaximumSize(new java.awt.Dimension(1360, 720));
         setMinimumSize(new java.awt.Dimension(980, 689));
@@ -217,20 +213,18 @@ public class AdminApp extends javax.swing.JPanel {
         jTabbedPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
         jTabbedPane1.setMinimumSize(new java.awt.Dimension(741, 402));
         jTabbedPane1.setPreferredSize(new java.awt.Dimension(741, 402));
-
         jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTabbedPane1MouseClicked(evt);
             }
         });
-
-        eventP.setBackground(new java.awt.Color(255, 255, 255));
-
         jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jTabbedPane1StateChanged(evt);
             }
         });
+
+        eventP.setBackground(new java.awt.Color(255, 255, 255));
 
         jTabbedPane2.setBackground(new java.awt.Color(255, 255, 255));
         jTabbedPane2.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -364,12 +358,6 @@ public class AdminApp extends javax.swing.JPanel {
 
         jLabel52.setText("Hora");
 
-        eventDateAddTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                eventDateAddTFActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout eventCreateLayout = new javax.swing.GroupLayout(eventCreate);
         eventCreate.setLayout(eventCreateLayout);
         eventCreateLayout.setHorizontalGroup(
@@ -385,13 +373,10 @@ public class AdminApp extends javax.swing.JPanel {
                         .addGroup(eventCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel16)
                             .addComponent(jLabel52))
-                        .addGroup(eventCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(eventCreateLayout.createSequentialGroup()
-                                .addGap(64, 64, 64)
-                                .addComponent(eventAddTimeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eventCreateLayout.createSequentialGroup()
-                                .addGap(63, 63, 63)
-                                .addComponent(eventDateAddTF, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(64, 64, 64)
+                        .addGroup(eventCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(eventAddTimeTF, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                            .addComponent(eventDateAddTF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(eventCreateLayout.createSequentialGroup()
                         .addGroup(eventCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1376,7 +1361,7 @@ public class AdminApp extends javax.swing.JPanel {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 629, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(29, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel37)
@@ -1385,8 +1370,7 @@ public class AdminApp extends javax.swing.JPanel {
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel5Layout.createSequentialGroup()
                                         .addComponent(jLabel38)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE))
                                     .addGroup(jPanel5Layout.createSequentialGroup()
                                         .addComponent(jLabel40)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1397,11 +1381,8 @@ public class AdminApp extends javax.swing.JPanel {
                                         .addComponent(jLabel41)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addComponent(jLabel39)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jXDatePicker2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap(366, Short.MAX_VALUE))))
+                                    .addComponent(jLabel39))))
+                        .addContainerGap(438, Short.MAX_VALUE))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1411,9 +1392,7 @@ public class AdminApp extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel38)
-                    .addComponent(jLabel39)
-                    .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jXDatePicker2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel39))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel37)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1423,7 +1402,7 @@ public class AdminApp extends javax.swing.JPanel {
                     .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1494,12 +1473,8 @@ public class AdminApp extends javax.swing.JPanel {
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel7Layout.createSequentialGroup()
                             .addComponent(jLabel45)
-                            .addGap(18, 18, 18)
-                            .addComponent(jXDatePicker4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(61, 61, 61)
-                            .addComponent(jLabel46)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jXDatePicker3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(199, 199, 199)
+                            .addComponent(jLabel46))
                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel7Layout.createSequentialGroup()
                             .addComponent(jLabel43)
@@ -1519,15 +1494,13 @@ public class AdminApp extends javax.swing.JPanel {
                     .addComponent(placeReportSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel44)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel45)
-                    .addComponent(jLabel46)
-                    .addComponent(jXDatePicker3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jXDatePicker4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel46))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Lugar", jPanel7);
@@ -2023,7 +1996,7 @@ public class AdminApp extends javax.swing.JPanel {
         Lugart lugar = lugarCtrl.findByName(eventPlaceAddTF.getSelectedItem().toString());
         
         
-        fecha = df.format(eventDateAddTF.getDate());
+        fecha = df.format(eventDateEditTF.getDate());
         hora = timeEditor.getFormat().format(eventAddTimeTF.getValue());
         ldt = LocalDate.parse(fecha).atTime(LocalTime.parse(hora));
         date = Date.from(ldt.atZone(ZoneId.systemDefault()).toInstant());
@@ -2141,7 +2114,7 @@ public class AdminApp extends javax.swing.JPanel {
         eventArtist3EditTF.setSelectedIndex(0);
         eventCapacityEditTF.setText("");
         eventNameAddTF.setText("");
-        eventDateAddTF.setDate(null);
+        eventDateEditTF.setDate(null);
         eventPlaceAddTF.setSelectedIndex(0);
         eventArtist1AddTF.setSelectedIndex(0);
         eventArtist2AddTF.setSelectedIndex(0);
@@ -2285,10 +2258,6 @@ public class AdminApp extends javax.swing.JPanel {
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField3;
-    private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
-    private org.jdesktop.swingx.JXDatePicker jXDatePicker2;
-    private org.jdesktop.swingx.JXDatePicker jXDatePicker3;
-    private org.jdesktop.swingx.JXDatePicker jXDatePicker4;
     private javax.swing.JScrollPane jscroll;
     private javax.swing.JPanel placeAdd;
     private javax.swing.JTextField placeCapacityAddTF;
