@@ -187,12 +187,12 @@ public class AdminApp extends javax.swing.JPanel {
         jTextField1 = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jLabel42 = new javax.swing.JLabel();
-        eventReportSelector = new javax.swing.JComboBox<String>();
+        eventReportSelector = new javax.swing.JComboBox<>();
         jScrollPane5 = new javax.swing.JScrollPane();
         eventReportTextBox = new javax.swing.JTextArea();
         jPanel7 = new javax.swing.JPanel();
         jLabel43 = new javax.swing.JLabel();
-        placeReportSelector = new javax.swing.JComboBox<String>();
+        placeReportSelector = new javax.swing.JComboBox<>();
         jTextField3 = new javax.swing.JTextField();
         jLabel44 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
@@ -212,6 +212,11 @@ public class AdminApp extends javax.swing.JPanel {
         jTabbedPane1.setBackground(new java.awt.Color(204, 255, 255));
         jTabbedPane1.setMinimumSize(new java.awt.Dimension(741, 402));
         jTabbedPane1.setPreferredSize(new java.awt.Dimension(741, 402));
+        jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jTabbedPane1StateChanged(evt);
+            }
+        });
 
         jTabbedPane2.setBackground(new java.awt.Color(255, 255, 255));
         jTabbedPane2.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -1232,7 +1237,7 @@ public class AdminApp extends javax.swing.JPanel {
 
         jLabel42.setText("Evento");
 
-        eventReportSelector.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        eventReportSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         eventReportSelector.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 eventReportSelectorActionPerformed(evt);
@@ -1273,7 +1278,7 @@ public class AdminApp extends javax.swing.JPanel {
 
         jLabel43.setText("Lugar");
 
-        placeReportSelector.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        placeReportSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel44.setText("Fecha");
 
@@ -1408,7 +1413,7 @@ public class AdminApp extends javax.swing.JPanel {
         
         artistViewTable.setModel(new DefaultTableModel(data, columnNames));
         artistEditTable.setModel(new DefaultTableModel(data, columnNames));
-
+        defaultValuesArtist();
     }//GEN-LAST:event_artistViewStateChanged
 
     private void placeViewStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_placeViewStateChanged
@@ -1418,7 +1423,7 @@ public class AdminApp extends javax.swing.JPanel {
         
         placeViewTable.setModel(new DefaultTableModel(data, columnNames));
         placeEditSelectionTable.setModel(new DefaultTableModel(data, columnNames));
-        
+        defaultValuesPlace();
     }//GEN-LAST:event_placeViewStateChanged
 
     private void createPlaceBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createPlaceBMouseClicked
@@ -1455,7 +1460,7 @@ public class AdminApp extends javax.swing.JPanel {
         artista.setOcupacionArtista(artistJobAddTF.getText());
         String res = artistaCtrl.create(artista);
         JOptionPane.showMessageDialog(ha, res);
-
+        
     }//GEN-LAST:event_addArtistBMouseClicked
 
     private void addEventBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addEventBMouseClicked
@@ -1668,6 +1673,16 @@ public class AdminApp extends javax.swing.JPanel {
        }
     }//GEN-LAST:event_jTabbedPane3StateChanged
 
+    private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
+        if(jTabbedPane1.getSelectedIndex() == 0){
+            //codigo de borrar cosas de evento aqui:
+        }else if(jTabbedPane1.getSelectedIndex() == 1){
+            defaultValuesArtist();
+        }else if(jTabbedPane1.getSelectedIndex() == 2){
+            defaultValuesPlace();
+        }
+    }//GEN-LAST:event_jTabbedPane1StateChanged
+
     
     private String[][] datos(){
         Eventot temp;
@@ -1728,7 +1743,26 @@ public class AdminApp extends javax.swing.JPanel {
         }
 
     }
-
+    
+    private void defaultValuesArtist(){
+        artistNameAddTF.setText("");
+        artistJobAddTF.setText("");
+        artistIdAddTF.setText("");
+        artistNameEditTF.setText("");
+        artistJobEditTF.setText("");
+        artistIdEditTF.setText("");
+    }
+    
+    private void defaultValuesPlace(){
+        placeNameAddTF.setText("");
+        placeDeckAddTF.setText("");
+        placeSectionAddTF.setText("");
+        placeCapacityAddTF.setText("");
+        placeNameEditTF.setText("");
+        placeDeckEditTF.setText("");
+        placeSectionEditTF.setText("");
+        placeCapacityEditTF.setText("");;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Bg;
     private javax.swing.JPanel addArtistB;
