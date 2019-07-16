@@ -10,6 +10,7 @@ import Control.ClientetController;
 import Control.EventotController;
 import Control.LugartController;
 import Entidad.Eventot;
+import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -57,8 +58,6 @@ public class ClientApp extends javax.swing.JPanel {
         jLabel22 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         eventsRTable = new javax.swing.JTable();
-        addClientEventB = new javax.swing.JPanel();
-        jLabel24 = new javax.swing.JLabel();
         consultarP = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         idSearchTF = new javax.swing.JTextField();
@@ -74,9 +73,10 @@ public class ClientApp extends javax.swing.JPanel {
         Bg.setMinimumSize(new java.awt.Dimension(980, 689));
         Bg.setPreferredSize(new java.awt.Dimension(1360, 720));
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Cliente"));
 
-        jTabbedPane1.setBackground(new java.awt.Color(204, 255, 255));
+        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
         jTabbedPane1.setToolTipText("");
         jTabbedPane1.setMinimumSize(new java.awt.Dimension(741, 402));
         jTabbedPane1.setPreferredSize(new java.awt.Dimension(741, 402));
@@ -86,6 +86,8 @@ public class ClientApp extends javax.swing.JPanel {
             }
         });
 
+        reservarP.setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel3.setText("Id del cliente");
 
         clientIdTF.addActionListener(new java.awt.event.ActionListener() {
@@ -94,19 +96,34 @@ public class ClientApp extends javax.swing.JPanel {
             }
         });
 
-        reserveEventB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        reserveEventB.setBackground(new java.awt.Color(6, 69, 127));
+        reserveEventB.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        reserveEventB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         reserveEventB.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 reserveEventBMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                reserveEventBMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                reserveEventBMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                reserveEventBMousePressed(evt);
+            }
         });
 
-        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel21.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel21.setText("Reservar");
         jLabel21.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel21MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel21MouseEntered(evt);
             }
         });
 
@@ -127,11 +144,36 @@ public class ClientApp extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        goBackREventB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        goBackREventB.setBackground(new java.awt.Color(6, 69, 127));
+        goBackREventB.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        goBackREventB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        goBackREventB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                goBackREventBMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                goBackREventBMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                goBackREventBMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                goBackREventBMousePressed(evt);
+            }
+        });
 
-        jLabel22.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel22.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel22.setText("Volver");
+        jLabel22.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel22MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel22MouseEntered(evt);
+            }
+        });
 
         javax.swing.GroupLayout goBackREventBLayout = new javax.swing.GroupLayout(goBackREventB);
         goBackREventB.setLayout(goBackREventBLayout);
@@ -187,29 +229,6 @@ public class ClientApp extends javax.swing.JPanel {
             eventsRTable.getColumnModel().getColumn(4).setResizable(false);
         }
 
-        addClientEventB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jLabel24.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel24.setText("Agregar cliente");
-
-        javax.swing.GroupLayout addClientEventBLayout = new javax.swing.GroupLayout(addClientEventB);
-        addClientEventB.setLayout(addClientEventBLayout);
-        addClientEventBLayout.setHorizontalGroup(
-            addClientEventBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addClientEventBLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel24)
-                .addContainerGap())
-        );
-        addClientEventBLayout.setVerticalGroup(
-            addClientEventBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(addClientEventBLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout reservarPLayout = new javax.swing.GroupLayout(reservarP);
         reservarP.setLayout(reservarPLayout);
         reservarPLayout.setHorizontalGroup(
@@ -220,9 +239,7 @@ public class ClientApp extends javax.swing.JPanel {
                     .addComponent(jLabel3)
                     .addComponent(jLabel2))
                 .addGap(62, 62, 62)
-                .addGroup(reservarPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(clientIdTF, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addClientEventB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(clientIdTF, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, reservarPLayout.createSequentialGroup()
                 .addContainerGap(58, Short.MAX_VALUE)
@@ -247,9 +264,7 @@ public class ClientApp extends javax.swing.JPanel {
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(addClientEventB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
+                .addGap(68, 68, 68)
                 .addGroup(reservarPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(reserveEventB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(goBackREventB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -257,6 +272,8 @@ public class ClientApp extends javax.swing.JPanel {
         );
 
         jTabbedPane1.addTab("Reservas", reservarP);
+
+        consultarP.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel4.setText("Id del cliente");
 
@@ -266,11 +283,36 @@ public class ClientApp extends javax.swing.JPanel {
             }
         });
 
-        goBackCEventB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        goBackCEventB.setBackground(new java.awt.Color(6, 69, 127));
+        goBackCEventB.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        goBackCEventB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        goBackCEventB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                goBackCEventBMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                goBackCEventBMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                goBackCEventBMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                goBackCEventBMousePressed(evt);
+            }
+        });
 
-        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel19.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel19.setText("Volver");
+        jLabel19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel19MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel19MouseEntered(evt);
+            }
+        });
 
         javax.swing.GroupLayout goBackCEventBLayout = new javax.swing.GroupLayout(goBackCEventB);
         goBackCEventB.setLayout(goBackCEventBLayout);
@@ -289,16 +331,36 @@ public class ClientApp extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        deleteEventB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        deleteEventB.setBackground(new java.awt.Color(6, 69, 127));
+        deleteEventB.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        deleteEventB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         deleteEventB.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 deleteEventBMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                deleteEventBMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                deleteEventBMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                deleteEventBMousePressed(evt);
+            }
         });
 
-        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel20.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel20.setText("Eliminar Reserva");
+        jLabel20.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel20MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel20MouseEntered(evt);
+            }
+        });
 
         javax.swing.GroupLayout deleteEventBLayout = new javax.swing.GroupLayout(deleteEventB);
         deleteEventB.setLayout(deleteEventBLayout);
@@ -354,16 +416,36 @@ public class ClientApp extends javax.swing.JPanel {
             eventsCTable.getColumnModel().getColumn(4).setResizable(false);
         }
 
-        searchEventB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        searchEventB.setBackground(new java.awt.Color(6, 69, 127));
+        searchEventB.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        searchEventB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         searchEventB.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 searchEventBMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                searchEventBMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                searchEventBMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                searchEventBMousePressed(evt);
+            }
         });
 
-        jLabel23.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel23.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel23.setText("Buscar");
+        jLabel23.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel23MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel23MouseEntered(evt);
+            }
+        });
 
         javax.swing.GroupLayout searchEventBLayout = new javax.swing.GroupLayout(searchEventB);
         searchEventB.setLayout(searchEventBLayout);
@@ -390,7 +472,7 @@ public class ClientApp extends javax.swing.JPanel {
                 .addGap(38, 38, 38)
                 .addComponent(jLabel4)
                 .addGap(32, 32, 32)
-                .addComponent(idSearchTF, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
+                .addComponent(idSearchTF, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
                 .addGap(36, 36, 36)
                 .addComponent(searchEventB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(210, 210, 210))
@@ -417,7 +499,7 @@ public class ClientApp extends javax.swing.JPanel {
                     .addGroup(consultarPLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(searchEventB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addGroup(consultarPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -492,37 +574,124 @@ public class ClientApp extends javax.swing.JPanel {
     }//GEN-LAST:event_jTabbedPane1StateChanged
 
     private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
-        
+        aniadirReserva();
     }//GEN-LAST:event_jLabel21MouseClicked
 
     private void reserveEventBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reserveEventBMouseClicked
-        String res;
-        DefaultTableModel model = (DefaultTableModel) eventsRTable.getModel();
-        int index = eventsRTable.getSelectedRow();
-        
-        res = clienteCtrl.reservar(Integer.parseInt(clientIdTF.getText()), Integer.parseInt(model.getValueAt(index, 0).toString()));
-        JOptionPane.showMessageDialog(ha,res);
+        aniadirReserva();
     }//GEN-LAST:event_reserveEventBMouseClicked
 
     private void searchEventBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchEventBMouseClicked
-        ArrayList<Integer> eventoId = clienteCtrl.listar_id_evento_reservas(Integer.parseInt(idSearchTF.getText()));
-        ArrayList<Eventot> eventos = new ArrayList<>();
-        Eventot temp;
-        for (Integer eventoId1 : eventoId) {
-            temp = eventoCtrl.findEventot(eventoId1);
-            eventos.add(temp);
-        }
-        actualizarTabla(eventos);
+        buscarCliente();
     }//GEN-LAST:event_searchEventBMouseClicked
 
     private void deleteEventBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteEventBMouseClicked
-        String res;
-        DefaultTableModel model = (DefaultTableModel) eventsCTable.getModel();
-        int index = eventsCTable.getSelectedRow();
-        
-        res = clienteCtrl.eliminarReserva(Integer.parseInt(idSearchTF.getText()), Integer.parseInt(model.getValueAt(index, 0).toString()));
-        JOptionPane.showMessageDialog(ha,res);
+        deleteReserva();
     }//GEN-LAST:event_deleteEventBMouseClicked
+
+    private void reserveEventBMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reserveEventBMouseEntered
+        eventButton(reserveEventB, false);
+    }//GEN-LAST:event_reserveEventBMouseEntered
+
+    private void reserveEventBMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reserveEventBMouseExited
+        eventButton(reserveEventB, true);
+    }//GEN-LAST:event_reserveEventBMouseExited
+
+    private void reserveEventBMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reserveEventBMousePressed
+        clickedButton(reserveEventB);
+    }//GEN-LAST:event_reserveEventBMousePressed
+
+    private void jLabel21MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseEntered
+        eventButton(reserveEventB, false);
+    }//GEN-LAST:event_jLabel21MouseEntered
+
+    private void goBackREventBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_goBackREventBMouseClicked
+        goBack();
+    }//GEN-LAST:event_goBackREventBMouseClicked
+
+    private void goBackREventBMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_goBackREventBMouseEntered
+        eventButton(goBackREventB, false);
+    }//GEN-LAST:event_goBackREventBMouseEntered
+
+    private void goBackREventBMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_goBackREventBMouseExited
+        eventButton(goBackREventB, true);
+    }//GEN-LAST:event_goBackREventBMouseExited
+
+    private void goBackREventBMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_goBackREventBMousePressed
+        clickedButton(goBackREventB);
+    }//GEN-LAST:event_goBackREventBMousePressed
+
+    private void jLabel22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseClicked
+        goBack();
+    }//GEN-LAST:event_jLabel22MouseClicked
+
+    private void jLabel22MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseEntered
+        eventButton(goBackREventB, false);
+    }//GEN-LAST:event_jLabel22MouseEntered
+
+    private void searchEventBMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchEventBMouseEntered
+        eventButton(searchEventB, false);
+    }//GEN-LAST:event_searchEventBMouseEntered
+
+    private void searchEventBMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchEventBMouseExited
+        eventButton(searchEventB, true);
+    }//GEN-LAST:event_searchEventBMouseExited
+
+    private void searchEventBMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchEventBMousePressed
+        clickedButton(searchEventB);
+    }//GEN-LAST:event_searchEventBMousePressed
+
+    private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked
+        buscarCliente();
+    }//GEN-LAST:event_jLabel23MouseClicked
+
+    private void jLabel23MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseEntered
+        eventButton(searchEventB, false);
+    }//GEN-LAST:event_jLabel23MouseEntered
+
+    private void goBackCEventBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_goBackCEventBMouseClicked
+        goBack();
+    }//GEN-LAST:event_goBackCEventBMouseClicked
+
+    private void goBackCEventBMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_goBackCEventBMouseEntered
+        eventButton(goBackCEventB, false);
+    }//GEN-LAST:event_goBackCEventBMouseEntered
+
+    private void goBackCEventBMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_goBackCEventBMouseExited
+        eventButton(goBackCEventB, true);
+    }//GEN-LAST:event_goBackCEventBMouseExited
+
+    private void goBackCEventBMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_goBackCEventBMousePressed
+        clickedButton(goBackCEventB);
+    }//GEN-LAST:event_goBackCEventBMousePressed
+
+    private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
+        goBack();
+    }//GEN-LAST:event_jLabel19MouseClicked
+
+    private void jLabel19MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseEntered
+        eventButton(goBackCEventB, false);
+    }//GEN-LAST:event_jLabel19MouseEntered
+
+    private void deleteEventBMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteEventBMouseEntered
+        eventButton(deleteEventB, false);
+    }//GEN-LAST:event_deleteEventBMouseEntered
+
+    private void deleteEventBMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteEventBMouseExited
+        eventButton(deleteEventB, true);
+    }//GEN-LAST:event_deleteEventBMouseExited
+
+    private void deleteEventBMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteEventBMousePressed
+        clickedButton(deleteEventB);
+    }//GEN-LAST:event_deleteEventBMousePressed
+
+    private void jLabel20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseClicked
+        deleteReserva();
+    }//GEN-LAST:event_jLabel20MouseClicked
+
+    private void jLabel20MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseEntered
+        eventButton(goBackCEventB, false);
+    }//GEN-LAST:event_jLabel20MouseEntered
     
     private void actualizarTabla(){
         Eventot temp;
@@ -581,10 +750,55 @@ public class ClientApp extends javax.swing.JPanel {
 
         eventsCTable.setModel(new DefaultTableModel(datos, tableNames));
     }
+    
+    public void eventButton(javax.swing.JPanel panel, boolean ps) {
+        Color colorbg;
+        if (ps) {
+            colorbg = new Color(6, 69, 127, 255);
+        } else {
+            colorbg = new Color(25, 109, 185, 255);
+        }
+        panel.setBackground(colorbg);
+    }
+    
+    public void clickedButton(javax.swing.JPanel panel){
+        Color colorbg = new Color(78, 159, 233, 255);
+        panel.setBackground(colorbg);
+    }
+    
+    public void aniadirReserva(){
+        String res;
+        DefaultTableModel model = (DefaultTableModel) eventsRTable.getModel();
+        int index = eventsRTable.getSelectedRow();
+        res = clienteCtrl.reservar(Integer.parseInt(clientIdTF.getText()), Integer.parseInt(model.getValueAt(index, 0).toString()));
+        JOptionPane.showMessageDialog(ha,res);
+    }
+    
+    public void goBack(){
+        ha.setBasicP(ha.homeP);
+    }
+    
+    public void buscarCliente(){
+        ArrayList<Integer> eventoId = clienteCtrl.listar_id_evento_reservas(Integer.parseInt(idSearchTF.getText()));
+        ArrayList<Eventot> eventos = new ArrayList<>();
+        Eventot temp;
+        for (Integer eventoId1 : eventoId) {
+            temp = eventoCtrl.findEventot(eventoId1);
+            eventos.add(temp);
+        }
+        actualizarTabla(eventos);
+    }
+    
+    public void deleteReserva(){
+        String res;
+        DefaultTableModel model = (DefaultTableModel) eventsCTable.getModel();
+        int index = eventsCTable.getSelectedRow();
+        res = clienteCtrl.eliminarReserva(Integer.parseInt(idSearchTF.getText()), Integer.parseInt(model.getValueAt(index, 0).toString()));
+        JOptionPane.showMessageDialog(ha,res);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Bg;
-    private javax.swing.JPanel addClientEventB;
     private javax.swing.JTextField clientIdTF;
     private javax.swing.JPanel consultarP;
     private javax.swing.JPanel deleteEventB;
@@ -599,7 +813,6 @@ public class ClientApp extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;

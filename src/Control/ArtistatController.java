@@ -19,7 +19,6 @@ public class ArtistatController implements Serializable {
     private final ArtistaDao conDB = new ArtistaDao();
 
     public String create(Artistat artistaNew){
-        
         ArrayList<Artistat> artistas = listar_artistas();
         for (Artistat artistaTemp : artistas) {
             if(artistaTemp.getIdArtista().equals(artistaNew.getIdArtista())){

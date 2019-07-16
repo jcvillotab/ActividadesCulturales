@@ -25,7 +25,7 @@ public class EventoDao {
 
     public EventoDao() {
         try {
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/actividadesculturalesdb?zeroDateTimeBehavior=convertToNull","root","juancamilovill9");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/actividadesculturalesdb?zeroDateTimeBehavior=convertToNull","root","btZ7op0gGo");
         } catch (Exception e) {
             System.out.println("error en la conexion"+e);
         }
@@ -141,6 +141,36 @@ public class EventoDao {
         }
     }
     
+    public int capacidad_evento(int idEvento){
+        int result = 0;
+        try {
+            String sentencia_crear = "{? = call RETURN_CAPACIDAD_EVENTO(?)}";
+            CallableStatement ms = (CallableStatement) con.prepareCall(sentencia_crear);
+            ms.registerOutParameter(1, java.sql.Types.INTEGER);
+            ms.setInt(2, idEvento);
+            ms.execute();
+            result = ms.getInt(1);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
     
+    public int reservas_hechas(int idEvento){
+        int result = 0;
+        try {
+            String sentencia_crear = "{? = call RETURN_RESERVAS_HECHAS(?)}";
+            CallableStatement ms = (CallableStatement) con.prepareCall(sentencia_crear);
+            ms.registerOutParameter(1, java.sql.Types.INTEGER);
+            ms.setInt(2, idEvento);
+            ms.execute();
+            result = ms.getInt(1);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
     
 }
