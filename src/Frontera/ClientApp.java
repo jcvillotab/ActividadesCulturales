@@ -45,7 +45,7 @@ public class ClientApp extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Bg = new ImagePanel("C:\\Users\\Joan\\Documents\\NetBeansProjects\\ActividadesCulturales\\resources\\fondo2.jpg");
+        Bg = new ImagePanel("C:\\Users\\Armageddon132\\Documents\\Ingesoft\\ActividadesCulturales\\resources\\fondo2.jpg");
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         reservarP = new javax.swing.JPanel();

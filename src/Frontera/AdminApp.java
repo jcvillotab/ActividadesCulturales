@@ -65,7 +65,7 @@ public class AdminApp extends javax.swing.JPanel {
     private void initComponents() {
 
         jSpinner1 = new javax.swing.JSpinner();
-        Bg = new ImagePanel("C:\\Users\\Joan\\Documents\\NetBeansProjects\\ActividadesCulturales\\resources\\fondo2.jpg");
+        Bg = new ImagePanel("C:\\Users\\Armageddon132\\Documents\\Ingesoft\\ActividadesCulturales\\resources\\fondo2.jpg");
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         eventP = new javax.swing.JPanel();
@@ -183,11 +183,19 @@ public class AdminApp extends javax.swing.JPanel {
         jLabel39 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
-        jSpinner2 = new javax.swing.JSpinner();
-        jSpinner3 = new javax.swing.JSpinner();
-        jTextField1 = new javax.swing.JTextField();
-        jXDatePicker1 = new org.jdesktop.swingx.JXDatePicker();
-        jXDatePicker2 = new org.jdesktop.swingx.JXDatePicker();
+        timeSelector2 = new JSpinner(new SpinnerDateModel());
+        timeEditor4 = new JSpinner.DateEditor(eventAddTimeTF, "HH:mm:ss");
+        timeSelector2.setEditor(timeEditor4);
+        timeSelector2.setValue(new Date());
+        timeSelector1 = new JSpinner(new SpinnerDateModel());
+        timeEditor3 = new JSpinner.DateEditor(eventAddTimeTF, "HH:mm:ss");
+        timeSelector1.setEditor(timeEditor3);
+        timeSelector1.setValue(new Date());
+        dateSelector1 = new org.jdesktop.swingx.JXDatePicker();
+        dateSelector2 = new org.jdesktop.swingx.JXDatePicker();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        taEstadisticasTiempo = new javax.swing.JTextArea();
+        generarReporteTiempo = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jLabel42 = new javax.swing.JLabel();
         eventReportSelector = new javax.swing.JComboBox<>();
@@ -429,7 +437,7 @@ public class AdminApp extends javax.swing.JPanel {
                 .addGroup(eventCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel52)
                     .addComponent(eventAddTimeTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(addEventB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44))
         );
@@ -603,9 +611,9 @@ public class AdminApp extends javax.swing.JPanel {
                             .addComponent(jLabel6))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eventEditLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                         .addComponent(editEventB, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(51, Short.MAX_VALUE))))
+                        .addContainerGap(52, Short.MAX_VALUE))))
         );
 
         jTabbedPane2.addTab("Editar", eventEdit);
@@ -1354,6 +1362,17 @@ public class AdminApp extends javax.swing.JPanel {
 
         jLabel41.setText("Hasta");
 
+        taEstadisticasTiempo.setColumns(20);
+        taEstadisticasTiempo.setRows(5);
+        jScrollPane6.setViewportView(taEstadisticasTiempo);
+
+        generarReporteTiempo.setText("Generar");
+        generarReporteTiempo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                generarReporteTiempoMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -1362,8 +1381,8 @@ public class AdminApp extends javax.swing.JPanel {
                 .addGap(34, 34, 34)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 629, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(29, Short.MAX_VALUE))
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 634, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(24, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel37)
@@ -1373,23 +1392,25 @@ public class AdminApp extends javax.swing.JPanel {
                                     .addGroup(jPanel5Layout.createSequentialGroup()
                                         .addComponent(jLabel38)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(dateSelector1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, Short.MAX_VALUE))
                                     .addGroup(jPanel5Layout.createSequentialGroup()
                                         .addComponent(jLabel40)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jSpinner3)))
+                                        .addComponent(timeSelector1)))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel5Layout.createSequentialGroup()
                                         .addComponent(jLabel41)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(timeSelector2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel5Layout.createSequentialGroup()
                                         .addComponent(jLabel39)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jXDatePicker2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap(393, Short.MAX_VALUE))))
+                                        .addComponent(dateSelector2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(generarReporteTiempo)
+                        .addGap(238, 238, 238))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1397,22 +1418,27 @@ public class AdminApp extends javax.swing.JPanel {
                 .addGap(24, 24, 24)
                 .addComponent(jLabel36)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel38)
-                    .addComponent(jLabel39)
-                    .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jXDatePicker2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel37)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel38)
+                            .addComponent(jLabel39)
+                            .addComponent(dateSelector1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dateSelector2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel37)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(generarReporteTiempo)
+                        .addGap(14, 14, 14)))
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel40)
                     .addComponent(jLabel41)
-                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
-                .addContainerGap())
+                    .addComponent(timeSelector2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(timeSelector1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Tiempo", jPanel5);
@@ -1915,6 +1941,10 @@ public class AdminApp extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jTabbedPane1StateChanged
 
+    private void generarReporteTiempoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_generarReporteTiempoMouseClicked
+        estadisticasTiempo();
+    }//GEN-LAST:event_generarReporteTiempoMouseClicked
+
 
     
     private String[][] datos(){
@@ -2004,7 +2034,7 @@ public class AdminApp extends javax.swing.JPanel {
         Lugart lugar = lugarCtrl.findByName(eventPlaceAddTF.getSelectedItem().toString());
         
         
-        fecha = df.format(eventDateEditTF.getDate());
+        fecha = df.format(eventDateAddTF.getDate());
         hora = timeEditor.getFormat().format(eventAddTimeTF.getValue());
         ldt = LocalDate.parse(fecha).atTime(LocalTime.parse(hora));
         date = Date.from(ldt.atZone(ZoneId.systemDefault()).toInstant());
@@ -2151,6 +2181,44 @@ public class AdminApp extends javax.swing.JPanel {
         placeSectionEditTF.setText("");
         placeCapacityEditTF.setText("");;
     }
+    
+    private void estadisticasTiempo(){
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        LocalDateTime ldt;
+        String fecha;
+        String hora;
+        Date date;
+        Date date2;
+        ArrayList<Eventot> eventos;
+        ArrayList<String[]> dates = new ArrayList<>();
+        Eventot temp;
+        String[] formatString = new String[3];
+        
+        fecha = df.format(dateSelector1.getDate());
+        hora = timeEditor3.getFormat().format(timeSelector2.getValue());
+        ldt = LocalDate.parse(fecha).atTime(LocalTime.parse(hora));
+        date = Date.from(ldt.atZone(ZoneId.systemDefault()).toInstant());
+        
+        fecha = df.format(dateSelector2.getDate());
+        hora = timeEditor4.getFormat().format(timeSelector2.getValue());
+        ldt = LocalDate.parse(fecha).atTime(LocalTime.parse(hora));
+        date2 = Date.from(ldt.atZone(ZoneId.systemDefault()).toInstant());
+        
+        eventos = eventoCtrl.retornar_evento_fecha(date, date2);
+        
+        System.out.println("Size lista"+eventos.size());
+        
+        for (int i = 0; i < eventos.size(); i++) {
+            temp = eventos.get(i);
+            formatString[0] = temp.getNombreEvento();
+            formatString[1] = String.valueOf(eventoCtrl.returnCapacidadEvento(temp.getIdEvento()));
+            formatString[2] = String.valueOf(eventoCtrl.returnReservasEvento(temp.getEstadoEvento()));
+            dates.add(formatString);
+        }
+        System.out.println("Reporte"+ reportCtrl.porcentajeOcupacionEventos(dates));
+        taEstadisticasTiempo.setText(reportCtrl.porcentajeOcupacionEventos(dates));
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Bg;
@@ -2169,6 +2237,8 @@ public class AdminApp extends javax.swing.JPanel {
     private javax.swing.JTabbedPane artistView;
     private javax.swing.JTable artistViewTable;
     private javax.swing.JPanel createPlaceB;
+    private org.jdesktop.swingx.JXDatePicker dateSelector1;
+    private org.jdesktop.swingx.JXDatePicker dateSelector2;
     private javax.swing.JPanel deleteEventB;
     private javax.swing.JPanel editArtistB;
     private javax.swing.JPanel editEventB;
@@ -2201,6 +2271,7 @@ public class AdminApp extends javax.swing.JPanel {
     private JSpinner.DateEditor timeEditor2;
     private javax.swing.JPanel eventView;
     private javax.swing.JTable eventViewTable;
+    private javax.swing.JButton generarReporteTiempo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2258,16 +2329,12 @@ public class AdminApp extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JSpinner jSpinner3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField3;
-    private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
-    private org.jdesktop.swingx.JXDatePicker jXDatePicker2;
     private javax.swing.JScrollPane jscroll;
     private javax.swing.JPanel placeAdd;
     private javax.swing.JTextField placeCapacityAddTF;
@@ -2285,5 +2352,10 @@ public class AdminApp extends javax.swing.JPanel {
     private javax.swing.JTabbedPane placeView;
     private javax.swing.JTable placeViewTable;
     private javax.swing.JPanel statisticsP;
+    private javax.swing.JTextArea taEstadisticasTiempo;
+    private javax.swing.JSpinner timeSelector1;
+    private JSpinner.DateEditor timeEditor3;
+    private javax.swing.JSpinner timeSelector2;
+    private JSpinner.DateEditor timeEditor4;
     // End of variables declaration//GEN-END:variables
 }

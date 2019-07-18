@@ -14,6 +14,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -173,4 +174,25 @@ public class EventoDao {
         return result;
     }
     
+    public ArrayList<Eventot> retornar_evento_fecha(Date fechaInicio, Date fechaFinal){
+        ArrayList<Eventot> eventos = new ArrayList<>();
+        try {
+            Eventot eventTemp;
+            CallableStatement ms = (CallableStatement) con.prepareCall("{call LIST_EVENTS_WITHIN_DATE_RANGE(?,?)}");
+            //ms.setTimestamp(1, new java.sql.Timestamp(fechaInicio.getTime()));
+            //ms.setTimestamp(2, new java.sql.Timestamp(fechaFinal.getTime()));
+            ms.setDate(1,  new java.sql.Date(fechaInicio.getTime()));
+            ms.setDate(2, new java.sql.Date(fechaInicio.getTime()));
+            ResultSet rs = ms.executeQuery();
+            while (rs.next()) {
+                eventTemp = new Eventot(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getInt(4));
+                eventos.add(eventTemp);
+            }
+            return eventos;
+
+        } catch (Exception e) {
+            System.out.println("ERROR EN EL PPROCEDIMIENTO ALMACENADO: " + e);
+            return null;
+        }
+    }
 }

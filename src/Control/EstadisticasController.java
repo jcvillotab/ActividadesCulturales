@@ -5,6 +5,8 @@
  */
 package Control;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Armageddon132
@@ -22,5 +24,14 @@ public class EstadisticasController {
         return estadisticas;
     }
     
-    
+    public String porcentajeOcupacionEventos(ArrayList<String[]> eventos){// [nombre_eventos,  capacidad_eventos, cantidad_reservas]
+        String estadisticas = "";
+        for(int i=0;i<eventos.size();i++){
+            estadisticas+=  ""+eventos.get(i)[0]+"\n";
+            estadisticas+=  "capacidad del evento: "+eventos.get(i)[1]+"\n";
+            estadisticas+=  "cantidad de reservas: "+eventos.get(i)[2]+"\n";
+            estadisticas+=  "porcentaje de reservas: "+((Float.parseFloat(eventos.get(i)[2])*100)/(Float.parseFloat(eventos.get(i)[1])))+"%\n\n";
+        }        
+        return estadisticas;
+    }
 }

@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import Entidad.Artistat;
 import Entidad.Eventot;
 import Entidad.Lugart;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -145,5 +146,7 @@ public class EventotController implements Serializable {
         return conDB.buscarIdLugar(idEvento);
     }
     
-    
+    public ArrayList<Eventot> retornar_evento_fecha(Date fechaInicio, Date fechaFinal){
+        return conDB.retornar_evento_fecha(fechaInicio, fechaFinal);
+    }
 }

@@ -48,7 +48,7 @@ public class HomeApp extends javax.swing.JFrame {
     private void initComponents() {
 
         basicP = new javax.swing.JPanel();
-        homeP = new ImagePanel("C:\\Users\\Joan\\Documents\\NetBeansProjects\\ActividadesCulturales\\resources\\fondo1.jpg");
+        homeP = new ImagePanel("C:\\Users\\Armageddon132\\Documents\\Ingesoft\\ActividadesCulturales\\resources\\fondo1.jpg");
         jPanel1 = new javax.swing.JPanel();
         clientB = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -198,7 +198,7 @@ public class HomeApp extends javax.swing.JFrame {
         homePLayout.setVerticalGroup(
             homePLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homePLayout.createSequentialGroup()
-                .addGap(0, 666, Short.MAX_VALUE)
+                .addGap(0, 621, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
