@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `eventoT` (
 CREATE TABLE IF NOT EXISTS `clienteT` (
     `id_cliente` INT(8) NOT NULL AUTO_INCREMENT COMMENT 'Clave primaria',
     `nombre_cliente` VARCHAR(64) NOT NULL COMMENT 'nombre cliente',
-    `codigo_cliente` INT(8) NOT NULL COMMENT 'codigo cliente',
+    `codigo_cliente` INT(8) NOT NULL COMMENT 'codigo cliente' UNIQUE,
     CONSTRAINT `pk_cliente` PRIMARY KEY (`id_cliente`)
 );
   
